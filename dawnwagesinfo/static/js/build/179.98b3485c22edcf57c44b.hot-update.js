@@ -1,0 +1,1 @@
+self.webpackHotUpdatedawnwagesinfo(179,{867:(__unused_webpack_module,__unused_webpack_exports,__webpack_require__)=>{eval("const bootstrap = __webpack_require__(472);\n\nconst dawnwagesinfo = __webpack_require__(804);\n\n//# sourceURL=webpack://dawnwagesinfo/./dawnwagesinfo/static/app.js?")}},(function(e){"use strict";e.h=()=>"5619d01fdec56a06fedf"}));

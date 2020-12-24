@@ -1,0 +1,7 @@
+.dockerignore
+.idea/
+.temp_cache/
+db.sqlite3
+node_modules/
+venv/
+build/
