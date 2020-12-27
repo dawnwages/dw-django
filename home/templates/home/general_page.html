@@ -1,0 +1,51 @@
+{% extends "base.html" %}]
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-generalpage{% endblock %}
+
+{% block content %}
+<main class="main">
+  <!--<div class="figure">
+      <img id="me" class="shadow-2xl" src="{% static '/img/Djangogirls_cph19_small_BartPawlik-35.jpg' %}"/>
+  </div> -->
+  <div class="main-text">
+    <header class="site-head">
+        <div id="fairy-name-box">
+            <h1><span class="block text-2xl font-extrabold tracking-tight text-indigo-600">{{ page.title }}</span></h1>
+        </div>
+        <div id="fairy-title-box">
+            <span id="fairy-title" class="text-2xl font-extrabold tracking-tight text-gray-00 ">{{ page.date }}</span>
+        </div>
+        <div id="fairy-blurb-box">
+            {% for tag in page.tags.all %}
+                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button" class="badge rounded-pill bg-secondary">{{ tag }}</button></a>
+            {% endfor %}
+        </div>
+          <div class="container">
+              {{ page.intro|richtext }}
+          </div>
+    </header>
+      <div class="container">
+          <div class="row pt-10">
+          <div class="container">
+              <hr class="mt-2 mb-5">
+                  <div class="row text-center text-lg-left">
+                  {%  for item in page.gallery_images.all %}
+                  <div class="col-lg-3 col-md-4 col-6">
+
+                        {% image item.image fill-320x240 %}
+                        <p>{{  item.caption }}</p>
+
+                  </div>
+                  {% endfor %}
+                 </div>
+          </div>
+        <p><a href="{{  page.get_parent.url }}">Return home</a></p>
+        </div>
+     </div>
+        <div class="container">
+          {{ page.body|richtext }}
+      </div>
+</main>
+{% endblock %}
+

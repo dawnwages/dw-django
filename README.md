@@ -14,4 +14,5 @@
 
 ### Small TODOs
 - [ ] Sitemap
-- [ ] Django Taggit
+- [x] Django Taggit
+- [ ] Move CSS to a more logical place

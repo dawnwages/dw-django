@@ -2,8 +2,12 @@
   color: #525252;
 }
 
+.btn {
+  color: white !important;
+}
+
 a {
- color: var(--bs-indigo) !important;
+ color: rgba(79, 70, 229, 1) !important;
 }
 
 #me {
@@ -16,8 +20,31 @@ a {
   margin: 0 auto;
 }
 
+.navbar-brand{
+  img {
+    display: inline-flex;
+  }
+}
+
 .card {
   position: inherit;
+  min-height: 20rem;
+  padding: .5rem;
+}
+
+.portfolio.card {
+    min-height: 32rem;
+    margin-top: 4rem;
+}
+
+.portfolio{
+  & img{
+      margin: auto;
+  }
+}
+
+.image-wrapper {
+  min-height: 9rem;
 }
 
 #mySidenav {
