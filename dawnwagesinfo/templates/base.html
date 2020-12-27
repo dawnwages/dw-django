@@ -25,26 +25,16 @@
         {% endblock %}
     </head>
 
-    <body class="container-fluid {% block body_class %}{% endblock %}">
+        {% include 'home/side_panel.html' %}
+    <body class="container-xl {% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
+
         <header class="header">
-          <div class="logo">
-            <a href="http://dawnwages.info/">
-                DawnWages.info
-            </a>
-          </div>
-          <div class="header-link">
+
                 software engineer, consultant, conference speaker, #tech4good, #stacktivism
-          </div>
-            <div class="header-link">
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                  <label class="form-check-label" for="flexSwitchCheckDefault">dark mode</label>
-                </div>
-            </div>
+
         </header>
 
-        {% include 'home/side_panel.html' %}
         {% block content %}{% endblock %}
 
         {# Global javascript #}

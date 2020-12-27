@@ -1,3 +1,11 @@
+* {
+  color: #525252;
+}
+
+a {
+ color: var(--bs-indigo) !important;
+}
+
 #me {
   width: 20rem;
   border-radius: 50%;
@@ -7,6 +15,45 @@
   border-radius: 50%;
   margin: 0 auto;
 }
+
+.card {
+  position: inherit;
+}
+
+#mySidenav {
+  width: 0vw;
+}
+
+.list-group-item {
+  border: none !important;
+}
+
+#fairy-name-box {
+  margin-top: 4rem;
+}
+
+.max-w-md {
+    max-width: 26rem;
+}
+
+.fixed {
+    position: fixed;
+    z-index: -100;
+}
+
+ .row-full{
+ width: 100vw;
+ position: relative;
+ margin-left: -50vw;
+ left: 50%;
+}
+
+ nav {
+   margin-top: 0;
+    padding-left: 5vw;
+    padding-right: 5vw;
+   border-bottom: 1px solid #e6e6e6;   border-bottom: 1px solid #e6e6e6;
+ }
 
 /*
 #fairy-name-box {
