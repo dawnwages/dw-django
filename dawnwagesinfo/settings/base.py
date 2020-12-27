@@ -32,6 +32,9 @@ INSTALLED_APPS = [
     'wagtail.contrib.modeladmin',
     'wagtailmenus',
 
+    # Wagtail Netlify
+    'wagtailnetlify',
+
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -166,3 +169,8 @@ WAGTAIL_SITE_NAME = "dawn wages"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://www.dawnwages.info'
+
+NETLIFY_AUTO_DEPLOY = True
+
+NETLIFY_PATH = '/home/dawn/.nvm/versions/node/v6.17.1/bin/netlify'
+BUILD_DIR = BASE_DIR
