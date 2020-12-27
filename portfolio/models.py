@@ -1,8 +1,21 @@
 from django.db import models
+
+from modelcluster.fields import ParentalKey
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase
+
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
+
+
+class PortfolioTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'PortfolioEntry',
+        related_name='tagged_items',
+        on_delete=models.CASCADE,
+    )
 
 
 class PortfolioIndexPage(Page):
@@ -46,6 +59,7 @@ class PortfolioEntry(Page):
     source_link = models.URLField(max_length=255, blank=True)
     client_type = models.CharField(max_length=10, choices=PROJECT_CHOICES, default=FTE)
     client_body = RichTextField(blank=True)
+    tags = ClusterTaggableManager(through=PortfolioTag, blank=True)
 
     search_fields = Page.search_fields + [
         FieldPanel('current'),
@@ -53,10 +67,13 @@ class PortfolioEntry(Page):
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('start_date'),
-        FieldPanel('end_date'),
-        FieldPanel('current'),
-        FieldPanel('is_case_study'),
+        MultiFieldPanel([
+            FieldPanel('start_date'),
+            FieldPanel('end_date'),
+            FieldPanel('current'),
+            FieldPanel('tags'),
+            FieldPanel('is_case_study'),
+        ], heading="Porfolio Info"),
         FieldPanel('client_name'),
         FieldPanel('client_pos'),
         FieldPanel('client_link'),

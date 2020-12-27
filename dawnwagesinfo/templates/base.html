@@ -25,10 +25,10 @@
         {% endblock %}
     </head>
 
-        {% include 'home/side_panel.html' %}
+
     <body class="container-xl {% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-
+        {% include 'home/top_nav.html' %}
         <header class="header">
 
                 software engineer, consultant, conference speaker, #tech4good, #stacktivism
@@ -44,5 +44,8 @@
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
+    <footer class="footer mt-10" role="contentinfo">
+
+    </footer>
     </body>
 </html>

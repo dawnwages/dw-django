@@ -65,11 +65,6 @@ svg:not(:root) {
     font-size: 14px;
 }
 
-.main {
-    padding: 40px 0;
-    margin: 0 auto;
-    text-align: center;
-}
 
 .form-check-input:checked {
     background-color: #6611f2;
@@ -120,27 +115,6 @@ svg:not(:root) {
             transform: translateY(50px);
     -webkit-transform-origin: 50% 80%;
             transform-origin: 50% 80%;
-}
-
-.main-text {
-    max-width: 50vw;
-    margin: 5px auto;
-}
-
-.main-text h1 {
-    font-size: 22px;
-}
-
-.main-text p {
-    margin: 15px auto 0;
-}
-
-.footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border-top: 1px solid #e6e6e6;
-    padding: 10px;
 }
 
 .option {

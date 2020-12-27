@@ -22,6 +22,7 @@ a {
 
 #mySidenav {
   width: 0vw;
+  z-index: +10000;
 }
 
 .list-group-item {
@@ -36,9 +37,31 @@ a {
     max-width: 26rem;
 }
 
-.fixed {
-    position: fixed;
-    z-index: -100;
+.main {
+    padding: 40px 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.main-text {
+    max-width: 50vw;
+    margin: 5px auto;
+}
+
+.main-text h1 {
+    font-size: 22px;
+}
+
+.main-text p {
+    margin: 15px auto 0;
+}
+
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-top: 1px solid #e6e6e6;
+    padding: 10px;
 }
 
  .row-full{
@@ -62,6 +85,11 @@ a {
     padding-top: 20px;
     padding-bottom: 10px;
     text-align: center;
+}
+
+footer {
+  height: 10rem;
+  border-top: #cdcdcd solid 1px;
 }
 
 /*

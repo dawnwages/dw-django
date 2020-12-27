@@ -8,6 +8,7 @@ function closeNav(e) {
         document.getElementById("l2").style.transform = null;
         document.getElementById("l3").style.display = 'inherit';
         navState = 'close';
+
     } else {
         document.getElementById("mySidenav").style.width = "100vw";
         document.getElementById("l1").style.transform = 'matrix(1.1, -1, 0, 1, -1, 10)';
@@ -15,5 +16,5 @@ function closeNav(e) {
         document.getElementById("l3").style.display = 'none';
         navState = 'open';
     }
-
+ console.log(navState);
 }
