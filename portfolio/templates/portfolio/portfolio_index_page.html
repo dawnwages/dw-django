@@ -1,0 +1,44 @@
+{%  extends "base.html" %}
+
+{% load i18n wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load static %}
+
+{% block body_class %}template-portfolioindexpage{% endblock %}
+
+{%  block content %}
+<main class="main">
+    <div class="main-text">
+            <header class="site-head">
+                <div id="fairy-name-box">
+                    <h1><span class="block text-2xl font-extrabold tracking-tight text-indigo-600">{{ page.title }}</span></h1>
+                </div>
+                <div id="fairy-title-box">
+                    <span id="fairy-title" class="text-2xl font-extrabold tracking-tight text-gray-00 ">{{ page.intro|richtext }}</span>
+                </div>
+            </header>
+    </div>
+    <div class="container">
+        <div class="row row-cols-4 pt-10">
+            {%  for post in page.get_children %}
+            <div class="col">
+                <div class="card">
+                  <!--<img src="{% static '/img/Djangogirls_cph19_small_BartPawlik-35.jpg' %}" class="card-img-top" alt="...">-->
+                    {% image post.specific.client_logo fill-520x240 %}
+                  <div class="card-body">
+                    <h5 class="card-title">{{ post.specific.title }}</h5>
+                    <p class="card-text">{{ post.specific.start_date}}</p>
+                    <p class="card-text">{{ post.specific.current}}</p>
+                    <p class="card-text">{{ post.specific.client_pos}}</p>
+                    <p class="card-text">{{ post.specific.client_body}}</p>
+                    <a href="{{ post.specific.client_link }}" class="btn btn-primary">Client Link</a>
+                    <a href="{{ post.specific.source_link }}" class="btn btn-primary">Source Link</a>
+                    <a href="{{ post.specific.project_link }}" class="btn btn-primary">Project Link</a>
+                  </div>
+                </div>
+            </div>
+            {%  endfor %}
+          </div>
+    </div>
+</main>
+{% endblock %}

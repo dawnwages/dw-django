@@ -55,6 +55,15 @@ a {
    border-bottom: 1px solid #e6e6e6;   border-bottom: 1px solid #e6e6e6;
  }
 
+
+.header {
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
 /*
 #fairy-name-box {
     background-color: var(--brand-color3);
