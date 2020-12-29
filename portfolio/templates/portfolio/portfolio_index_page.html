@@ -26,19 +26,19 @@
                       {% image post.specific.client_logo width-520 %}
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title">{{ post.specific.title }}</h5>
-                      <div class="btn-group btn-group-sm" role="group" aria-label="{{ post }} links">
-                          <a href="{{ post.specific.client_link }}" class="btn btn-primary btn-sm">Client</a>
-                        <a href="{{ post.specific.source_link }}" class="btn btn-secondary btn-sm">Source</a>
-                        <a href="{{ post.specific.project_link }}" class="btn btn-info btn-sm">Project</a>
+                    <h3 class="card-title" >{{ post.specific.title }}</h3>
+                      <div class="group mt-5" role="group" aria-label="{{ post }} links">
+                          <a href="{{ post.specific.client_link }}" class="btn btn-outline-secondary btn-sm">Client</a>
+                        <a href="{{ post.specific.source_link }}" class="btn btn-outline-secondary btn-sm">Source</a>
+                        <a href="{{ post.specific.project_link }}" class="btn btn-outline-secondary btn-sm">Project</a>
                       </div>
-                      <p class="card-text">
+                      <p class="card-text ">
                           {%  if post.specific.end_date %}
-                            <span>{{ post.specific.start_date|date:"M Y"}}</span> - <span >{{ post.specific.end_date|date:"M Y"}}</span>
+                            <span class="text-indigo-600">{{ post.specific.start_date|date:"M Y"}}</span> - <span class="text-indigo-600" >{{ post.specific.end_date|date:"M Y"}}</span>
                           {% elif post.specific.current %}
-                            <span>{{ post.specific.start_date|date:"M Y"}}</span> - <span>Current</span>
+                            <span class="text-indigo-600">{{ post.specific.start_date|date:"M Y"}}</span> - <span class="text-indigo-600">Current</span>
                           {% else %}
-                            <span>{{ post.specific.start_date|date:"M Y"}}</span>
+                            <span class="text-indigo-600">{{ post.specific.start_date|date:"M Y"}}</span>
                           {% endif %}
                       </p>
                     <p class="card-text">{{ post.specific.client_pos}}</p>

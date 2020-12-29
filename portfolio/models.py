@@ -30,9 +30,11 @@ class PortfolioEntry(Page):
     # Options of employment
     FTE = 'FTE'
     CLIENT = 'CLIENT'
+    TALK = 'CONFERENCE TALK'
     PROJECT_CHOICES = [
         ('FTE', 'Full Time Engineer'),
-        ('CLIENT', 'Client')
+        ('CLIENT', 'Client'),
+        ('TALK', 'Conference Talk')
     ]
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
@@ -91,3 +93,5 @@ class PortfolioEntry(Page):
 
     parent_page_types = ['portfolio.PortfolioIndexPage']
     subpage_types = []
+
+    

@@ -2,8 +2,8 @@
   color: #525252;
 }
 
-.btn {
-  color: white !important;
+body {
+  background-color: lightgrey;
 }
 
 a {
@@ -29,7 +29,6 @@ a {
 .card {
   position: inherit;
   min-height: 20rem;
-  padding: .5rem;
 }
 
 .portfolio.card {
@@ -44,7 +43,8 @@ a {
 }
 
 .image-wrapper {
-  min-height: 9rem;
+  min-height: 11rem;
+  padding: 1rem 2rem;
 }
 
 #mySidenav {
@@ -70,11 +70,6 @@ a {
     text-align: center;
 }
 
-.main-text {
-    max-width: 50vw;
-    margin: 5px auto;
-}
-
 .main-text h1 {
     font-size: 22px;
 }
@@ -89,6 +84,10 @@ a {
     justify-content: space-between;
     border-top: 1px solid #e6e6e6;
     padding: 10px;
+}
+
+.focus\:ring-black{
+  --tw-ring-color: darkgrey !important;
 }
 
  .row-full{
@@ -142,3 +141,83 @@ footer {
     background-color: var(--brand-color5);
 }
 */
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  text-decoration: none;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.sidebar-badge {
+  background-color: grey !important;
+}
+
+.sidebar-badge:hover {
+  background-color: inherit !important;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+*::-webkit-scrollbar, #side-nav::-webkit-scrollbar {
+  width: 1em;
+}
+
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+}
+
+#sidenav::-webkit-scrollbar-track {
+  background-color: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb, #sidenav::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+#side-nav {
+    position: fixed;
+  z-index: 100;
+  right: 10rem;
+    transition: 0.3s;
+}
+

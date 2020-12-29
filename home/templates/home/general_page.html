@@ -21,14 +21,13 @@
                 <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button" class="badge rounded-pill bg-secondary">{{ tag }}</button></a>
             {% endfor %}
         </div>
-          <div class="container">
+          <div class="container pt-10">
               {{ page.intro|richtext }}
           </div>
     </header>
-      <div class="container">
-          <div class="row pt-10">
-          <div class="container">
-              <hr class="mt-2 mb-5">
+        <div class="container">
+          {{ page.body|richtext }}
+            {% if page.gallery_images.all.count > 0 %}<hr class="mt-2 mb-5">
                   <div class="row text-center text-lg-left">
                   {%  for item in page.gallery_images.all %}
                   <div class="col-lg-3 col-md-4 col-6">
@@ -39,13 +38,12 @@
                   </div>
                   {% endfor %}
                  </div>
-          </div>
-        <p><a href="{{  page.get_parent.url }}">Return home</a></p>
-        </div>
-     </div>
-        <div class="container">
-          {{ page.body|richtext }}
+                  <div class="row">
+                <p><a href="{{  page.get_parent.url }}">Return home</a></p>
+                </div>
+        {% else %}{% endif %}
       </div>
+
 </main>
 {% endblock %}
 

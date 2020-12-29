@@ -1,0 +1,48 @@
+
+<div id="mySidenav" class="sidenav h-full flex flex-col py-6 bg-white shadow-xl">
+        <div class="">
+          <div class="mt-6 relative flex-1 px-4 sm:px-6">
+            <!-- Replace with your content -->
+            <div class="absolute inset-0 px-4 sm:px-6">
+              <div class="h-full" aria-hidden="true">
+                  <h1><span class="block text-indigo-600">DawnWages.info</span></h1>
+                <ul class="list-group">
+                    {% for item in menu_items %}
+                        <li class="{{ item.active_class }} {% if item.submenu %}dropdown{% endif %}">
+                        <a href="{{ item.href }}" class="nav-link {% if item.submenu %}dropdown-toggle{% endif %}" {% if item.submenu %}id="navbarDropdown-{{ item.text }}"{% endif %}>{{ item.text }}</a>
+                        {%  if item.submenu %}
+                            <ul class="sub-menu dropdown-menu" aria-labelledby="navbarDropdown-{{ item.text }}">
+                                {%  for sub_item in item.sub_menu.items %}
+                                    <li class="dropdown-item {{ sub_item.active_class }}">
+                                        <a href="{{ sub_item.href }}">{{ sub_item.text }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        </li>
+                    {% endfor %}
+                <hr>
+                <li class="list-group-item">
+                    <a href="https://glittertech.dev" target="_blank" rel="noopener noreferrer"> <i class="fas fa-external-link-alt"></i> GlitterTech.dev</a>
+                    <span class="badge rounded-pill bg-success">Live</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="https://AtTheRoot.dev" target="_blank" rel="noopener noreferrer"> <i class="fas fa-external-link-alt"></i> AtTheRoot.dev</a>
+                    <span class="badge rounded-pill bg-success">Live</span><span class="badge rounded-pill bg-info text-dark">Contribute</span><span class="badge rounded-pill bg-primary">Code4Good</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="https://StonedCodeKiller.dev" target="_blank" rel="noopener noreferrer"> <i class="fas fa-external-link-alt"></i> StonedCodeKiller.dev</a>
+                    <span class="badge rounded-pill bg-success">Live</span><span class="badge rounded-pill bg-warning text-dark">Under Construction</span><span class="badge rounded-pill bg-info text-dark">Contribute</span>
+                </li>
+                <li class="list-group-item">
+                   <s>
+                       <a href="#" target="_blank" rel="noopener noreferrer"> <i class="fas fa-external-link-alt"></i> Rugby Street Consulting</a>
+                    </s> <span class="badge rounded-pill bg-warning text-dark">Under Construction</span>
+                </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /End replace -->
+          </div>
+        </div>
+</div>

@@ -11,6 +11,7 @@
 - [ ] Add Black
 - [ ] Add Django Debug Toolbar
 - [ ] Add Prettier
+- [ ] WSGI + Node Netlify Deploy
 
 ### Small TODOs
 - [ ] Sitemap
