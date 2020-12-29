@@ -154,6 +154,11 @@ footer {
   transition: 0.5s;
 }
 
+#side-nav{
+  box-shadow: 0px 0px 9px 1px #4f46e54d;
+  border: solid 1px grey;
+}
+
 /* The navigation menu links */
 .sidenav a {
   text-decoration: none;
@@ -217,7 +222,7 @@ footer {
 #side-nav {
     position: fixed;
   z-index: 100;
-  right: 10rem;
+  right: 5rem;
     transition: 0.3s;
 }
 
