@@ -18,7 +18,7 @@
         </div>
         <div id="fairy-blurb-box">
             {% for tag in page.tags.all %}
-                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button" class="badge rounded-pill bg-secondary">{{ tag }}</button></a>
+                <button type="button" class="badge rounded-pill bg-secondary">{{ tag }}</button>
             {% endfor %}
         </div>
           <div class="container pt-10">

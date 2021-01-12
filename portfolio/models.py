@@ -26,6 +26,19 @@ class PortfolioIndexPage(Page):
         FieldPanel('title'),
     ]
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        all_posts = PortfolioEntry.objects.child_of(self).order_by('-start_date', 'end_date')
+
+        tag = request.GET.get('tag')
+        print(all_posts)
+        if tag:
+            all_posts = all_posts.filter(tags__name=tag)
+        context["posts"] = all_posts
+        context["tag"] = tag
+        return context
+
+
 class PortfolioEntry(Page):
     # Options of employment
     FTE = 'FTE'
@@ -93,5 +106,3 @@ class PortfolioEntry(Page):
 
     parent_page_types = ['portfolio.PortfolioIndexPage']
     subpage_types = []
-
-    

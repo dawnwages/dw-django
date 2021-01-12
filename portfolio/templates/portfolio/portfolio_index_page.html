@@ -10,16 +10,18 @@
     <div class="main-text">
             <header class="site-head">
                 <div id="fairy-name-box">
-                    <h1><span class="block text-2xl font-extrabold tracking-tight text-indigo-600">{{ page.title }}</span></h1>
+                    <h1><span class="block text-2xl font-extrabold tracking-tight text-indigo-600 page-name"><a href="{{ page.url }}">{{ page.title }}</a></span></h1>
                 </div>
                 <div id="fairy-title-box">
-                    <span id="fairy-title" class="text-2xl font-extrabold tracking-tight text-gray-00 ">{{ page.intro|richtext }}</span>
+                    {% if '?' not in request.get_full_path %} <span id="fairy-title" class="text-2xl font-extrabold tracking-tight text-gray-00 ">{{ page.intro|richtext }}</span> {% else %}
+                    <span class="block text-xl tracking-tight pt-6 pb-4 ">Selection of <button type="button" class="bg-secondary badge rounded-pill m-2"> <span class="text-xl text-white portfolio-filter-tag m-2"> {{ tag }} </span> </button> projects</span>
+                    <a href="{{ page.url }}"><span>return to full portfolio >> </span></a>{% endif %}
                 </div>
             </header>
     </div>
     <div class="main-text">
         <div class="row pt-10">
-            {%  for post in page.get_children %}
+            {%  for post in posts %}
             <div class="col-md-3">
                 <div class="portfolio card">
                   <div class="image-wrapper">
@@ -47,7 +49,7 @@
                   </div>
                     <div class="card-footer text-muted">
                         {% for tag in post.specific.tags.all %}
-                            <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button" class="badge rounded-pill bg-secondary">{{ tag }}</button></a>
+                            <a href="?tag={{ tag }}"><button type="button" class="badge rounded-pill bg-secondary">{{ tag }}</button></a>
                         {% endfor %}
                       </div>
                 </div>
