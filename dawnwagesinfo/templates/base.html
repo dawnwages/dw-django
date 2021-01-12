@@ -1,6 +1,7 @@
 {% load static wagtailuserbar %}
 {%  load menu_tags %}
 {% load static %}
+{% load snippet_tags %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
@@ -59,8 +60,12 @@
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
-    <footer class="footer mt-10" role="contentinfo">
+    <footer class="footer mt-10 pb-5 container" role="contentinfo">
+        <div class="row"><h5>Selected Partnerships:</h5></div>
+        <div class="footer-icons">
 
+            {% projecticons %}
+        </div>
     </footer>
     </body>
 </html>

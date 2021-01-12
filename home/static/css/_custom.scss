@@ -32,7 +32,7 @@ a {
 }
 
 .portfolio.card {
-    min-height: 32rem;
+    min-height: 37rem;
     margin-top: 4rem;
 }
 
@@ -114,8 +114,31 @@ a {
 }
 
 footer {
-  height: 10rem;
   border-top: #cdcdcd solid 1px;
+}
+
+.footer-icons{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project-icon{
+  margin: auto 2rem;
+  filter: grayscale(100%);
+  padding: 1rem 0;
+  img {
+    max-height: 3.5rem;
+    width: auto;
+  }
+}
+
+.project-icon:hover {
+  filter: none!important;
+}
+
+#side-nav {
+  background: white;
 }
 
 /*
@@ -224,5 +247,9 @@ footer {
   z-index: 100;
   right: 5rem;
     transition: 0.3s;
+}
+
+.btn-outline-secondary:hover {
+  color: #fff !important;
 }
 
