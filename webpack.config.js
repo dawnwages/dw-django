@@ -14,7 +14,8 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'dawnwagesinfo/static/js/build'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/static/',
   },
   cache: {
     type: 'filesystem',

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -22,6 +23,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
 # Application definition
+
+ALLOWED_HOSTS = ['dawnwages.info', 'localhost', '161.35.190.151']
 
 INSTALLED_APPS = [
     'home',
@@ -99,8 +102,9 @@ WSGI_APPLICATION = 'dawnwagesinfo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dawnwagesinfo',
+        'PORT': '5432',
     }
 }
 
