@@ -178,3 +178,25 @@ NETLIFY_AUTO_DEPLOY = True
 
 NETLIFY_PATH = '/home/dawn/.nvm/versions/node/v6.17.1/bin/netlify'
 BUILD_DIR = BASE_DIR
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {"require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        }
+    },
+    "root": {
+        "handlers": ['console'],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ['console'],
+            "level": os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            "propagate": False,
+        },
+    },
+}
