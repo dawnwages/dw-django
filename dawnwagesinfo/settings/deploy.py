@@ -2,11 +2,15 @@ from socket import gethostname, gethostbyname
 from .base import *
 
 #: deploy environment - e.g. "staging" or "production"
-ENVIRONMENT = os.environ["ENVIRONMENT"]
+ENVIRONMENT = os.environ.get("ENVIRONMENT")
 os.environ.setdefault("BROKER_HOST", "127.0.0.1:5672")
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "&%&+6u9=a50dsix7=0_5o=$kmi3bn=a^yqw7d5arn#ni90)+&t")
 
-DEBUG = False
+
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False')
 TEMPLATE_DEBUG = DEBUG
+
 if ENVIRONMENT == "production":
     TWILIO_DEBUG_MODE = False
     DOMAIN = "https://www.dawnwages.info"
