@@ -29,7 +29,7 @@ LOGGING = {
         'logdna': {
             'level': logging.DEBUG,
             'class': 'logging.handlers.LogDNAHandler',
-            'key': os.environ.get('LOGDNA_KEY'),
+            'key': os.environ.get('LOGDNA_KEY')[0],
             'options': {
                 'app': 'dawnwagesinfo',
                 'env': 'production',
