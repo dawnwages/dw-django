@@ -23,6 +23,8 @@ django_heroku.settings(locals())
 
 LOGGING = {
     # Other logging settings...
+    'version': 1,
+    'disable_existing_loggers': False,
     'handlers': {
         'logdna': {
             'level': logging.DEBUG,
