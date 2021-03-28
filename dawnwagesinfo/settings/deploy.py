@@ -1,7 +1,10 @@
 from socket import gethostname, gethostbyname
 from .base import *
+import os
 import dj_database_url
 import django_heroku
+import logging
+from logdna import LogDNAHandler
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
@@ -14,3 +17,28 @@ SESSION_COOKIE_SECURE = True
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+
+# Logging with LogDNA
+
+LOGGING = {
+    # Other logging settings...
+    'handlers': {
+        'logdna': {
+            'level': logging.DEBUG,
+            'class': 'logging.handlers.LogDNAHandler',
+            'key': os.environ.get('LOGDNA_KEY'),
+            'options': {
+                'app': 'dawnwagesinfo',
+                'env': 'production',
+                'index_meta': True,
+            },
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['logdna'],
+            'level': logging.DEBUG
+        },
+    },
+}
