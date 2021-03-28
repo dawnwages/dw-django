@@ -17,6 +17,7 @@ PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -24,7 +25,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Application definition
 
-ALLOWED_HOSTS = ['dawnwages.info', 'localhost', '161.35.190.151']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'home',
@@ -102,10 +103,13 @@ WSGI_APPLICATION = 'dawnwagesinfo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dawnwagesinfo',
-        'PORT': '5432',
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',  # 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'dawnwagesinfo',                      # Or path to database file if using sqlite3.
+        'USER': 'dawnwagesinfo_user',                      # Not used with sqlite3.
+        'PASSWORD': 'ohSh111t',                  # Not used with sqlite3.
+        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    },
 }
 
 
