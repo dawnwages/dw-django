@@ -18,6 +18,7 @@ SESSION_COOKIE_SECURE = True
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Logging with LogDNA
 
