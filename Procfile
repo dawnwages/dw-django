@@ -1,1 +1,2 @@
-web: gunicorn dawnwagesinfo.wsgi
+release: python manage.py migrate
+web: gunicorn dawnwagesinfo.wsgi --log-file
