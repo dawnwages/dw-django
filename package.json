@@ -5,7 +5,8 @@
   "main": "bundle.js",
   "scripts": {
     "build": "webpack --watch && postcss {home,dawnwagesinfo}/**/*.css -d dawnwagesinfo/static/tailwind --watch",
-    "start": "node server/server.js && postcss {home,dawnwagesinfo}/**/*.css -d dawnwagesinfo/static/tailwind --watch",
+    "heroku-postbuild": "webpack -p && postcss {home,dawnwagesinfo}/**/*.css -d dawnwagesinfo/static/tailwind", // runs after installation
+    "start": "node server/server.js && postcss {home,dawnwagesinfo}/**/*.css -d dawnwagesinfo/static/tailwind",
     "dev": "webpack-dev-server --watch && postcss {home,dawnwagesinfo}/**/*.css -d dawnwagesinfo/static/tailwind --watch",
     "old-start": "postcss {home,dawnwagesinfo}/**/*.css -d dawnwagesinfo/static/tailwind --watch",
     "old-build": "rimraf /static/tailwind && postcss {home}/**/*.css -d static/tailwind --env production",
