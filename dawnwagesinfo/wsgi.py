@@ -15,4 +15,4 @@ from whitenoise import WhiteNoise
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dawnwagesinfo.settings.dev")
 
 application = get_wsgi_application()
-application = WhiteNoise(application, root='/static/')
+application = WhiteNoise(application, root='static')
