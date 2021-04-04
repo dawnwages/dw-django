@@ -29,7 +29,6 @@ l18n==2020.6.1
 logdna==1.5.3
 openpyxl==3.0.5
 Pillow==8.0.1
-pkg-resources==0.0.0
 psycopg2==2.8.6
 python-dateutil==2.8.1
 pytz==2020.4
