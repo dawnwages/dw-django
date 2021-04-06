@@ -6,27 +6,27 @@
   <div class="figure">
       <img id="me" class="shadow-2xl" src="{% static 'img/Djangogirls_cph19_small_BartPawlik-35.jpg' %}"/>
   </div>
-  <div class="main-text">
+  <div>
     <header class="site-head">
         <div id="fairy-name-box">
-            <h1><span class="block text-2xl font-extrabold tracking-tight text-indigo-600">{{ page.name }}</span></h1>
+            <h1><span class="h1-large">{{ page.name }}</span></h1>
         </div>
         <div id="fairy-title-box">
-            <span id="fairy-title" class="text-2xl font-extrabold tracking-tight text-gray-00 ">{{ page.job_title }}</span>
+            <span id="fairy-title" class="h2-large">{{ page.job_title }}</span>
         </div>
         <div id="fairy-blurb-box">
             <span id="fairy-blurb" class="home-title">{{ page.desc }}</span>
         </div>
         <div>
             <br>
-            <p class="text-indigo-600">{{ page.loc }}</p>
+            <p><b>{{ page.loc }}</b></p>
         </div>
     </header>
-      <div class="container">
+      <div class="container description">
           {{ page.desc_long|richtext }}
       </div>
       <div class="container">
-          <div class="row pt-10">
+          <!-- <div class="row pt-10">
 
             <div class="col-sm">
                 <div class="card mt-5">
@@ -96,7 +96,7 @@
                   </div>
                 </div>
             </div>
-          </div>
+          </div> -->
          <!-- <div class="row pt-10">
               <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
                   <div class="md:flex">

@@ -1,0 +1,92 @@
+@import "mixins";
+
+body {
+  font-family: $default-serif !important;
+  font-size: $font-size-base;
+  line-height: 1.25;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+main {
+  max-width: 1060px;
+  width: 80vw;
+  margin: 0 auto;
+  padding: 0 15px;
+  line-height: 1.25;
+  display: block; /* For IE11 support */
+}
+
+a {
+  background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, $orange__light 50%);
+  background-position: -0% 0;
+  background-size: 200% auto;
+  transition: background-position 0.5s ease-out;
+  text-decoration: underline;
+
+  &.nohover {
+    background-image: none !important;
+    margin: 1rem 0;
+  }
+}
+
+a:hover {
+  color: #ea1b10;
+  background-position: -99.99% 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul {
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+nav {
+  text-transform: lowercase;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  text-transform: lowercase;
+  font-family: $default-sans !important;
+}
+
+.header {
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+}

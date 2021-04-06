@@ -8,7 +8,7 @@
                   <h1><span class="block text-indigo-600"><a href="/">DawnWages.info</a></span></h1>
                 <ul class="list-group">
                     {% for item in menu_items %}
-                        <li class="{{ item.active_class }} {% if item.submenu %}dropdown{% endif %}">
+                        <li class="{{ item.active_class }} {% if item.submenu %}dropdown{% endif %}"> test
                         <a href="{{ item.href }}" class="nav-link {% if item.submenu %}dropdown-toggle{% endif %}" {% if item.submenu %}id="navbarDropdown-{{ item.text }}"{% endif %}>{{ item.text }}</a>
                         {%  if item.submenu %}
                             <ul class="sub-menu dropdown-menu" aria-labelledby="navbarDropdown-{{ item.text }}">

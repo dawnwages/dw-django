@@ -7,10 +7,10 @@
 
 {%  block content %}
 <main class="main">
-    <div class="main-text">
+    <div class="">
             <header class="site-head">
                 <div id="fairy-name-box">
-                    <h1><span class="block text-2xl font-extrabold tracking-tight text-indigo-600 page-name"><a href="{{ page.url }}">{{ page.title }}</a></span></h1>
+                    <h1><span class="h1-large">{{ page.title }}</span></h1>
                 </div>
                 <div id="fairy-title-box">
                     {% if '?' not in request.get_full_path %} <span id="fairy-title" class="text-2xl font-extrabold tracking-tight text-gray-00 ">{{ page.intro|richtext }}</span> {% else %}
@@ -19,10 +19,10 @@
                 </div>
             </header>
     </div>
-    <div class="main-text">
+    <div class="">
         <div class="row pt-10">
             {%  for post in posts %}
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="portfolio card">
                   <div class="image-wrapper">
                       {% image post.specific.client_logo width-520 %}
@@ -31,9 +31,9 @@
                     <h3 class="card-title" >{{ post.specific.title }}</h3>
                     <h6 class="card-subtitle" >{{ post.specific.client_name }}</h6>
                       <div class="group mt-5" role="group" aria-label="{{ post }} links">
-                          {% if post.specific.client_link %}<a href="{{ post.specific.client_link }}" class="btn btn-outline-secondary btn-sm">Client</a>{% endif %}
-                          {% if post.specific.source_link %}<a href="{{ post.specific.source_link }}" class="btn btn-outline-secondary btn-sm">Source</a>{% endif %}
-                          {% if post.specific.project_link %}<a href="{{ post.specific.project_link }}" class="btn btn-outline-secondary btn-sm">Project</a>{% endif %}
+                          {% if post.specific.client_link %}<a href="{{ post.specific.client_link }}" class="nohover btn btn-outline-secondary btn-sm">Client</a>{% endif %}
+                          {% if post.specific.source_link %}<a href="{{ post.specific.source_link }}" class="nohover btn btn-outline-secondary btn-sm">Source</a>{% endif %}
+                          {% if post.specific.project_link %}<a href="{{ post.specific.project_link }}" class="nohover btn btn-outline-secondary btn-sm">Project</a>{% endif %}
                       </div>
                       <p class="card-text ">
                           {%  if post.specific.end_date %}
@@ -45,18 +45,18 @@
                           {% endif %}
                       </p>
                     <p class="card-text">{{ post.specific.client_pos}}</p>
-                    <p class="card-text">{{ post.specific.client_body}}</p>
+                    <p class="card-text">{{ post.specific.client_body|safe }}</p>
                   </div>
                     <div class="card-footer text-muted">
                         {% for tag in post.specific.tags.all %}
-                            <a href="?tag={{ tag }}"><button type="button" class="badge rounded-pill bg-secondary">{{ tag }}</button></a>
+                            <a href="?tag={{ tag }}" class="badge badge-primary">{{ tag }}</a>
                         {% endfor %}
                       </div>
                 </div>
             </div>
             {% endfor %}
           </div>
-        <div class="container pt-10 text-lg-center">
+        <div class="container view-more">
             <span class="block text-2xl font-extrabold tracking-tight text-indigo-600">to view more of my work visit my <a href="">github.</a></span>
         </div>
     </div>

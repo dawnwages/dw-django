@@ -1,0 +1,31 @@
+nav {
+  width: 100vw;
+  background-color: transparent;
+  font-family: $default-sans;
+
+  p {
+    color: $gray__dark;
+    white-space: pre-line;
+    width: 100%;
+    margin: 0 0 0.25rem 0;
+    line-height: 1;
+  }
+}
+
+.title a {
+  background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, $purple__light 50%);
+  background-position: -0% 0;
+  background-size: 200% auto;
+  color: #222;
+  line-height: 1.15em;
+  text-decoration: none;
+  transition: background-position 0.5s ease-out;
+}
+
+.title a:hover {
+  background-position: -99.99% 0;
+}
+
+.navbar-brand {
+  padding: 0.3125rem 0.5rem;
+}

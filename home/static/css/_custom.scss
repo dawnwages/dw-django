@@ -2,10 +2,6 @@
   color: #525252;
 }
 
-body {
-  background-color: lightgrey;
-}
-
 a {
  color: rgba(79, 70, 229, 1) !important;
 }
@@ -29,6 +25,7 @@ a {
 .card {
   position: inherit;
   min-height: 20rem;
+  margin-bottom: 2rem;
 }
 
 .portfolio.card {
@@ -68,10 +65,6 @@ a {
     padding: 40px 0;
     margin: 0 auto;
     text-align: center;
-}
-
-.main-text h1 {
-    font-size: 22px;
 }
 
 .main-text p {
@@ -135,81 +128,6 @@ footer {
 
 .project-icon:hover {
   filter: none!important;
-}
-
-#side-nav {
-  background: white;
-}
-
-/*
-#fairy-name-box {
-    background-color: var(--brand-color3);
-    text-shadow: 2px 2px 8px rgba(0,0,0,.3);
-    padding-bottom: 5px;
-    width: 100%;
-}
-
-#fairy-name {
-    font-size: 4.1em;
-}
-
-#fairy-title-box {
-    background-color: var(--brand-color4);
-    font-size: 2em;
-    line-height: 100%;
-    width: 100%;
-}
-
-#fairy-blurb-box {
-    background-color: var(--brand-color5);
-}
-*/
-
-/* The side navigation menu */
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  overflow-x: hidden;
-  transition: 0.5s;
-}
-
-#side-nav{
-  box-shadow: 0px 0px 9px 1px #4f46e54d;
-  border: solid 1px grey;
-}
-
-/* The navigation menu links */
-.sidenav a {
-  text-decoration: none;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-.sidebar-badge {
-  background-color: grey !important;
-}
-
-.sidebar-badge:hover {
-  background-color: inherit !important;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */

@@ -56,8 +56,9 @@ a {
   border: none !important;
 }
 
-#fairy-name-box {
+.h1-large {
   margin-top: 4rem;
+  font-size: 4rem;
 }
 
 .max-w-md {
@@ -68,10 +69,6 @@ a {
     padding: 40px 0;
     margin: 0 auto;
     text-align: center;
-}
-
-.main-text h1 {
-    font-size: 22px;
 }
 
 .main-text p {

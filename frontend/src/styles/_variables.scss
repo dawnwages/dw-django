@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+//
+// Typography
+$josefin-sans:     'Josefin Sans', sans-serif; // Title Font
+$Merriweather-serif: 'Merriweather', serif; // Title Font
+$playfair:          'Playfair Display', serif;
+$default-sans:      $josefin-sans;
+$default-serif:     $Merriweather-serif;
+$open-sans:         'Open Sans', sans-serif;
+$body-font:         $open-sans;
+
+$alata:             'Alata', sans-serif;
+$heading-font:      $alata;
+
+$weight-regular:    400;
+$weight-semibold:   600;
+$weight-bold:       700;
+
+//
+// Colors
+
+$yellow:            #f3d047;
+$yellow__dark:      #edc71a;
+$blue:              #1fb9ef;
+$blue__dark:        #185f84;
+$red:               #ed5e52;
+$green:             #54bf39;
+$green__light:      #c3dd26; // brand color
+$teal:              #69f3b4;
+$gray:              #bebebe; // brand color
+$gray__lighter:     #f7f7f7; // brand color
+$gray__light:       #ebebeb;
+$gray__dark:        #848484; // brand color
+$charcoal:          #262626;
+$charcoal__light:   #505050;
+$black:             #222;
+$white:             #fff;
+$purple__dark:      #393d86; // brand color
+$purple:            #7d85f7; // brand color
+$purple__light:     #b7bdfa; // brand color
+$orange__light: #ffc042; // brand color
+
+$dw-branding: (
+  "yellow": $yellow,
+  "yellow-dark": $yellow__dark,
+  "blue": $blue,
+  "blue-dark": $blue__dark,
+  "red": $red,
+  "green": $green,
+  "gray": $gray,
+  "gray-dark": $gray__dark,
+  "gray-light": $gray__lighter,
+  "gray-light-border": $gray__light,
+  "gray-map-location": $charcoal__light,
+  "charcoal": $charcoal,
+  "charcoal-light": $charcoal__light,
+  "black": $black,
+  "white": $white,
+  "orange": $orange__light,
+  "purple": $purple,
+  "purple-dark": $purple__dark,
+  "green-light": $green__light,
+);
+
+//
+// Layout
+$xl-multiplier:     1.25;
+
+//
+// Components
+$btn-padding:         0.25rem;
+$btn-offset:          0.5rem;
+$letter-spacing:      0.06rem;
+
+$border-width:        3px;
+$border:              $border-width solid $black;
+$border-radius:       0.4rem;
+
+//
+// Bootstrap variable overrides
+$body-color:                  $charcoal;
+
+$primary:                     $blue;
+$secondary:                   $red;
+
+$font-family-sans-serif:      $open-sans;
+$font-size-base:              1rem; // 16px => 20px
+$font-size-sm:                0.75rem; // 15px
+
+$headings-font-family:        $alata;
+
+$h1-font-size:                $font-size-base * 2;
+$h2-font-size:                $font-size-base * 1.75;
+$h3-font-size:                $font-size-base * 1.6;
+
+$spacer:                      $font-size-base;
+
+$spacer-0: 0;
+$spacer-1: $spacer * 0.25; // 0.25rem or 5px
+$spacer-2: $spacer * 0.5; // 0.5rem or 10px
+$spacer-3: $spacer * 0.75; // 0.75rem or 15px
+$spacer-4: $spacer; // 1rem or 20px
+$spacer-5: $spacer * 1.25; // 1.25rem or 25px
+$spacer-6: $spacer * 1.5; // 1.5rem or 30px
+$spacer-7: $spacer * 2; // 2rem or 40px
+$spacer-8: $spacer * 3; // 3rem or 60px
+$spacer-9: $spacer * 4; // 4rem or 80px
+$spacer-10: $spacer * 5; // 4rem or 80px
+
+$page-gutter:       1.5rem;
+
+$spacers: (
+  0: $spacer-0,
+  1: $spacer-1,
+  2: $spacer-2,
+  3: $spacer-3,
+  4: $spacer-4,
+  5: $spacer-5,
+  6: $spacer-6,
+  7: $spacer-7,
+  8: $spacer-8,
+  9: $spacer-9,
+  10: $spacer-10
+);
+
+$small-font-size:             0.75em;
+$code-font-size:              0.85em;
+
+$input-btn-font-family:       $alata;
+$input-btn-font-size:         18px;
+$input-btn-border-width:      $border-width;
+
+$input-padding-y:             0.25rem;
+$input-font-size:             0.875rem;
+$input-placeholder-color:     $gray__dark;
+
+$input-border-color:          $black;
+$input-border-radius:         $border-radius;
+
+$form-select-border-radius:   $border-radius;
+$form-select-color:           $gray__dark;
+$form-select-indicator-color: $blue;
+$form-select-bg-size:         24px 20px;
+$form-select-bg-position:     right 0.45rem center;
+$form-select-font-size:       1rem;
+
+$btn-border-radius:           0.4rem;
+$btn-padding-y:               1.15rem;
+$btn-padding-x:               1.8rem;
+$btn-font-size:               $spacer-5;
+
+$btn-font-size-sm:            0.875rem;
+$btn-padding-x-sm:            1rem;
+$btn-padding-y-sm:            0.75rem;
+$btn-border-radius-sm:        $btn-border-radius;
+
+$btn-font-size-lg:            1.625rem; // 26px
+$btn-padding-x-lg:            2rem;
+$btn-padding-y-lg:            $spacer-5;
+$btn-border-radius-lg:        $btn-border-radius;
+
+$dropdown-border-width:       $border-width;
+$dropdown-border-radius:      $border-radius;
+$dropdown-border-color:       $black;
+$dropdown-color:              $black;
+$dropdown-min-width:          10rem;
+$dropdown-bg:                 $white;
+
+$nav-link-color:              $black;
+$nav-link-font-size:          1.15rem;
+
+$card-border-width:           $border-width;
+$card-border-color:           $black;
+$card-border-radius:          $border-radius;
+
+$spacer:                      1.15rem;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 760px,
+  md: 960px,
+  lg: 1300px,
+  xl: 1800px,
+  xxl: 2400px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 900px,
+  lg: 1160px,
+  xl: 1620px,
+  xxl: 1660px
+);
