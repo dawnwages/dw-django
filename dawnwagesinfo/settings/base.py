@@ -156,7 +156,6 @@ STATICFILES_FINDERS = [
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, 'staticfiles'),
     os.path.join(PROJECT_DIR, 'static'),
     os.path.join(BASE_DIR, 'frontend/build'), # TODO: Figure out if you need this second path
 ]
