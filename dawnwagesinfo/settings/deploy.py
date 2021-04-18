@@ -6,7 +6,7 @@ import django_heroku
 import logging
 from logdna import LogDNAHandler
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -19,6 +19,15 @@ SESSION_COOKIE_SECURE = True
 django_heroku.settings(locals())
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    gethostname(),
+    gethostbyname(gethostname()),
+    'logs.dna.com',
+    'dawn-wages-info.herokuapp.com'
+]
 
 # Logging with LogDNA
 
