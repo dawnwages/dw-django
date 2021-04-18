@@ -6,9 +6,7 @@ import django_heroku
 import logging
 from logdna import LogDNAHandler
 
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 
