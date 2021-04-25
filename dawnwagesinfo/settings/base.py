@@ -36,9 +36,6 @@ INSTALLED_APPS = [
     'wagtail.contrib.modeladmin',
     'wagtailmenus',
 
-    # Wagtail Netlify
-    'wagtailnetlify',
-
     'whitenoise.runserver_nostatic',
     'storages',
 

@@ -8,8 +8,6 @@ from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
-# in your imports
-from wagtailnetlify import urls as netlify_urls
 
 # in urlpatterns, before including wagtail_urls
 
@@ -22,7 +20,6 @@ urlpatterns = [
     path('documents/', include(wagtaildocs_urls)),
 
     path('search/', search_views.search, name='search'),
-    path('netlify/', include(netlify_urls)),
 ]
 
 
