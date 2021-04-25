@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'wagtailnetlify',
 
     'whitenoise.runserver_nostatic',
+    'storages',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

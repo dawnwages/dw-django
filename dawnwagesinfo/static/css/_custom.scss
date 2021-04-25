@@ -45,6 +45,11 @@ a {
 .image-wrapper {
   min-height: 11rem;
   padding: 1rem 2rem;
+  img {
+    width: 100%;
+    height: auto;
+    padding: .5rem;
+  }
 }
 
 #mySidenav {
