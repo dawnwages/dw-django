@@ -35,7 +35,7 @@ if USE_S3:
     # s3 private media settings
     PRIVATE_MEDIA_LOCATION = 'private'
     PRIVATE_FILE_STORAGE = 'dawnwagesinfo.settings.storage.PrivateMediaStorage'
- else:
+else:
     MEDIA_URL = '/mediafiles/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
