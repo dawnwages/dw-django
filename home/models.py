@@ -2,7 +2,7 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
 from wagtail.core.models import Page, Orderable
@@ -73,6 +73,7 @@ class GeneralPage(Page):
         ], heading="Page Information"),
         FieldPanel('intro'),
         FieldPanel('body'),
+        StreamFieldPanel("content"),
         InlinePanel('gallery_images', label="Gallery Image"),
         ]
 

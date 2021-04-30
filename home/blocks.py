@@ -2,9 +2,40 @@ from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
+STYLE_GUIDE_COLORS = (
+    ("red", "red"),
+    ("blue", "blue"),
+    ("yellow", "yellow"),
+)
+
+CODE_LANGUAGE_OPTIONS = (
+    ("Python", "python"),
+    ("Markup", "html"),
+    ("CSS", "css"),
+    ("Clojure", "clojure"),
+    ("Bash", "shell"),
+    ("Django", "django"),
+    ("Jinja2", "jinja2"),
+    ("Docker", "dockerfile"),
+    ("Git", "git"),
+    ("GraphQL", "graphql"),
+    ("Handlebars", "handlebars"),
+    (".ignore", "gitignore"),
+    ("JSON", "json"),
+    ("JSON5", "json5"),
+    ("Markdown", "md"),
+    ("Markdown", "md"),
+    ("React JSX", "jsx"),
+    ("React TSX", "tsx"),
+    ("SASS", "sass"),
+    ("SCSS", "scss"),
+    ("TypeScript", "ts"),
+    ("vim", "vim"),
+)
+
 
 class HeadingBlock(blocks.StructBlock):
-    heading = blocks.CharBlock(max_length=255, class_name="border-traffic-lanes")
+    heading = blocks.CharBlock(max_length=255)
 
     def __str__(self):
         return self.heading
@@ -14,7 +45,7 @@ class HeadingBlock(blocks.StructBlock):
 
 
 class TextWithHeadingBlock(blocks.StructBlock):
-    heading = blocks.CharBlock(max_length=255, class_name="border-traffic-lanes")
+    heading = blocks.CharBlock(max_length=255)
     text = blocks.TextBlock()
 
     def __str__(self):
@@ -26,7 +57,7 @@ class TextWithHeadingBlock(blocks.StructBlock):
 
 
 class TextWithHeadingWithRightImageBlock(blocks.StructBlock):
-    heading = blocks.CharBlock(max_length=255, class_name="border-traffic-lanes")
+    heading = blocks.CharBlock(max_length=255)
     text = blocks.TextBlock()
     image = ImageChooserBlock()
 
@@ -39,7 +70,7 @@ class TextWithHeadingWithRightImageBlock(blocks.StructBlock):
 
 
 class TextHeadingImageBlock(blocks.StructBlock):
-    heading = blocks.CharBlock(max_length=255, class_name="border-traffic-lanes")
+    heading = blocks.CharBlock(max_length=255)
     text = blocks.TextBlock()
     image = ImageChooserBlock()
     # TODO: Add left or right side
@@ -53,7 +84,7 @@ class TextHeadingImageBlock(blocks.StructBlock):
 
 
 class VideoEmbed(blocks.StructBlock):
-    heading = blocks.CharBlock(max_length=255, class_name="border-traffic-lanes")
+    heading = blocks.CharBlock(max_length=255)
     text = blocks.TextBlock()
     # TODO: Add color and embed field
 
@@ -66,10 +97,10 @@ class VideoEmbed(blocks.StructBlock):
 
 
 class CodeBlock(blocks.StructBlock):
-    language = blocks.CharBlock(max_length=255)
-    caption = blocks.CharBlock(max_length=255)
-    page = blocks.CharBlock(max_length=255)
-    code = blocks.TextBlock(max_length=1000)
+    language = blocks.ChoiceBlock(choices=CODE_LANGUAGE_OPTIONS)
+    caption = blocks.CharBlock(max_length=255, blank=True)
+    page = blocks.CharBlock(max_length=255, blank=True)
+    code = blocks.TextBlock(max_length=1000, blank=True)
 
     def __str__(self):
         return self.caption

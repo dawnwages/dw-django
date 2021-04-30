@@ -38,21 +38,33 @@
         </div>
         <div class="container">
           {{ page.body|richtext }}
-            {% if page.gallery_images.all.count > 0 %}<hr class="mt-2 mb-5">
-                  <div class="row text-center text-lg-left">
+            <section id="gallery">
+                <div class="container">
+                {% if page.gallery_images.all.count > 0 %}<hr class="mt-2 mb-5">
+                    <div id="image-gallery">
+                    <div class="row">
                   {%  for item in page.gallery_images.all %}
-                  <div class="col-lg-3 col-md-4 col-6">
-
-                        {% image item.image fill-320x240 %}
-                        <p>{{  item.caption }}</p>
+                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="img-wrapper">
+                        <a href="{{ item.image.url }}">
+                            {% image item.image fill-320x240 %}
+                        </a>
+                            <div class="img-overlay">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            </div>
+                        <small>{{  item.caption }}</small>
+                        </div>
 
                   </div>
                   {% endfor %}
                  </div>
-                  <div class="row">
-                <p><a href="{{  page.get_parent.url }}">Return home</a></p>
+                    </div>
+                {% else %}{% endif %}
                 </div>
-        {% else %}{% endif %}
+            </section>
+            <div class="row">
+                <p><a href="{{  page.get_parent.url }}">Return home</a></p>
+            </div>
       </div>
 
 </main>
