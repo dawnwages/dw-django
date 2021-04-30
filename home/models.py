@@ -2,9 +2,10 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
@@ -81,4 +82,24 @@ class ProjectIcons(models.Model):
     ]
 
     def __str__(self):
-        return self.image.title
+        return self.caption
+
+
+@register_snippet
+class ResumeLink(models.Model):
+    title = models.CharField(max_length=255)
+    resume = models.ForeignKey(
+        'wagtaildocs.Document',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    upload_date = models.DateTimeField(auto_now_add=True, null=True)
+
+    panels = Page.content_panels + [
+        DocumentChooserPanel('resume')
+    ]
+
+    def __str__(self):
+        return self.title

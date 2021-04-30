@@ -1,5 +1,5 @@
 nav {
-  width: 100vw;
+  max-width: 100%;
   background-color: transparent;
   font-family: $default-sans;
 
@@ -13,7 +13,7 @@ nav {
 }
 
 .title a {
-  background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, $purple__light 50%);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, $purple__light 50%);
   background-position: -0% 0;
   background-size: 200% auto;
   color: #222;

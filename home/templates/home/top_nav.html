@@ -1,4 +1,5 @@
 {% load wagtailcore_tags %}
+{% load snippet_tags %}
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">dawnwages.info</a>
@@ -12,22 +13,24 @@
             Projects
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">GlitterTech.dev ✨
+            <li><a class="dropdown-item"  target="_blank" rel="noopener noreferrer" href="https://glittertech.dev">GlitterTech.dev ✨
             <p><small>Blog for dawn wages</small></p>
             </a>
             </li>
-            <li><a class="dropdown-item" href="#">AtTheRoot.dev ✊🏿
+            <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="https://attheroot.dev">AtTheRoot.dev ✊🏿
             <p><small>AntiRacist Ethical Source License</small></p>
             </a></li>
-            <li><a class="dropdown-item" href="#">Stoned Code Killer 🌱
+              <!--
+            <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="#">Stoned Code Killer 🌱
             <p><small>Blog for the intersection of cannabinoids and code.</small></p>
             </a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Rugby Street Consulting</a></li>
+            <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="#">Rugby Street Consulting</a></li>
+            -->
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <li class="title nav-item">
+        {% downloadresume %}
         </li>
         {% for item in menu_items %}
             <li class="title {{ item.active_class }} {% if item.submenu %}dropdown{% endif %}">

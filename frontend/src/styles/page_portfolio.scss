@@ -11,3 +11,15 @@
 .badge:hover {
   color: white;
 }
+
+.image-wrapper {
+  img {
+    width: 100%;
+    height: auto;
+    padding: 0.5rem;
+  }
+}
+
+.portfolio.card {
+  margin-bottom: 2rem;
+}

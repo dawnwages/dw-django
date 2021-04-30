@@ -2,6 +2,6 @@
 
     {% for icon in projecticons %}
         <div id="footer-{{ icon }}" class="project-icon">
-            {% image icon.image width-200 %}
+            {% image icon.image width-200 alt=icon.caption %}
         </div>
     {% endfor %}
