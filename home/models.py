@@ -3,9 +3,12 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.contrib.table_block.blocks import TableBlock
+from wagtail.core import blocks
 from wagtail.core.models import Page, Orderable
-from wagtail.core.fields import RichTextField
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.documents.edit_handlers import DocumentChooserPanel
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
@@ -13,6 +16,7 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 from portfolio.models import PortfolioTag
+from home import blocks as dblocks
 
 
 class HomePage(Page):
@@ -44,6 +48,23 @@ class GeneralPage(Page):
     body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=GeneralTag, blank=True)
     date = models.DateTimeField("Post Date")
+    content = StreamField(
+        [
+            ("heading", dblocks.HeadingBlock(class_name="full")),
+            ("subheading", blocks.CharBlock(class_name="full")),
+            ("paragraph", blocks.RichTextBlock(class_name="full")),
+            ("HTML", blocks.RawHTMLBlock(class_name="full")),
+            ("image", ImageChooserBlock()),
+            ("text_with_heading", dblocks.HeadingBlock(class_name="full")),
+            ("text_heading_image", dblocks.TextHeadingImageBlock(class_name="full")),
+            ("video_embed", dblocks.VideoEmbed(class_name="full")),
+            ("table", TableBlock(class_name="full")),
+            ("code_block", dblocks.CodeBlock(class_name="full")),
+            ("quote_block", dblocks.QuoteBlock(class_name="full")),
+        ],
+        blank=True,
+        null=True,
+    )
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([

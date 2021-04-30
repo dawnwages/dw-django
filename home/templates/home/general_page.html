@@ -3,6 +3,14 @@
 
 {% block body_class %}template-generalpage{% endblock %}
 
+{% block extra_css %}
+    <link href="{% static 'css/prism.css' %}" rel="stylesheet" />
+{% endblock extra_css %}
+
+{%  block extra_js %}
+    <script src="{%  static 'js/prism.js' %}"></script>
+{%  endblock extra_js %}
+
 {% block content %}
 <main class="main">
   <!--<div class="figure">
@@ -25,6 +33,9 @@
               {{ page.intro|richtext }}
           </div>
     </header>
+        <div class="container">
+            {{ page.content }}
+        </div>
         <div class="container">
           {{ page.body|richtext }}
             {% if page.gallery_images.all.count > 0 %}<hr class="mt-2 mb-5">
