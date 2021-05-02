@@ -1,0 +1,28 @@
+{% load snippet_tags wagtailimages_tags %}
+{%  if gallerycarousel %}
+<section id="gallery">
+    <div class="container-fluid gallery-container">
+        <hr class="mt-2 mb-5">
+        <div class="row">
+          {%  for item in gallerycarousel %}
+          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="gallery-card">
+                    {% image item.gallery fill-320x240 class="gallery-thumbnail" %}
+                    {% image item.gallery width-500 as lg_img %}
+                    <span onclick="onClick(event)" class="card-icon-open fa fa-expand" data-val="{{ lg_img.url }}" alt="{{ item.title }}"></span>
+                </div>
+
+          </div>
+          {% endfor %}
+        </div>
+        <div id="imgModal" class="modal-overlay">
+            <div class="modal-body">
+                <a class="modal-close" onclick="onClose()">
+                    <span class="fa fa-times"></span></a>
+                    <img id="modalSrc" src="https://source.unsplash.com/4rDCa5hBlCs/800x600">
+                    <p id="caption" class="text-white">caption</p>
+            </div>
+        </div>
+    </div>
+</section>
+{%  endif %}

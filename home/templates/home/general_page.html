@@ -1,5 +1,5 @@
 {% extends "base.html" %}]
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags snippet_tags %}
 
 {% block body_class %}template-generalpage{% endblock %}
 
@@ -9,6 +9,7 @@
 
 {%  block extra_js %}
     <script src="{%  static 'js/prism.js' %}"></script>
+    <script src="{%  static 'js/gallery.js' %}"></script>
 {%  endblock extra_js %}
 
 {% block content %}
@@ -24,7 +25,7 @@
         <div id="fairy-title-box">
             <span id="fairy-title" class="text-2xl font-extrabold tracking-tight text-gray-00 ">{{ page.date }}</span>
         </div>
-        <div id="fairy-blurb-box">
+        <div id="fairy-blurb-box" class="mt-2">
             {% for tag in page.tags.all %}
                 <button type="button" class="badge rounded-pill bg-secondary">{{ tag }}</button>
             {% endfor %}
@@ -38,30 +39,7 @@
         </div>
         <div class="container">
           {{ page.body|richtext }}
-            <section id="gallery">
-                <div class="container">
-                {% if page.gallery_images.all.count > 0 %}<hr class="mt-2 mb-5">
-                    <div id="image-gallery">
-                    <div class="row">
-                  {%  for item in page.gallery_images.all %}
-                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="img-wrapper">
-                        <a href="{{ item.image.url }}">
-                            {% image item.image fill-320x240 %}
-                        </a>
-                            <div class="img-overlay">
-                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                            </div>
-                        <small>{{  item.caption }}</small>
-                        </div>
-
-                  </div>
-                  {% endfor %}
-                 </div>
-                    </div>
-                {% else %}{% endif %}
-                </div>
-            </section>
+           {% gallerycarousel %}
             <div class="row">
                 <p><a href="{{  page.get_parent.url }}">Return home</a></p>
             </div>

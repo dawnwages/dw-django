@@ -11,6 +11,8 @@ from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.blocks import SnippetChooserBlock
 
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
@@ -42,6 +44,63 @@ class GeneralTag(TaggedItemBase):
         on_delete=models.CASCADE,
     )
 
+# We are not currently using this model. Instead we're using directly the Image chooser panel
+# @register_snippet
+class GeneralPageGalleryImage(models.Model):
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    caption = models.CharField(blank=True, max_length=255)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('caption'),
+    ]
+
+    class Meta:
+        verbose_name = "Gallery Page Image"
+
+
+class GalleryBlock(Orderable):
+    title = models.CharField(max_length=255)
+    gallery = models.ForeignKey(
+        'wagtailimages.Image',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False,
+        related_name="+",
+    )
+    related_page = ParentalKey(
+        'wagtailcore.Page',
+        db_index=True,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        help_text="Pick gallery images",
+        related_name="gallery_carousel"
+    )
+
+    panels = [
+        FieldPanel('title'),
+        ImageChooserPanel("gallery")
+
+    ]
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Gallery Carousel"
+        ordering = ['sort_order']
+
+
+class GalleryChooserBlock(blocks.StructBlock):
+    gallery = SnippetChooserBlock("home.GalleryBlock")
+
+
+    def __str__(self):
+        return self.gallery
+
 
 class GeneralPage(Page):
     intro = RichTextField(blank=True)
@@ -61,6 +120,7 @@ class GeneralPage(Page):
             ("table", TableBlock(class_name="full")),
             ("code_block", dblocks.CodeBlock(class_name="full")),
             ("quote_block", dblocks.QuoteBlock(class_name="full")),
+            ("gallery_chooser", GalleryChooserBlock(class_name="full"))
         ],
         blank=True,
         null=True,
@@ -74,21 +134,8 @@ class GeneralPage(Page):
         FieldPanel('intro'),
         FieldPanel('body'),
         StreamFieldPanel("content"),
-        InlinePanel('gallery_images', label="Gallery Image"),
+        InlinePanel('gallery_carousel', label="gallery", min_num=1, max_num=10)
         ]
-
-
-class GeneralPageGalleryImage(Orderable):
-    page = ParentalKey(GeneralPage, on_delete=models.CASCADE, related_name='gallery_images')
-    image = models.ForeignKey(
-        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
-    )
-    caption = models.CharField(blank=True, max_length=255)
-
-    panels = [
-        ImageChooserPanel('image'),
-        FieldPanel('caption'),
-    ]
 
 
 @register_snippet

@@ -1,5 +1,5 @@
 from django import template
-from home.models import ProjectIcons, ResumeLink
+from home.models import ProjectIcons, ResumeLink, GalleryBlock
 
 register = template.Library()
 
@@ -15,4 +15,11 @@ def projecticons(context):
 def downloadresume(context):
     return {
         "downloadresume": ResumeLink.objects.last()
+    }
+
+@register.inclusion_tag("home/blocks/gallery.html", takes_context=True)
+def gallerycarousel(context):
+    # pass request
+    return {
+        "gallerycarousel": GalleryBlock.objects.filter(related_page=context["page"]),
     }
