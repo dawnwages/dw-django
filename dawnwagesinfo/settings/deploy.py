@@ -6,7 +6,7 @@ import django_heroku
 import logging
 from logdna import LogDNAHandler
 
-DEBUG = os.environ.get('DEBUG')
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 
