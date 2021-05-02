@@ -2,8 +2,8 @@ from .base import *
 
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "local")
 
+DEBUG = os.environ.get('DEBUG')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 DOMAIN = "http://0.0.0.0:8000"
