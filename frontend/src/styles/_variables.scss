@@ -177,6 +177,14 @@ $card-border-radius:          $border-radius;
 
 $spacer:                      1.15rem;
 
+
+$xs-breakpoint: 0;
+$sm-breakpoint: 760px;
+$md-breakpoint: 960px;
+$lg-breakpoint: 1300px;
+$xl-breakpoint: 1800px;
+$xxl-breakpoint: 2400px;
+
 $grid-breakpoints: (
   xs: 0,
   sm: 760px,
