@@ -13,6 +13,14 @@
     background-position: -0% 0;
     background-size: 200% auto;
     transition: background-position 0.5s ease-out;
+
+    a {
+      background-image: inherit !important;
+    }
+  }
+
+  a.btn {
+    background-image: none !important;
   }
 
   #title-box:hover {
