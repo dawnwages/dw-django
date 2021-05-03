@@ -58,10 +58,10 @@
                 <a href="https://linkedin.com/in/DawnWages" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fab fa-linkedin-in"></i></a>
             </li>
         </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+        <form class="d-flex" action="{% url 'search' %}" method="get">
+            <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
+            <button class="btn btn-outline-success" type="submit" value="Search" class="button">Search</button>
+        </form>
     </div>
   </div>
 </nav>
