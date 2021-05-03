@@ -1,4 +1,4 @@
-@media(max-width: $sm-breakpoint ){
+@media (max-width: $sm-breakpoint) {
   .h1-large {
     font-size: 2.5rem;
   }
@@ -11,18 +11,18 @@
     width: 50vw;
   }
 
-  #fairy-name-box{
+  #fairy-name-box {
     margin-top: 0;
   }
 }
 
-@media(max-width: $md-breakpoint){
-    .navbar-nav.icon-nav {
+@media (max-width: $md-breakpoint) {
+  .navbar-nav.icon-nav {
     flex-direction: row;
     justify-content: space-evenly;
 
-    .nav-item{
-      margin: .5rem;
+    .nav-item {
+      margin: 0.5rem;
     }
   }
 }
