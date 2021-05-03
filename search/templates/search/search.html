@@ -6,7 +6,8 @@
 {% block title %}Search{% endblock %}
 
 {% block content %}
-<main class="container">
+<main>
+       <div class="mt-5 container-fluid main-text">
     <h1>Search</h1>
 
     <form class="d-flex" action="{% url 'search' %}" method="get">
@@ -15,8 +16,8 @@
     </form>
 
     {% if search_results %}
-       <div class="mt-5 container-fluid main-text">
-            <ul>
+
+            <ul class="mt-5">
                 {% for result in search_results %}
                     <li>
                         <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
