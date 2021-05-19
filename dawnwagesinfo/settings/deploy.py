@@ -9,8 +9,8 @@ from logdna import LogDNAHandler
 DEBUG = os.environ.get('DEBUG')
 TEMPLATE_DEBUG = DEBUG
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
