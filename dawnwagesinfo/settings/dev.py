@@ -2,7 +2,7 @@ from .base import *
 
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "local")
 
-DEBUG = os.environ.get('DEBUG')
+DEBUG = False
 # SECURITY WARNING: don't run with debug turned on in production!
 TEMPLATE_DEBUG = DEBUG
 
