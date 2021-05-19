@@ -6,7 +6,7 @@ import django_heroku
 import logging
 from logdna import LogDNAHandler
 
-DEBUG = False
+DEBUG = os.environ.get('DEBUG')
 TEMPLATE_DEBUG = DEBUG
 
 # CSRF_COOKIE_SECURE = True
