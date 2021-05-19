@@ -9,7 +9,7 @@ from logdna import LogDNAHandler
 DEBUG = os.environ.get('DEBUG')
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
+ALLOWED_HOSTS = ["dawnwages.info", "www.dawnwages.info"]
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
