@@ -1,5 +1,10 @@
 * {
   color: #525252;
+  font-size: 1rem !important;
+}
+
+html {
+  font-size: 1rem !important;
 }
 
 body {
@@ -248,6 +253,12 @@ footer {
   }
 }
 
-.btn-outline-secondary:hover {
-  color: #fff !important;
+.blog_sidebar {
+  padding: 0 !important;
+}
+
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
 }

@@ -13,8 +13,12 @@
             Projects
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/star-trek-themed-demos/">Star Trek Demos 🖖
+              <p><small>Python demos with themes.</small></p>
+              </a>
+              </li>
             <li><a class="dropdown-item"  target="_blank" rel="noopener noreferrer" href="https://glittertech.dev">GlitterTech.dev ✨
-            <p><small>Blog for dawn wages</small></p>
+            <p><small>Python and Web Co-op</small></p>
             </a>
             </li>
             <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="https://attheroot.dev">AtTheRoot.dev ✊🏿
@@ -61,9 +65,13 @@
                 <a href="https://linkedin.com/in/DawnWages" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fab fa-linkedin-in"></i></a>
             </li>
         </ul>
-        <form class="d-flex" action="{% url 'search' %}" method="get">
-            <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-            <button class="btn btn-outline-success" type="submit" value="Search" class="button">Search</button>
+        <form class="d-flex search_form" action="{% url 'search' %}" method="get">
+          <div class="input-group">
+            <input type="text" placeholder="Search" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit" value="Search" class="button"><i class="fa fa-search"></i></button>
+            </span>
+          </div>
         </form>
     </div>
   </div>

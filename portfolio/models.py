@@ -1,14 +1,23 @@
 from django.db import models
+from django.utils.translation import gettext as _
 
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
+from puput.abstracts import EntryAbstract, BlogAbstract
+from puput.utils import get_image_model_path
+
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel, PageChooserPanel, InlinePanel 
+from wagtail.contrib.table_block.blocks import TableBlock
+from wagtail.core import blocks
 from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.blocks import ImageChooserBlock
 
+from portfolio import blocks as dwblocks
 
 class PortfolioTag(TaggedItemBase):
     content_object = ParentalKey(
@@ -20,12 +29,10 @@ class PortfolioTag(TaggedItemBase):
 
 class PortfolioIndexPage(Page):
     intro = RichTextField(blank=True)
-
     content_panels = [
         FieldPanel('intro'),
         FieldPanel('title'),
     ]
-
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         all_posts = PortfolioEntry.objects.child_of(self).order_by('-start_date', 'end_date')
@@ -106,3 +113,51 @@ class PortfolioEntry(Page):
 
     parent_page_types = ['portfolio.PortfolioIndexPage']
     subpage_types = []
+
+
+class DWEntryAbstract(EntryAbstract):
+    content = StreamField(
+        [
+            ("heading", dwblocks.HeadingBlock(class_name="full")),
+            ("subheading", blocks.CharBlock(class_name="full")),
+            ("paragraph", blocks.RichTextBlock()),
+            ("html", blocks.RawHTMLBlock(icon="code", label="Raw HTML")),
+            ("image", ImageChooserBlock()),
+            ("text_with_heading", dwblocks.TextWithHeadingBlock(class_name="full")),
+            ("text_with_heading_and_right_image", dwblocks.TextWithHeadingWithRightImageBlock(class_name="full")),
+            ("text_with_heading_and_left_image", dwblocks.TextWithHeadingWithLeftImageBlock(class_name="full")),
+            ("right_image_left_text", dwblocks.RightImageLeftTextBlock(class_name="full")),
+            ("left_image_right_text", dwblocks.LeftImageRightTextBlock(class_name="full")),
+            ("left_quote_right_image", dwblocks.QuoteLeftImageBlock(class_name="full")),
+            ("video_embed", dwblocks.LiteYoutubeEmbed(class_name="full")),
+            ("table", TableBlock(class_name="full")),
+        ],
+        blank=True,
+        null=True,
+    )
+    content_panels = [
+        MultiFieldPanel(
+            [
+                FieldPanel('title', classname="title"),
+                ImageChooserPanel('header_image'),
+                FieldPanel('body', classname="full"),
+                StreamFieldPanel("content"),
+                FieldPanel('excerpt', classname="full"),
+            ],
+            heading=_("Content")
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel('tags'),
+                InlinePanel('entry_categories', label=_("Categories")),
+                InlinePanel(
+                    'related_entrypage_from',
+                    label=_("Related Entries"),
+                    panels=[PageChooserPanel('entrypage_to')]
+                ),
+            ],
+            heading=_("Page Metadata")),
+    ]
+
+    class Meta:
+        abstract = True

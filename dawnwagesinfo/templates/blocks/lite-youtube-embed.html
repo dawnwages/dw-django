@@ -1,0 +1,10 @@
+
+{% if value.title %}<h3 class="page-heading">{{ value.title }}</h3>{% endif %}
+
+{% if value.embed %}
+  <lite-youtube videoid="{{ value.embed }}">
+    <button type="button" class="lty-playbtn">
+      <span class="lyt-visually-hidden">Play Video{% if value.title %}: {{ value.title }}{% endif %}</span>
+    </button>
+  </lite-youtube>
+{% endif %}

@@ -45,6 +45,10 @@ a:hover {
   background-position: -99.99% 0;
 }
 
+h1.title-header > a {
+  background-image: none !important;
+}
+
 h1,
 h2,
 h3,

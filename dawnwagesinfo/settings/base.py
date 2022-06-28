@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'storages',
 
+    'wagtail.contrib.sitemaps',
+    'wagtail.contrib.routable_page',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.contrib.table_block',
@@ -54,6 +56,10 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    'puput',
+    'colorful',
+
+    'django_social_share',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -208,3 +214,6 @@ LOGGING = {
         },
     },
 }
+MIGRATION_MODULES = {'puput': 'portfolio.puput_migrations'}
+PUPUT_AS_PLUGIN = True
+PUPUT_ENTRY_MODEL = 'portfolio.models.DWEntryAbstract'

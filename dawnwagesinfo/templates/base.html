@@ -1,61 +1,88 @@
-{% load static wagtailuserbar %}
-{%  load menu_tags %}
+{% load static i18n wagtailimages_tags wagtailroutablepage_tags puput_tags wagtailuserbar %}
+{% load menu_tags %}
 {% load snippet_tags %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>
-            {% block title %}
-                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
-            {% endblock %}
-            {% block title_suffix %}
-                {% with self.get_site.site_name as site_name %}
-                    {% if site_name %}- {{ site_name }}{% endif %}
-                {% endwith %}
-            {% endblock %}
-        </title>
-        <link rel="favicon icon" type="image/png" href="{% static 'img/cartoonface.png' %}"/>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {# Global stylesheets #}
-        <link href="{% static 'css/app.css' %}" rel="stylesheet">
-
-      <!--Important Font Awesome Icon-->
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/v4-shims.css">
-        {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+        {{ blog_page.title }}{% if blog_page.description %} | {{ blog_page.description }}{% endif %}
+        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
         {% endblock %}
-    </head>
+        {% block title_suffix %}
+        {% with self.get_site.site_name as site_name %}
+        {% if site_name %}- {{ site_name }}{% endif %}
+        {% endwith %}
+        {% endblock %}
+    </title>
+    <link rel="favicon icon" type="image/png" href="{% static 'img/cartoonface.png' %}" />
+    <meta name="title" content="{% block meta_title %}
+                      {% if blog_page.seo_title %}
+                          {{ blog_page.seo_title }}
+                      {% else %}
+                          {{ blog_page.title }}
+                      {% endif %}
+                 {% endblock meta_title %}" />
+    <meta name="description" content="{% block meta_description %}
+                      {{ blog_page.search_description }}
+                 {% endblock meta_description %}" />
+    {% block social_share %}{% endblock social_share %}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'puput/css/puput.css' %}" />
+    {# Global stylesheets #}
+    <link href="{% static 'css/app.css' %}" rel="stylesheet">
+    <link rel="canonical" href="{% block canonical %}{% canonical_url %}{% endblock canonical %}" />
+    <link rel="stylesheet" href="{% static 'puput/css/font-awesome.min.css' %}">
+    <style>
+        body {
+            --main-color: {{ blog_page.main_color}};
+        }
+
+        .title-header-url {
+            background-image: none !important;
+        }
+
+        @media (min-width: 768px) {
+            .navbar-collapse.collapse {
+                display: inherit !important;
+            }
+        }
+    </style>
+
+    <!--Important Font Awesome Icon-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/v4-shims.css">
+</head>
 
 
-    <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
-        {% main_menu max_levels=3 template="home/top_nav.html"%}
-        <main>
-            <div class="row">
-                <header class="header">
-                    software engineer, consultant, conference speaker, #tech4good, #stacktivism
-                </header>
-            </div>
-        </main>
+<body class="{% block body_class %}{% endblock %}">
+    {% wagtailuserbar %}
+    {% main_menu max_levels=3 template="home/top_nav.html"%}
+    <main>
+        <div class="row">
+            <header class="header">
+                software engineer, consultant, conference speaker, #tech4good, #stacktivism
+            </header>
+        </div>
+    </main>
 
-
+    <div>
         {% block content %}{% endblock %}
+    </div>
+    {# Global javascript #}
+    <script src="{% static 'js/vendors.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
 
-        {# Global javascript #}
-        <script src="{% static 'js/vendors.js' %}"></script>
-        <script src="{% static 'js/app.js' %}"></script>
-
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
+    {% block extra_js %}
+    {# Override this in templates to add extra javascript #}
+    {% endblock %}
     <footer class="footer mt-5 pb-5 container" role="contentinfo">
-        <div class="row"><h5>Selected Partnerships:</h5>
+        <div class="row">
+            <h5>Selected Partnerships:</h5>
             <div class="footer-icons">
-            {% projecticons %}
+                {% projecticons %}
             </div>
         </div>
 
@@ -65,11 +92,12 @@
     <script type="text/javascript" src="assets/googleanalytics.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'UA-68495186-1');
+        gtag('config', 'UA-68495186-1');
     </script>
-    </body>
+</body>
+
 </html>

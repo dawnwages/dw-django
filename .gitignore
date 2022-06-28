@@ -9,6 +9,7 @@ __pycache__
 *.pyc
 *.db
 mediafiles/*
+staticfiles/*
 media/*
 .env
 

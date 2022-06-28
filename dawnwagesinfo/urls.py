@@ -1,5 +1,6 @@
 import django.views.defaults
 from django.conf import settings
+from django.conf.urls import url
 from django.urls import include, path
 from django.contrib import admin
 
@@ -15,8 +16,8 @@ from search import views as search_views
 from portfolio import urls as portfolio_urls
 
 urlpatterns = [
+    path(r'', include('puput.urls')),
     path('django-admin/', admin.site.urls),
-
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
 
@@ -25,13 +26,17 @@ urlpatterns = [
 
 
 if settings.DEBUG:
+    import os
     from django.conf.urls.static import static
+    from django.views.generic.base import RedirectView
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+    urlpatterns += static(settings.MEDIA_URL + 'images/', document_root=os.path.join(settings.MEDIA_ROOT, 'images'))
+    urlpatterns += [
+        url(r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'dawnwagesinfo/images/favicon.ico')),
+    ]
 urlpatterns = urlpatterns + [
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

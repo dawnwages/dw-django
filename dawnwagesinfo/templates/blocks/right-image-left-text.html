@@ -1,0 +1,8 @@
+{% load wagtailimages_tags %}
+
+<div class="block-image">
+    <div class="row">
+        <div class="col-lg-5 text font-family-alata">{{ value.text|safe }}</div>
+        <div class="col-lg-7">{% image value.image width-1000 %}</div>
+    </div>
+</div>

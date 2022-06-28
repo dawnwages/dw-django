@@ -23,11 +23,12 @@ $weight-bold:       700;
 
 $yellow:            #f3d047;
 $yellow__dark:      #edc71a;
+$yellow__verydark:  #a16d00; // brand color
 $blue:              #1fb9ef;
 $blue__dark:        #185f84;
 $red:               #ed5e52;
 $green:             #54bf39;
-$green__light:      #c3dd26; // brand color
+$green__light:      #e6edba; // brand color
 $teal:              #42ffc9;
 $gray:              #bebebe; // brand color
 $gray__lighter:     #f7f7f7; // brand color
@@ -39,12 +40,13 @@ $black:             #222;
 $white:             #fff;
 $purple__dark:      #393d86; // brand color
 $purple:            #7d85f7; // brand color
-$purple__light:     #b7bdfa; // brand color
-$orange__light:   #ffc042; // brand color
+$purple__light:     #a6afe7; // brand color
+$orange__light:   #e2b448; // brand color
 
 $dw-branding: (
   "yellow": $yellow,
   "yellow-dark": $yellow__dark,
+  "yellow-verydark": $yellow__verydark,
   "blue": $blue,
   "blue-dark": $blue__dark,
   "red": $red,
@@ -60,6 +62,7 @@ $dw-branding: (
   "white": $white,
   "orange": $orange__light,
   "purple": $purple,
+  "purple-light": $purple__light,
   "purple-dark": $purple__dark,
   "green-light": $green__light,
 );
