@@ -1,5 +1,9 @@
 {
   "name": "webpack-starter",
+  "engines" : { 
+    "npm" : "=6.14.13",
+    "node" : "=14.17.0"
+  },
   "version": "1.0.0",
   "description": "A light foundation for your next frontend project based on webpack.",
   "scripts": {
