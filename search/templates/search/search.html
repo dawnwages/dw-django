@@ -12,7 +12,9 @@
 
     <form class="d-flex" action="{% url 'search' %}" method="get">
         <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-        <button class="btn btn-outline-success" type="submit" value="Search" class="button">Search</button>
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" value="Search"><i class="fa fa-search"></i></button>
+        </span>
     </form>
 
     {% if search_results %}

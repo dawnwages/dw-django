@@ -3,7 +3,7 @@
 {% load snippet_tags %}
 {% block content %}
 {% block blog_header %}
-<div class="about">
+<div class="container">
     {% if blog_page.header_image %}
     <span class="image featured">
         {% image blog_page.header_image fill-1500x120 as header_image %}
@@ -11,16 +11,18 @@
     </span>
     {% endif %}
     <div class="container">
-        <section class="{% if blog_page.header_image %}title-section-image{% else %}title-section{% endif %}">
-            <h1 class="title-header">
-                <a href="{% pageurl blog_page %}">
-                <span class="h1-large">{{ blog_page.title }}</span>
-                </a>
-            </h1>
-            {% if not blog_page.header_image %}
-            <h2>{{ blog_page.description }}</h2>
-            {% endif %}
-        </section>
+        <div class="main">
+            <header class="site-head {% if blog_page.header_image %}title-section-image{% else %}title-section{% endif %}">
+                <div id="fairy-name-box">
+                    <h1><span class="h1-large"><a href="{% pageurl blog_page %}"></a>{{ blog_page.title }}</a></span></h1>
+                </div>
+                {% if not blog_page.header_image %}
+                <div id="fairy-title-box">
+                    <span id="fairy-title" class="text-2xl font-extrabold tracking-tight text-gray-00 ">{{ blog_page.description|richtext }}</span>
+                </div>
+                {% endif %}
+            </header>
+        </div>
     </div>
 </div>
 {% endblock blog_header %}
