@@ -30,6 +30,11 @@ nav {
   background-position: -99.99% 0;
 }
 
+.dropdown-item:hover p {
+  color: $white !important;
+}
+
+
 .navbar-brand {
   padding: 0.3125rem 0.5rem;
 }

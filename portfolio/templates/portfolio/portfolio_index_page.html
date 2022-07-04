@@ -31,9 +31,9 @@
                     <h3 class="card-title" >{{ post.specific.title }}</h3>
                     <h6 class="card-subtitle" >{{ post.specific.client_name }}</h6>
                       <div class="group mt-5" role="group" aria-label="{{ post }} links">
-                          {% if post.specific.client_link %}<a href="{{ post.specific.client_link }}" class="nohover btn btn-outline-secondary btn-sm">Client</a>{% endif %}
+                          {% if post.specific.client_link %}<a href="{{ post.specific.client_link }}" class="nohover btn btn-outline-primary btn-sm">Client</a>{% endif %}
                           {% if post.specific.source_link %}<a href="{{ post.specific.source_link }}" class="nohover btn btn-outline-secondary btn-sm">Source</a>{% endif %}
-                          {% if post.specific.project_link %}<a href="{{ post.specific.project_link }}" class="nohover btn btn-outline-secondary btn-sm">Project</a>{% endif %}
+                          {% if post.specific.project_link %}<a href="{{ post.specific.project_link }}" class="nohover btn btn-outline-success btn-sm">Project</a>{% endif %}
                       </div>
                       <p class="card-text ">
                           {%  if post.specific.end_date %}

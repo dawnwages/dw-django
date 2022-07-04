@@ -9,10 +9,13 @@
 
   #title-box {
     font-family: $default-serif;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, $teal 50%);
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, $teal__light 50%);
     background-position: -0% 0;
     background-size: 200% auto;
     transition: background-position 0.5s ease-out;
+    h3 {
+      line-height: 2 !important;
+    }
 
     a {
       background-image: inherit !important;

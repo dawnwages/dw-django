@@ -53,10 +53,19 @@ page-content, .blog_grid {
   border-color: $gray__dark !important;
 }
 
-.btn-outline-secondary::hover {
-  color: white !important;
-  background-color: $purple__light !important;
-  border-color: $purple__light !important;
+.btn-outline-secondary:hover {
+  color: $white !important;
+  background-color: $gray__dark !important;
+}
+
+.btn-outline-success {
+  color: $teal !important;
+  border-color: $teal !important;
+}
+
+.btn-outline-success:hover {
+  color: $white !important;
+  background: $teal !important;
 }
 
 ul.sidebar {
@@ -89,7 +98,7 @@ ul.social-share {
 }
 
 .blog_grid h2 a:after {
-  margin: 0 0 !important;
+  margin: 0.5rem 0 0!important;
 }
 
 ul.links {
@@ -181,9 +190,9 @@ input, button, select, optgroup, textarea {
   background-color: $orange__light !important;
 }
 
-.blog_grid a {
-  background-image: none !important;
-}
+// .blog_grid a {
+//   background-image: none !important;
+// }
 
 .blog_sidebar {
   font-family: "Josefin Sans", sans-serif !important;
@@ -299,5 +308,9 @@ table {
   }
 
 .page-content, .blog_grid {
-    padding: 2rem 4rem 4rem 4rem;
+    padding: 2rem 4rem 2rem 4rem;
+}
+
+.article .card-title>a, .article .col-md-12 .blog_btn {
+  background-image: none !important;
 }

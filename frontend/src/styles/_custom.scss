@@ -67,9 +67,14 @@ a {
   font-size: 4rem;
 }
 
+.placeholder #title-box {
+  line-height: 2 !important;
+}
+
 .h3-large {
   margin-top: 2rem;
   font-size: 2rem;
+  line-height: 2 !important;
 }
 
 #fairy-name-box {
@@ -134,20 +139,6 @@ footer {
   justify-content: center;
 }
 
-.footer-icons .project-icon>img {
-  margin: auto;
-  -webkit-filter: grayscale(100%) !important;
-  filter: grayscale(100%) !important;
-}
-
-.project-icon {
-  margin: auto 2rem;
-  padding: 1rem 0;
-}
-
-.project-icon:hover {
-  filter: none !important;
-}
 
 #main {
   transition: margin-left 0.5s;

@@ -27,7 +27,7 @@
         </div>
         <div id="fairy-blurb-box" class="mt-2">
             {% for tag in page.tags.all %}
-                <button type="button" class="badge rounded-pill bg-secondary">{{ tag }}</button>
+                <a type="button" href="{{ page.get_parent.url}}search/?query={{ tag }}" class="badge badge-primary">{{ tag }}</a>
             {% endfor %}
         </div>
           <div class="container pt-10">

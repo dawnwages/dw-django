@@ -108,3 +108,13 @@ h6,
 .project-icon:hover {
   filter: none !important;
 }
+
+.btn-outline-primary {
+  color: $purple__dark !important;
+  border-color: $purple__dark !important;
+}
+
+.btn-outline-primary:hover {
+  color: $white !important;
+  background-color: $purple__dark !important;
+}
