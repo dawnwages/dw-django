@@ -80,11 +80,24 @@ a.badge {
   color: white !important;
 }
 
+ul.social-share {
+  padding-left: 0 !important;
+}
+
+.blog_grid h2 {
+  text-align: left !important;
+}
+
+.blog_grid h2 a:after {
+  margin: 0 0 !important;
+}
+
 ul.links {
   margin: 0px 0 15px 0 !important;
   padding: 0.575rem 1.15rem;
   background-color: rgba(17, 17, 17, 0.03);
-  border: 3px solid #222;
+  border: 2px solid #222;
+  border-top: none;
   border-radius: 0 0 0.4rem 0.4rem;
 }
 
@@ -100,11 +113,10 @@ ul.sidebar {
   border: 2px solid var(--main-color);
 }
 
-.blog_grid section.article {
-  border: 2px solid var(--main-color);
-  background-color: #ededed;
+.blog_grid .article {
+  border: 2px solid black;
   padding: 0 20px;
-  border-radius: 0.4rem;
+  border-radius: 0.4rem 0.4rem 0 0;
 }
 
 .blog_btn.continue, .blog_btn.back {
