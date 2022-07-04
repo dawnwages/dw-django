@@ -96,8 +96,12 @@ h2 a {
   text-decoration: none !important;
 }
 
+ul.sidebar {
+  border: 2px solid var(--main-color);
+}
+
 .blog_grid section.article {
-  border-top: 2px solid var(--main-color);
+  border: 2px solid var(--main-color);
   background-color: #ededed;
   padding: 0 20px;
   border-radius: 0.4rem;

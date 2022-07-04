@@ -134,15 +134,15 @@ footer {
   justify-content: center;
 }
 
+.footer-icons .project-icon>img {
+  margin: auto;
+  -webkit-filter: grayscale(100%) !important;
+  filter: grayscale(100%) !important;
+}
+
 .project-icon {
   margin: auto 2rem;
-  filter: grayscale(100%);
   padding: 1rem 0;
-
-  img {
-    max-height: 3.5rem;
-    width: auto;
-  }
 }
 
 .project-icon:hover {

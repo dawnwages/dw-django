@@ -1,7 +1,7 @@
 {% load wagtailimages_tags %}
 
     {% for icon in projecticons %}
-        <div id="footer-{{ icon }}" class="project-icon">
-            {% image icon.image width-200 alt=icon.caption %}
+        <div id="footer-{{ icon }}" class="col project-icon">
+            {% image icon.image width-70 alt=icon.caption %}
         </div>
     {% endfor %}

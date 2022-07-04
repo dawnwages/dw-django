@@ -100,10 +100,11 @@ h6,
 }
 
 .project-icon {
-  margin: auto;
+  margin: auto !important;
+  -webkit-filter: grayscale(100%) !important;
+  filter: grayscale(100%) !important;
+}
 
-  img {
-    max-height: 100px;
-    width: auto;
-  }
+.project-icon:hover {
+  filter: none !important;
 }
