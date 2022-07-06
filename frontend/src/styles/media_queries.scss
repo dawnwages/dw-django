@@ -1,3 +1,5 @@
+
+
 @media (max-width: $sm-breakpoint) {
   .h1-large {
     font-size: 2.5rem;
@@ -37,4 +39,32 @@
   .d-flex {
     justify-content: space-evenly;
   }
+}
+
+@media (max-width: 1299px){
+.navbar-nav.icon-nav {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+  }
+}
+
+@media (max-width: 1299px){
+.navbar-nav.icon-nav {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+  }
+}
+
+.dropdown-toggle::after {
+  vertical-align: middle;
 }

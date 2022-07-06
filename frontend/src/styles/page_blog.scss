@@ -2,8 +2,32 @@ body, h1, h2, h3, h4, h5, h6, p, span {
   font-family: inherit !important;
 }
 
+.footer {
+  font-family: "Josefin Sans", sans-serif !important;
+}
+
+.btn {
+  font-family: "Josefin Sans", sans-serif !important;
+}
+
+.card-title {
+  font-family: "Josefin Sans", sans-serif !important;
+}
+
+.blog_btn {
+  font-family: "Josefin Sans", sans-serif !important;
+}
+
 .container-blog {
-  font-family: "Merriweather", serif !important
+  font-family: "Merriweather", serif !important;
+}
+
+header {
+  font-family: "Merriweather", serif !important;
+}
+
+.page-content>section>.block-paragraph>p {
+  color: $charcoal !important;
 }
 
 .title-header > a {
@@ -19,7 +43,7 @@ body, h1, h2, h3, h4, h5, h6, p, span {
   padding: 6px 3px;
 }
 
-nav p {
+nav>p {
   color: #848484;
   white-space: pre-line;
   width: 100%;

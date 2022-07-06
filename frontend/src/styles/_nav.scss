@@ -12,6 +12,10 @@ nav {
   }
 }
 
+.dropdown-toggle::after {
+  vertical-align: middle !important;
+}
+
 .nav-item {
   padding: 0 0.25rem;
 }
