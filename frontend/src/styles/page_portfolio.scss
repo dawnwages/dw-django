@@ -19,16 +19,25 @@
   }
 
   &.icon-width>img{
+    width: auto;
     padding: 0.5rem;
+    display: block;
+    max-height: 100%;
+  }
+
+  &.full-width {
+    overflow: hidden;
+    height: 170px;
+  }
+
+  &.full-width>img {
+    max-height: 200px;
   }
 
   img {
-    width: auto;
     height: auto;
     max-width: 100%;
-    max-height: 100%;
     margin: auto;
-    display: block;
   }
 }
 
