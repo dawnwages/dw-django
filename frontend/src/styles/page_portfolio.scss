@@ -31,12 +31,12 @@
   }
 
   &.full-width>img {
-    max-height: 200px;
+    max-height: 170px;
   }
 
   img {
     height: auto;
-    max-width: 100%;
+    width: auto;
     margin: auto;
   }
 }
