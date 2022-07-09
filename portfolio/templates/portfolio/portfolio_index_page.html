@@ -24,7 +24,7 @@
             {%  for post in posts %}
             <div class="col-md-4">
                 <div class="portfolio card">
-                  <div class="image-wrapper">
+                  <div class="image-wrapper {% if 'apps' not in request.path %}full-width{% else %}icon-width{% endif %}">
                       {% image post.specific.client_logo width-520 %}
                   </div>
                   <div class="card-body">
