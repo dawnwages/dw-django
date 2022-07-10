@@ -347,3 +347,12 @@ table {
   -moz-border-top-right-radius: 0 !important;
   -moz-border-bottom-right-radius: 0 !important;
 }
+
+input[type="search"] {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  -webkit-border-top-right-radius: 0 !important;
+  -webkit-border-bottom-right-radius: 0 !important;
+  -moz-border-top-right-radius: 0 !important;
+  -moz-border-bottom-right-radius: 0 !important;
+}
