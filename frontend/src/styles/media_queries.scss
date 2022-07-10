@@ -64,3 +64,24 @@
     justify-content: space-evenly;
   }
 }
+
+@media (max-width: 959px){
+  .img-section {
+    padding: 0 !important;
+  }
+
+  .page-content {
+    padding-left: 1.5rem !important;
+  }
+
+  .article-section>.row>.article {
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top: 0;
+  }
+
+  .img-responsive>img {
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+}

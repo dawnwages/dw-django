@@ -338,3 +338,10 @@ table {
 .article .card-title>a, .article .col-md-12 .blog_btn {
   background-image: none !important;
 }
+
+.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu), .input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n + 3) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  -webkit-border-top-right-radius: 0;
+  -moz-border-bottom-right-radius: 0;
+}
