@@ -340,8 +340,8 @@ table {
 }
 
 .input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu), .input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n + 3) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  -webkit-border-top-right-radius: 0;
-  -moz-border-bottom-right-radius: 0;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  -webkit-border-top-right-radius: 0 !important;
+  -moz-border-bottom-right-radius: 0 !important;
 }
