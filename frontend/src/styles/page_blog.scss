@@ -339,7 +339,7 @@ table {
   background-image: none !important;
 }
 
-.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu), .input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n + 3) {
+.input-group>input {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   -webkit-border-top-right-radius: 0 !important;
