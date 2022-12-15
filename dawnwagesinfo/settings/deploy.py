@@ -5,8 +5,11 @@ import dj_database_url
 import django_heroku
 import logging
 from logdna import LogDNAHandler
+from dotenv import load_dotenv
 
-DEBUG = os.environ.get('DEBUG')
+load_dotenv()
+
+DEBUG = os.getenv('DEBUG')
 TEMPLATE_DEBUG = DEBUG
 
 # CSRF_COOKIE_SECURE = True
@@ -14,6 +17,20 @@ TEMPLATE_DEBUG = DEBUG
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+if os.getenv('EVNVIRONMENT') == 'deploy':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',  # 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'dawnwagesinfo',                      # Or path to database file if using sqlite3.
+            'USER': os.environ['USER'],                      # Not used with sqlite3.
+            'PASSWORD': os.environ['PASSWORD'],                  # Not used with sqlite3.
+            'HOST': os.environ['HOST'],                      # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '5432',
+            'OPTIONS': {
+                'sslmode': 'require'
+            },                      # Set to empty string for default. Not used with sqlite3.
+        },
+    }
 
 # S3 Configuration
 USE_S3 = os.getenv('USE_S3') == 'TRUE'
@@ -42,7 +59,7 @@ else:
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
-COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+COMPRESS_ENABLED = os.getenv('COMPRESS_ENABLED', False)
 # Logging with LogDNA
 
 LOGGING = {
@@ -53,7 +70,7 @@ LOGGING = {
         'logdna': {
             'level': logging.DEBUG,
             'class': 'logging.handlers.LogDNAHandler',
-            'key': os.environ.get('LOGDNA_KEY'),
+            'key': os.getenv('LOGDNA_KEY'),
             'options': {
                 'app': 'dawnwagesinfo',
                 'env': 'production',

@@ -12,12 +12,17 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+from django.core.management.utils import get_random_secret_key
 
 PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = get_random_secret_key()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -109,16 +114,16 @@ WSGI_APPLICATION = 'dawnwagesinfo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',  # 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dawnwagesinfo',                      # Or path to database file if using sqlite3.
-        'USER': 'dawnwagesinfo_user',                      # Not used with sqlite3.
-        'PASSWORD': 'ohSh111t',                  # Not used with sqlite3.
-        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    },
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',  # 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#         'NAME': 'dawnwagesinfo',                      # Or path to database file if using sqlite3.
+#         'USER': 'postgres',                      # Not used with sqlite3.
+#         'PASSWORD': '4',                  # Not used with sqlite3.
+#         'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+#         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+#     },
+# }
 
 
 # Password validation
