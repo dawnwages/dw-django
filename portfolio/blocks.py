@@ -4,7 +4,7 @@ from wagtail.images.blocks import ImageChooserBlock
 
 
 class HeadingBlock(blocks.StructBlock):
-    heading = blocks.CharBlock(max_length=255, class_name="border-traffic-lanes")
+    heading = blocks.CharBlock(max_length=255, class_name="heading-blog")
 
     def __str__(self):
         return self.heading
@@ -13,7 +13,7 @@ class HeadingBlock(blocks.StructBlock):
         template = "blocks/heading.html"
 
 class TextWithHeadingBlock(blocks.StructBlock):
-    heading = blocks.CharBlock(max_length=255, class_name="border-traffic-lanes")
+    heading = blocks.CharBlock(max_length=255, class_name="heading-blog")
     text = blocks.TextBlock()
 
     def __str__(self):
@@ -24,7 +24,7 @@ class TextWithHeadingBlock(blocks.StructBlock):
         template = "blocks/text-with-heading.html"
 
 class TextWithHeadingWithRightImageBlock(blocks.StructBlock):
-    heading = blocks.CharBlock(max_length=255, class_name="border-traffic-lanes")
+    heading = blocks.CharBlock(max_length=255, class_name="heading-blog")
     text = blocks.TextBlock()
     image = ImageChooserBlock()
 
@@ -37,7 +37,7 @@ class TextWithHeadingWithRightImageBlock(blocks.StructBlock):
 
 
 class TextWithHeadingWithLeftImageBlock(blocks.StructBlock):
-    heading = blocks.CharBlock(max_length=255, class_name="border-traffic-lanes")
+    heading = blocks.CharBlock(max_length=255, class_name="blog")
     text = blocks.TextBlock()
     image = ImageChooserBlock()
 

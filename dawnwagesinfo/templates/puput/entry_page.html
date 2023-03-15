@@ -44,8 +44,13 @@
 {% endblock social_share %}
 
 {% block content %}
+<!-- Include the CSS & JS.. (This could be direct from the package or bundled) -->
+<link rel="stylesheet" href="node_modules/lite-youtube-embed/src/lite-yt-embed.css" />
+
+<script src="node_modules/lite-youtube-embed/src/lite-yt-embed.js"></script>
+
 <div class="container">
-    <div class="main">
+    <div class="main blog-head">
         <header class="site-head">
             <div id="fairy-name-box">
                 <h1><span class="h1-large">{{ self.title }}</span></h1>
@@ -56,16 +61,16 @@
         </header>
     </div>
     <div class="row justify-content-md-center">
-        <section>
+        <section class="blog-image col col-sm-9 col-md-8">
             {% if self.header_image %}
                 <span class="image featured">
-                    {% image self.header_image fill-1500x250 as header_image %}
+                    {% image self.header_image fill-1000x450 as header_image %}
                     <img alt="{{ self.header_image.title }}" src="{{ header_image.url }}">
                 </span>
             {% endif %}
             {% include 'puput/entry_links.html' with entry=self %}
         </section>
-        <div class="col col-md-8">
+        <div class="col col-sm-9 col-md-8">
             <div id="fairy-title-box">
                 <span id="fairy-title" class="text-2xl font-extrabold tracking-tight text-gray-00 ">{{ self.body|richtext}}</span>
             </div>

@@ -2,6 +2,20 @@ body, h1, h2, h3, h4, h5, h6, p, span {
   font-family: inherit !important;
 }
 
+h1 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 4rem;
+}
+
+.block-paragraph > p {
+  margin-bottom: 0 !important;
+}
+
+.main .blog-head {
+  padding: 0 !important;
+}
+
 .footer {
   font-family: "Josefin Sans", sans-serif !important;
 }
@@ -327,12 +341,12 @@ table {
 .block-heading, .block-subheading, .block-paragraph, .block-html, .block-image, .block-text_with_heading,
   .block-text_with_heading_and_right_image, .block-text_with_heading_and_left_image, .block-right_image_left_text,
   .block-left_image_right_text {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
 .page-content, .blog_grid {
-    padding: 2rem 4rem 2rem 4rem;
+    padding: 1rem;
 }
 
 .article .card-title>a, .article .col-md-12 .blog_btn {
