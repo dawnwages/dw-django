@@ -18,6 +18,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
 
 from portfolio import blocks as dwblocks
+from home import blocks as dblocks
 
 class PortfolioTag(TaggedItemBase):
     content_object = ParentalKey(
@@ -131,6 +132,7 @@ class DWEntryAbstract(EntryAbstract):
             ("left_quote_right_image", dwblocks.QuoteLeftImageBlock(class_name="full")),
             ("video_embed", dwblocks.LiteYoutubeEmbed(class_name="full")),
             ("table", TableBlock(class_name="full")),
+            ("code_block", dblocks.CodeBlock(class_name="full")),
         ],
         blank=True,
         null=True,
