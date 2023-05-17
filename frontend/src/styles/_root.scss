@@ -1,7 +1,7 @@
 body {
   font-family: $default-serif !important;
   font-size: $font-size-base;
-  line-height: 1.25;
+  line-height: 1;
 }
 
 html {
@@ -23,7 +23,7 @@ main {
   width: 80vw;
   margin: 0 auto;
   padding: 0 15px;
-  line-height: 1.25;
+  line-height: 1;
   display: block; /* For IE11 support */
 }
 
