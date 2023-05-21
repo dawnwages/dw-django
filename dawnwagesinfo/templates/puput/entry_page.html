@@ -95,15 +95,14 @@
                     </div>
 
                 </section>
+                {% if self.has_related %}   
+                {% include 'puput/related_entries.html' with entry=self %}
+                {% endif %}
                 {% show_comments %}
             </article>
         </div>
     </div>
 </div>
-{% endblock content %}
 
-{% block extra_content %}
-    {% if self.has_related %}
-        {% include 'puput/related_entries.html' with entry=self %}
-    {% endif %}
-{% endblock extra_content %}
+
+{% endblock content %}

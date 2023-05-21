@@ -1,18 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
 //
 // Typography
 $josefin-sans:     'Josefin Sans', sans-serif; // Title Font
+// normal normal 12px 'Trebuchet MS', Trebuchet, Verdana, sans-serif
+$Arimo-serif:       'Arimo', sans-serif; // Text font
 $Merriweather-serif: 'Merriweather', serif; // Title Font
 $playfair:          'Playfair Display', serif;
 $default-sans:      $josefin-sans;
-$default-serif:     $Merriweather-serif;
+$default-serif:     $Arimo-serif;
+$subheading-color:  $gray__dark;
 $open-sans:         'Open Sans', sans-serif;
-$body-font:         $open-sans;
+$body-font:         $Arimo-serif;
 
 $alata:             'Alata', sans-serif;
-$heading-font:      $alata;
+$heading-font:      $josefin-sans;
 
 $weight-regular:    400;
 $weight-semibold:   600;
@@ -89,15 +93,18 @@ $body-color:                  $charcoal;
 $primary:                     $blue;
 $secondary:                   $red;
 
-$font-family-sans-serif:      $open-sans;
+$font-family-sans-serif:      $body-font;
 $font-size-base:              1rem; // 16px => 20px
 $font-size-sm:                0.75rem; // 15px
 
-$headings-font-family:        $alata;
+$headings-font-family:        $heading-font;
 
-$h1-font-size:                $font-size-base * 1.75;
-$h2-font-size:                $font-size-base * 1.55;
-$h3-font-size:                $font-size-base * 1.2;
+$h1-font-size:                $font-size-base * 4;
+$h2-font-size:                $font-size-base * 3.5;
+$h3-font-size:                $font-size-base * 3;
+$h4-font-size:                $font-size-base * 2.5;
+$h5-font-size:                $font-size-base * 2;
+$h6-font-size:                $font-size-base * 1.5;
 
 $spacer:                      $font-size-base;
 

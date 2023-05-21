@@ -1,13 +1,24 @@
-body, h1, h2, h3, h4, h5, h6, p, span {
-  font-family: inherit !important;
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font !important;
   text-transform: none !important;
+  margin-top: 5px !important;
+  margin-bottom: 15px;
+}
+
+body, p {
+  font-family: $body-font;
+  font-weight: 400 !important;
+}
+
+span {
+  font-family: inherit !important;
 }
 
 h1 {
-  margin-top: 0;
-  margin-bottom: 15px;
   font-size: 4rem;
 }
+
+
 
 .block-paragraph > p {
   margin-bottom: 0 !important;
@@ -18,28 +29,28 @@ h1 {
 }
 
 .footer {
-  font-family: "Josefin Sans", sans-serif !important;
+  font-family: $default-serif !important;
 }
 
 .btn {
-  font-family: "Josefin Sans", sans-serif !important;
+  font-family: $default-sans !important;
 }
 
 .card-title {
-  font-family: "Josefin Sans", sans-serif !important;
+  font-family: $default-sans !important;
 }
 
 .blog_btn {
-  font-family: "Josefin Sans", sans-serif !important;
+  font-family: $default-sans !important;
 }
 
 .container-blog {
-  font-family: "Merriweather", serif !important;
+  font-family: $default-serif !important;
 }
 
-header {
-  font-family: "Merriweather", serif !important;
-}
+// header {
+//   font-family: $default-serif !important;
+// }
 
 .page-content>section>.block-paragraph>p {
   color: $charcoal !important;
@@ -337,6 +348,11 @@ table {
 
 .page-content .social-share-all::before {
   background: transparent;
+}
+
+div.block-subheading {
+  color: $subheading-color !important;
+  font-style: italic !important;
 }
 
 .block-heading, .block-subheading, .block-paragraph, .block-html, .block-image, .block-text_with_heading,
