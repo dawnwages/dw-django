@@ -31,8 +31,10 @@ main {
   }
 }
 
-.blog-main>a {
-  color: $purple__dark !important;
+div.blog-main {
+  a {
+    color: $purple__dark !important;
+  }
 }
 
 a {
