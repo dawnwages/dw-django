@@ -18,6 +18,24 @@ header {
   margin-bottom: 2rem;
 }
 
+a {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, $gray__light 50%);
+  background-position: -0% 0;
+  background-size: 200% auto;
+  transition: background-position 0.5s ease-out;
+  text-decoration: underline;
+
+  &.badge,
+  &.navbar-brand {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, $orange__light 50%);
+  }
+
+  &.nohover {
+    background-image: none !important;
+    margin: 1rem 0;
+  }
+}
+
 main {
   max-width: 1060px;
   width: 80vw;
@@ -31,32 +49,15 @@ main {
   }
 }
 
+a:hover {
+  color: #ea1b10;
+  background-position: -99.99% 0;
+}
+
 div.blog-main {
   a {
     color: $purple__dark !important;
   }
-}
-
-a {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, $gray__light 50%);
-  background-position: -0% 0;
-  background-size: 200% auto;
-  transition: background-position 0.5s ease-out;
-  text-decoration: underline;
-
-  &.badge, &.navbar-brand {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, $orange__light 50%);
-  }
-
-  &.nohover {
-    background-image: none !important;
-    margin: 1rem 0;
-  }
-}
-
-a:hover {
-  color: #ea1b10;
-  background-position: -99.99% 0;
 }
 
 h1.title-header > a {
@@ -129,7 +130,7 @@ h6,
   margin: auto !important;
   -webkit-filter: grayscale(100%) !important;
   filter: grayscale(100%) !important;
-  margin-top: .5rem !important;
+  margin-top: 0.5rem !important;
 }
 
 .project-icon:hover {

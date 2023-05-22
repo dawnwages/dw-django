@@ -13,12 +13,17 @@
 }
 
 .image-wrapper {
+  img {
+    height: auto;
+    width: auto;
+    margin: auto;
+  }
 
-  &.icon-width{
+  &.icon-width {
     height: 100px;
   }
 
-  &.icon-width>img{
+  &.icon-width > img {
     width: auto;
     padding: 0.5rem;
     display: block;
@@ -31,14 +36,8 @@
     height: 170px;
   }
 
-  &.full-width>img {
+  &.full-width > img {
     max-width: 100%;
-  }
-
-  img {
-    height: auto;
-    width: auto;
-    margin: auto;
   }
 }
 
