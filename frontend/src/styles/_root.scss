@@ -55,7 +55,7 @@ a:hover {
 }
 
 div.blog-main {
-  a {
+  a:not(.btn-outline-success) {
     color: $purple__dark !important;
   }
 }
