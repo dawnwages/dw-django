@@ -28,11 +28,15 @@ main {
 }
 
 a {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, $orange__light 50%);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, $gray__light 50%);
   background-position: -0% 0;
   background-size: 200% auto;
   transition: background-position 0.5s ease-out;
   text-decoration: underline;
+
+  &.badge, &.navbar-brand {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, $orange__light 50%);
+  }
 
   &.nohover {
     background-image: none !important;
