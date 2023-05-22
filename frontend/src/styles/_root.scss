@@ -25,6 +25,10 @@ main {
   padding: 0 15px;
   line-height: 1;
   display: block; /* For IE11 support */
+
+  a {
+    color: $purple__dark !important;
+  }
 }
 
 a {
