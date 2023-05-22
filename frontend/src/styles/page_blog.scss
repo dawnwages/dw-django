@@ -5,6 +5,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 15px;
 }
 
+p {
+  line-height: 1.5;
+}
+
 body, p {
   font-family: $body-font;
   font-weight: 400 !important;
@@ -137,6 +141,7 @@ ul.links li a {
 
 a.badge {
   color: white !important;
+  margin-top: .25rem;
 }
 
 ul.social-share {
