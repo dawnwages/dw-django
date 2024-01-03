@@ -117,6 +117,7 @@ class PortfolioEntry(Page):
 
 
 class DWEntryAbstract(EntryAbstract):
+    this_week = models.BooleanField(default=False)
     content = StreamField(
         [
             ("heading", dwblocks.HeadingBlock(class_name="full")),
@@ -139,7 +140,8 @@ class DWEntryAbstract(EntryAbstract):
     )
     content_panels = [
         MultiFieldPanel(
-            [
+            [   
+                FieldPanel('this_week'),
                 FieldPanel('title', classname="title"),
                 ImageChooserPanel('header_image'),
                 FieldPanel('body', classname="full"),

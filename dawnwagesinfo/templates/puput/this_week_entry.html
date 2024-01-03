@@ -1,0 +1,33 @@
+{% load static i18n wagtailcore_tags wagtailimages_tags puput_tags social_share %}
+{% entry_url entry blog_page as post_url %}
+<article class="row col-12 box page-content blog_grid this-week">
+    <section class="article-section col-sm-12 col-md-12">
+        <div class="row">
+            <div class="article">
+                <h4>
+                    <a href="{% entry_url entry blog_page %}"><code>this week - {{ entry.date|date:"0W" }}</code></a>
+                </h4>
+                <small>{{ entry.title }} - {{ entry.date|date:"DATE_FORMAT" }}</small>
+            <code>
+                {% if entry.excerpt %}
+                    {{ entry.excerpt|richtext }}
+                {% else %}
+                    {{ entry.body|richtext|truncatewords_html:70 }}
+                {% endif %}
+            </code>
+            <ul class="social-share col-md-6">
+                <li class="social-item">
+                   {% post_to_facebook post_url '<span><i class="fa fa-facebook"></i></span>' %}
+                </li>
+                <li class="social-item">
+                    {% post_to_twitter entry.title post_url '<span><i class="fa fa-twitter"></i></span>' %}
+                </li>
+                <li class="social-item">
+                    {% post_to_linkendin post_url '<span><i class="fa fa-linkedin"></i></span>' %}
+                </li>
+            </ul>
+            <div class="col-md-12">
+                <a class="blog_btn continue" href="{{ post_url }}">{% trans 'read more' %} &raquo;</a>
+            </div>
+    </section>
+</article>
