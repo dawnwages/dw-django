@@ -422,3 +422,11 @@ div.block-subheading {
   -khtml-top-right-border-radius: 0 !important;
   -khtml-bottom-right-border-radius: 0 !important;
 }
+
+article.this-week > .article-section > .row > .article {
+  border-top: 8px solid $purple__light !important;
+  border-radius: $border-radius !important;
+  -webkit-border-radius: $border-radius !important;
+  -moz-border-radius: $border-radius !important;
+  -khtml-border-radius: $border-radius !important;
+}
