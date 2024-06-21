@@ -2,16 +2,14 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.contrib.table_block.blocks import TableBlock
-from wagtail.core import blocks
-from wagtail.core.models import Page, Orderable
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.documents.edit_handlers import DocumentChooserPanel
+from wagtail import blocks
+from wagtail.models import Page, Orderable
+from wagtail.fields import RichTextField, StreamField
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
+# from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.blocks import SnippetChooserBlock
 
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -53,7 +51,7 @@ class GeneralPageGalleryImage(models.Model):
     caption = models.CharField(blank=True, max_length=255)
 
     panels = [
-        ImageChooserPanel('image'),
+        FieldPanel('image'),
         FieldPanel('caption'),
     ]
 
@@ -82,7 +80,7 @@ class GalleryBlock(Orderable):
 
     panels = [
         FieldPanel('title'),
-        ImageChooserPanel("gallery")
+        FieldPanel("gallery")
 
     ]
 
@@ -124,6 +122,7 @@ class GeneralPage(Page):
         ],
         blank=True,
         null=True,
+        use_json_field=True,
     )
 
     content_panels = Page.content_panels + [
@@ -133,7 +132,7 @@ class GeneralPage(Page):
         ], heading="Page Information"),
         FieldPanel('intro'),
         FieldPanel('body'),
-        StreamFieldPanel("content"),
+        FieldPanel("content"),
         InlinePanel('gallery_carousel', label="gallery", min_num=1, max_num=10)
         ]
 
@@ -146,7 +145,7 @@ class ProjectIcons(models.Model):
     caption = models.CharField(blank=True, max_length=255)
 
     panels = [
-        ImageChooserPanel('image'),
+        FieldPanel('image'),
         FieldPanel('caption'),
     ]
 
@@ -167,7 +166,7 @@ class ResumeLink(models.Model):
     upload_date = models.DateTimeField(auto_now_add=True, null=True)
 
     panels = Page.content_panels + [
-        DocumentChooserPanel('resume')
+        FieldPanel('resume')
     ]
 
     def __str__(self):

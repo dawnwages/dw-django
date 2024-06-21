@@ -1,11 +1,11 @@
 import django.views.defaults
 from django.conf import settings
-from django.conf.urls import url
+#from django.conf.urls import url
 from django.urls import include, path
 from django.contrib import admin
 
 from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.core import urls as wagtail_urls
+from wagtail import urls as wagtail_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
 
@@ -35,7 +35,7 @@ if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL + 'images/', document_root=os.path.join(settings.MEDIA_ROOT, 'images'))
     urlpatterns += [
-        url(r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'dawnwagesinfo/images/favicon.ico')),
+        path(r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'dawnwagesinfo/images/favicon.ico')),
     ]
 urlpatterns = urlpatterns + [
     # For anything not caught by a more specific rule above, hand over to

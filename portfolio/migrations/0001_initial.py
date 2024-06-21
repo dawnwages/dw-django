@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             name='PortfolioIndexPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('intro', wagtail.core.fields.RichTextField(blank=True)),
+                ('intro', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
                 ('project_link', models.URLField(max_length=255)),
                 ('source_link', models.URLField(max_length=255)),
                 ('client_type', models.CharField(choices=[('FTE', 'Full Time Engineer'), ('CLIENT', 'Client')], default='FTE', max_length=10)),
-                ('client_body', wagtail.core.fields.RichTextField(blank=True)),
+                ('client_body', wagtail.fields.RichTextField(blank=True)),
                 ('client_logo', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image')),
             ],
             options={

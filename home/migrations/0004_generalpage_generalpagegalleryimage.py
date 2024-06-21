@@ -4,7 +4,7 @@ from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.contrib.taggit
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -22,8 +22,8 @@ class Migration(migrations.Migration):
             name='GeneralPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('intro', wagtail.core.fields.RichTextField(blank=True)),
-                ('body', wagtail.core.fields.RichTextField(blank=True)),
+                ('intro', wagtail.fields.RichTextField(blank=True)),
+                ('body', wagtail.fields.RichTextField(blank=True)),
                 ('date', models.DateTimeField(verbose_name='Post Date')),
                 ('tags', modelcluster.contrib.taggit.ClusterTaggableManager(blank=True, help_text='A comma-separated list of tags.', through='portfolio.PortfolioTag', to='taggit.Tag', verbose_name='Tags')),
             ],

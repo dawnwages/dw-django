@@ -6,15 +6,14 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 from puput.abstracts import EntryAbstract, BlogAbstract
-from puput.utils import get_image_model_path
+# from puput.utils import get_image_model_path
 
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel, PageChooserPanel, InlinePanel 
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, PageChooserPanel, InlinePanel 
 from wagtail.contrib.table_block.blocks import TableBlock
-from wagtail.core import blocks
-from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail import blocks
+from wagtail.models import Page
+from wagtail.fields import RichTextField, StreamField
+# from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.images.blocks import ImageChooserBlock
 
 from portfolio import blocks as dwblocks
@@ -104,12 +103,12 @@ class PortfolioEntry(Page):
         FieldPanel('source_link'),
         FieldPanel('client_type'),
         FieldPanel('client_body'),
-        ImageChooserPanel('client_logo'),
+        FieldPanel('client_logo'),
     ]
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('promote_client_logo'),
+        FieldPanel('promote_client_logo'),
     ]
 
     parent_page_types = ['portfolio.PortfolioIndexPage']
@@ -137,15 +136,16 @@ class DWEntryAbstract(EntryAbstract):
         ],
         blank=True,
         null=True,
+        use_json_field=True,
     )
     content_panels = [
         MultiFieldPanel(
             [   
                 FieldPanel('this_week'),
                 FieldPanel('title', classname="title"),
-                ImageChooserPanel('header_image'),
+                FieldPanel('header_image'),
                 FieldPanel('body', classname="full"),
-                StreamFieldPanel("content"),
+                FieldPanel("content"),
                 FieldPanel('excerpt', classname="full"),
             ],
             heading=_("Content")

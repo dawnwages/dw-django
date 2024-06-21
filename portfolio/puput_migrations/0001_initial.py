@@ -8,7 +8,7 @@ import django.db.models.manager
 import modelcluster.contrib.taggit
 import modelcluster.fields
 import puput.routes
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -48,9 +48,9 @@ class Migration(migrations.Migration):
             name='EntryPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('body', wagtail.core.fields.RichTextField(verbose_name='body')),
+                ('body', wagtail.fields.RichTextField(verbose_name='body')),
                 ('date', models.DateTimeField(default=datetime.datetime.today, verbose_name='Post date')),
-                ('excerpt', wagtail.core.fields.RichTextField(blank=True, help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt')),
+                ('excerpt', wagtail.fields.RichTextField(blank=True, help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt')),
                 ('num_comments', models.IntegerField(default=0, editable=False)),
                 ('categories', models.ManyToManyField(blank=True, through='puput.CategoryEntryPage', to='puput.Category')),
                 ('header_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image', verbose_name='Header image')),
