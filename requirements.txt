@@ -27,7 +27,7 @@ idna==2.10
 jdcal==1.4.1
 jmespath==0.10.0
 l18n==2020.6.1
-logdna==1.5.3
+logdna==1.18.12
 openpyxl==3.0.5
 Pillow==8.0.1
 psycopg2==2.8.6
