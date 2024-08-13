@@ -93,7 +93,7 @@ class GalleryBlock(Orderable):
 
 
 class GalleryChooserBlock(blocks.StructBlock):
-    gallery = SnippetChooserBlock("home.GalleryBlock")
+    gallery = ImageChooserBlock("home.GalleryBlock")
 
 
     def __str__(self):

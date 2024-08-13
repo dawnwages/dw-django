@@ -33,9 +33,9 @@ INSTALLED_APPS = [
     'portfolio',
 
     # Wagtail Menus
-    'wagtail.contrib.modeladmin',
+    'wagtail_modeladmin',
     'wagtailmenus',
-
+    
     'whitenoise.runserver_nostatic',
     'storages',
 
