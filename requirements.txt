@@ -21,7 +21,7 @@ django-modelcluster==6.2.1
 django-permissionedforms==0.1
 django-social-share==2.3.0
 django-storages==1.11.1
-django-taggit==6.0.*
+django-taggit==4.0.*
 django-treebeard==4.7
 djangorestframework==3.15.2
 draftjs-exporter==2.1.7
@@ -58,13 +58,13 @@ typing_extensions==4.9.0
 tzdata==2023.4
 Unidecode==1.1.1
 urllib3==1.26.19
-wagtail==6.2.*
+wagtail==6.1.*
 wagtail-markdown==0.11.1
 wagtail-modeladmin==2.0.0
 wagtailmenus==4.0
 webencodings==0.5.1
 whitenoise==5.2.0
-Willow==1.6.3
+Willow>=1.6.*
 xlrd==1.2.0
 XlsxWriter==1.3.7
 xlwt==1.3.0
