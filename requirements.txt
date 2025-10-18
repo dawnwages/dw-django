@@ -39,10 +39,10 @@ logdna==1.18.12
 Markdown==3.5.2
 openpyxl==3.1.2
 packaging==23.2
-pillow==10.2.0
-pillow-heif==0.14.0
-psycopg2==2.9.9
-psycopg2-binary==2.9.9
+pillow==10.4.0
+pillow-heif>=0.15.0
+psycopg2==2.9.10
+psycopg2-binary==2.9.10
 puput==2.1.1
 python-dateutil==2.8.1
 pytz==2023.3.post1

@@ -12,6 +12,7 @@ __pycache__
 mediafiles/*
 media/*
 .env
+staticfiles/*
 
 # dependencies
 node_modules
