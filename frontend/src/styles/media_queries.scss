@@ -84,3 +84,17 @@
     border-bottom-left-radius: 0 !important;
   }
 }
+
+@media (max-width: 768px) {
+  .blog-head h1 {
+    font-size: 1.75rem;
+  }
+
+  .blog-main article.page-content {
+    padding: 1.5rem;
+  }
+
+  .page-content h2.blog-heading {
+    font-size: 1.5rem;
+  }
+}

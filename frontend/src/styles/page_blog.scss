@@ -37,7 +37,7 @@ nav > p {
 }
 
 .twitter-tweet {
-  margin-left:auto;
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -51,6 +51,53 @@ blockquote p {
 
 .main .blog-head {
   padding: 0 !important;
+}
+
+.blog-head .site-head {
+  background-color: var(--bg-primary);
+  padding: 2rem 0 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.blog-head h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-head #fairy-title {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+span img {
+  border: 3px solid #222;
+  // border-bottom-color: rgb(34, 34, 34);
+  // border-bottom-style: solid;
+  // border-bottom-width: 3px;
+  border-radius: 0.4rem 0.4rem 0 0;
+  border-bottom: none;
+  margin-bottom: 0 !important;
+}
+
+.blog-image {
+  margin: 2rem auto 1.5rem;
+}
+
+.blog-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .footer {
@@ -125,16 +172,6 @@ input[type="search"] {
   padding: 1rem 4rem;
 }
 
-span img {
-  border: 3px solid #222;
-  // border-bottom-color: rgb(34, 34, 34);
-  // border-bottom-style: solid;
-  // border-bottom-width: 3px;
-  border-radius: 0.4rem 0.4rem 0 0;
-  border-bottom: none;
-  margin-bottom: 0 !important;
-}
-
 .img-responsive > img {
   border: 3px solid #222;
   border-radius: 0.4rem 0.4rem 0 0;
@@ -165,20 +202,21 @@ span img {
   background: $teal !important;
 }
 
+.links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
 ul.sidebar {
   border: 2px solid var(--main-color);
   border-radius: 0.4rem;
 }
 
-ul.links li {
-  font-size: 14px;
-  margin-right: 2px !important;
-}
-
-a.badge {
-  color: white !important;
-  margin-top: 0.25rem;
-}
+// ul.links li {
+//   font-size: 14px;
+//   margin-right: 2px !important;
+// }
 
 li.social-item a {
   background-image: none !important;
@@ -195,6 +233,33 @@ ul.links li a {
 
 ul.social-share {
   padding-left: 0 !important;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  justify-content: center;
+}
+
+.links li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0;
+}
+
+.links i {
+  color: var(--primary-color);
+}
+
+.links a:hover {
+  color: var(--primary-color);
 }
 
 .blog_grid h2 {
@@ -223,6 +288,11 @@ ul.links {
 .blog_btn.continue,
 .blog_btn.back {
   color: inherit !important;
+}
+
+.blog_btn.back:hover {
+  background-color: var(--border-color);
+  border-color: var(--text-muted);
 }
 
 .about .title-header:hover {
@@ -271,15 +341,48 @@ textarea {
   border-right: 4px solid black;
 }
 
-.page-content .social-share-all li.social-item {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  background: #a6afe7;
-  margin-top: 5px;
-  margin-right: 3px;
-  border-radius: 50%;
+.article .card-title > a,
+.article .col-md-12 .blog_btn {
+  background-image: none !important;
 }
+
+.social-share-all {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.social-share-all .social-item a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.social-share-all .social-item a:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+// .page-content .social-share-all li.social-item {
+//   display: inline-block;
+//   width: 25px;
+//   height: 25px;
+//   background: #a6afe7;
+//   margin-top: 5px;
+//   margin-right: 3px;
+//   border-radius: 50%;
+// }
 
 .blog_grid .article .social-share li.social-item {
   display: inline-block;
@@ -388,7 +491,8 @@ div.block-subheading {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-:not(.block-html){
+
+:not(.block-html) {
   blockquote {
     background: #f9f9f9;
     border-left: 10px solid #ccc;
@@ -396,7 +500,7 @@ div.block-subheading {
     padding: 1em 10px;
     quotes: "\201C""\201D""\2018""\2019";
   }
-  
+
   blockquote::before {
     color: #ccc;
     content: open-quote;
@@ -405,11 +509,6 @@ div.block-subheading {
     margin-right: 0.25em;
     vertical-align: -0.4em;
   }
-}
-
-.article .card-title > a,
-.article .col-md-12 .blog_btn {
-  background-image: none !important;
 }
 
 .input-group > input {

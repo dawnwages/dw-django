@@ -3,10 +3,10 @@
   width: 15vw;
 }
 
-.site-head {
-  z-index: -100;
-  margin-bottom: 1rem;
-}
+// .site-head {
+//   z-index: -100;
+//   margin-bottom: 1rem;
+// }
 
 #fairy-name-box {
   font-family: $default-serif;
@@ -40,17 +40,12 @@
   margin-right: 20px;
 }
 
-.description {
-  line-height: 1.5;
-}
-
 .logo a {
   display: block;
 }
 
-.figure-logo {
-  max-width: 150px;
-  max-height: 55.1px;
+.description {
+  line-height: 1.5;
 }
 
 .release-notes {
@@ -93,7 +88,9 @@
   fill: #43b1b0;
   -webkit-animation: pos 3s ease infinite;
   animation: pos 3s ease infinite;
+  -webkit-transform: translateY(50px);
   transform: translateY(50px);
+  -webkit-transform-origin: 50% 80%;
   transform-origin: 50% 80%;
 }
 
@@ -152,6 +149,94 @@
   // body {
   //   max-width: 780px;
   // }
+}
+
+@media (max-width: 767px) {
+  .option {
+    flex: 0 0 50%;
+  }
+}
+
+@media (max-width: 599px) {
+  .main {
+    padding: 20px 0;
+  }
+
+  .figure-space {
+    max-width: 200px;
+  }
+
+  .footer {
+    display: block;
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-link {
+    max-width: 100px;
+  }
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+.figure-logo {
+  max-width: 150px;
+  max-height: 55.1px;
+}
+
+.form-check-input:checked {
+  background-color: #6611f2;
+  border-color: #6626f6;
+}
+
+.form-check-input:focus {
+  border-color: #6611f2;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(149, 13, 253 / 25%);
+}
+
+/* .form-switch .form-check-input:focus {
+    background-image: url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%6626f6'/%3e%3c/svg%3e');
+} */
+
+@-webkit-keyframes pos {
+  0%,
+  100% {
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes pos {
+  0%,
+  100% {
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+}
+
+.badge-wrapper {
+  margin-top: 1rem;
+}
+
+@media (max-width: 996px) {
+  body {
+    max-width: 780px;
+  }
 }
 
 @media (max-width: 767px) {
