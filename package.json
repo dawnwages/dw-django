@@ -12,8 +12,8 @@
     "lint:scripts": "node_modules/.bin/eslint src",
     "build": "node_modules/.bin/cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
     "start": "node_modules/.bin/webpack --watch --config webpack/webpack.config.dev.js --stats-children",
-    "serve": "webpack serve --config ",
-    "heroku-prebuild": "rm -rf node_modules package-lock.json && npm install"
+    "prod": "node_modules/.bin/webpack --config webpack/webpack.config.dev.js --stats-children",
+    "heroku-prebuild": "npm install && npm prod"
   },
   "repository": {
     "type": "git",
