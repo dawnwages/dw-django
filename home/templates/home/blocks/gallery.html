@@ -9,7 +9,7 @@
                 <div class="gallery-card">
                     {% image item.gallery fill-320x240 class="gallery-thumbnail" %}
                     {% image item.gallery width-500 as lg_img %}
-                    <span onclick="onClick(event)" class="card-icon-open fa fa-expand" data-val="{{ lg_img.url }}" alt="{{ item.title }}"></span>
+                    <span class="icon"><i onclick="onClick(event)" class="card-icon-open fa fa-expand" data-val="{{ lg_img.url }}" alt="{{ item.title }}"></span>
                 </div>
 
           </div>
