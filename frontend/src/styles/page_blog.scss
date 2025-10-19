@@ -317,6 +317,14 @@ ul.links {
   color: var(--main-color);
 }
 
+.blog_sidebar .input-group-btn {
+  -webkit-border-radius: 0 0.4rem 0.4rem 0 !important;
+  -moz-border-radius: 0 0.4rem 0.4rem 0 !important;
+  border-radius: 0 0.4rem 0.4rem 0 !important;
+  border: 3px solid $purple__light !important;
+  color: $purple__light !important;
+}
+
 .main-text .input-group-btn {
   border-radius: 0 0.4rem 0.4rem 0 !important;
   border: 3px solid #a6afe7;
@@ -329,6 +337,10 @@ ul.links {
   border-radius: 0 0.4rem 0.4rem 0 !important;
   border: 3px solid $purple__light;
   color: $purple__light;
+}
+
+.blog_sidebar .input-group-btn:hover {
+  background-color: $purple__light;
 }
 
 .navbar-collapse .input-group-btn:hover {
@@ -417,19 +429,7 @@ textarea {
 }
 
 .blog_sidebar .input-group-btn .btn.btn-default i {
-    color: #000 !important;
-}
-
-.blog_sidebar .input-group-btn:hover {
-  background-color: $purple__light;
-}
-
-.blog_sidebar .input-group-btn {
-  -webkit-border-radius: 0 0.4rem 0.4rem 0 !important;
-  -moz-border-radius: 0 0.4rem 0.4rem 0 !important;
-  border-radius: 0 0.4rem 0.4rem 0 !important;
-  border: 3px solid $purple__light !important;
-  color: $purple__light !important;
+  color: #000 !important;
 }
 
 .main-text .input-group-btn:hover {
