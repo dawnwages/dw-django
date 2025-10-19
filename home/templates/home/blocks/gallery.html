@@ -4,17 +4,17 @@
     <div class="container-fluid gallery-container">
         <hr class="mt-2 mb-5">
         <div class="row">
-        
+        {%  for item in gallerycarousel %}
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            {%  for item in gallerycarousel %}
+
                 <div class="gallery-card">
                     {% image item.gallery fill-320x240 class="gallery-thumbnail" %}
                     {% image item.gallery width-500 as lg_img %}
                     <span><i onclick="onClick(event)" class="card-icon-open fa fa-expand" data-val="{{ lg_img.url }}" alt="{{ item.title }}"></i></span>
                 </div>
-            {% endfor %}
+            
           </div>
-        
+        {% endfor %}
         </div>
         <div id="imgModal" class="modal-overlay">
             <div class="modal-body">
