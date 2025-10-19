@@ -13,8 +13,21 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      chunks: 'all',
-      name: 'vendors',
+      cacheGroups: {
+        vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendor",
+            chunks: "all",
+            priority: 1
+        },
+        utilities: {
+            test: /\.s?js$/,
+            minChunks: 2,
+            name: "utilities",
+            chunks: "all",
+            priority: 0
+        }
+    }
     },
   },
   plugins: [
