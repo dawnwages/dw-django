@@ -111,7 +111,7 @@
         })(window, document, "clarity", "script", "tgtbkw04tl");
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
         // Get all dropdowns on the page
         const dropdowns = document.querySelectorAll('.dropdown');
 
@@ -128,6 +128,18 @@
             });
         });
 
+        const navbar = document.querySelector('.navbar-collapse');
+
+        
+        const navbarButton = document.querySelector('.navbar-toggler');
+
+        navbarButton.addEventListener('click', (event) => {
+            // Prevent the click from propagating to the window and immediately closing
+            event.stopPropagation();
+            navbar.classList.toggle('show');
+        });
+    
+
         // Close dropdowns if the user clicks outside
         window.addEventListener('click', (event) => {
             dropdowns.forEach(dropdown => {
@@ -137,7 +149,10 @@
             }
             });
         });
-        });
+    });
+
+        // class="collapse navbar-collapse show"
+
     </script>
 </body>
 
