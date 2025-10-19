@@ -13,7 +13,7 @@
     "build": "node_modules/.bin/cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
     "start": "node_modules/.bin/webpack --watch --config webpack/webpack.config.dev.js --stats-children",
     "prod": "node_modules/.bin/webpack --config webpack/webpack.config.dev.js --stats-children",
-    "heroku-prebuild": "npm install && npm prod"
+    "heroku-prebuild": "npm install && npm run prod"
   },
   "repository": {
     "type": "git",
