@@ -184,4 +184,10 @@ h6,
   background-color: $purple__dark !important;
 }
 
+span .fa-times:before {
+    content: "\f00d" !important;
+}
 
+.fa-times:before {
+    content: "" !important;
+}
