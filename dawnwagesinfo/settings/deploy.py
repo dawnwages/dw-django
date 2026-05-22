@@ -26,8 +26,8 @@ USE_S3 = os.getenv('USE_S3') == 'TRUE'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dawnwagesinfo',
-        'USER': 'super',
+        'NAME': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': os.getenv('DB_PASSWORD'),  # Kept secure in your .env file
         'HOST': os.getenv('HOST'),
         'PORT': os.getenv('PORT'),
