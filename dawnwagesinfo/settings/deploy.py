@@ -2,7 +2,6 @@ from socket import gethostname, gethostbyname
 from dotenv import load_dotenv
 from .base import *
 import os
-import dj_database_url
 import django_heroku
 import logging
 from logdna import LogDNAHandler
