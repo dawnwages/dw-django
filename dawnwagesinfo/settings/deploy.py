@@ -1,5 +1,5 @@
 from socket import gethostname, gethostbyname
-from .dev import *
+from .base import *
 import os
 import dj_database_url
 import django_heroku

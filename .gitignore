@@ -13,7 +13,7 @@ mediafiles/*
 media/*
 .env
 staticfiles/*
-dawnwagesinfo/settings/local.py
+./dawnwagesinfo/settings/local.py
 
 # dependencies
 node_modules
