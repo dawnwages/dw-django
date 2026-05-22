@@ -17,6 +17,8 @@ PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+ENVIRONMENT = os.environ.get('ENVIRONMENT')
+
 SECRET_KEY = os.environ.get("SECRET_KEY", "testsecretkey")
 
 # Quick-start development settings - unsuitable for production

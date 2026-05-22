@@ -1,6 +1,5 @@
 from .dev import *
 
-USE_LOCAL_STORAGE = True
 
 MAILINGS = [""]
 MAILING_FILES_PATH = os.path.join(BASE_DIR, "..", "data")

@@ -1,5 +1,5 @@
 from socket import gethostname, gethostbyname
-from .base import *
+from .dev import *
 import os
 import dj_database_url
 import django_heroku
@@ -22,13 +22,13 @@ USE_S3 = os.getenv('USE_S3') == 'TRUE'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dawnwagesinfo',
         'USER': 'super',
         'PASSWORD': os.getenv('DB_PASSWORD'),  # Kept secure in your .env file
         'HOST': os.getenv('HOST'),
         'PORT': os.getenv('PORT'),
-    }
+    },
 }
 
 # if USE_S3:

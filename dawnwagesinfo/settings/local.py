@@ -1,6 +1,5 @@
 from .dev import *
 
-USE_LOCAL_STORAGE = True
 
 MAILINGS = [""]
 MAILING_FILES_PATH = os.path.join(PROJECT_PATH, '..', 'data')
@@ -28,5 +27,3 @@ RELEVANT_EMAIL_DOMAINS = [
     '@mandrill.unstable.dawnwages.info',
     '@dawnwages.info'
 ]
-
-ENVIRONMENT = 'local'
