@@ -60,7 +60,7 @@ Requires-Dist: setuptools==72.1.0
 Requires-Dist: six==1.16.0
 Requires-Dist: soupsieve==2.0.1
 Requires-Dist: sqlparse==0.4.1
-Requires-Dist: tablib==3.0.0
+Requires-Dist: tablib==3.5.0
 Requires-Dist: telepath==0.3.1
 Requires-Dist: typing_extensions==4.9.0
 Requires-Dist: tzdata==2023.4
