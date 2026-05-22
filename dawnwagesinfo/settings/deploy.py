@@ -1,8 +1,7 @@
 from socket import gethostname, gethostbyname
 from dotenv import load_dotenv
 from .base import *
-import os
-import django_heroku
+import osgit
 import logging
 from logdna import LogDNAHandler
 
@@ -17,7 +16,6 @@ TEMPLATE_DEBUG = DEBUG
 # SESSION_COOKIE_SECURE = True
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
 
 # S3 Configuration
 USE_S3 = os.getenv('USE_S3') == 'TRUE'
