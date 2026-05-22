@@ -1,3 +1,4 @@
+const ESLintPlugin = require('eslint-webpack-plugin');
 const Path = require('path');
 const Webpack = require('webpack');
 const { merge } = require('webpack-merge');
@@ -13,7 +14,6 @@ module.exports = merge(common, {
     chunkFilename: 'js/[name].chunk.js',
   },
   devServer: {
-    inline: true,
     hot: true,
   },
   plugins: [
@@ -22,32 +22,43 @@ module.exports = merge(common, {
     }),
     new StylelintPlugin({
       files: Path.join('frontend/src', '**/*.s?(a|c)ss'),
+      configFile: Path.resolve(__dirname, '../.stylelintrc.json')
     }),
-    new MiniCssExtractPlugin({filename: 'css/app.css',})
+    new MiniCssExtractPlugin({filename: 'css/app.css',}),
+    new ESLintPlugin({
+      extensions: ['js', 'jsx', 'mjs'], // 2. Add this to your plugins array
+      configType: 'eslintrc',
+      overrideConfigFile: Path.resolve(__dirname, '../.eslintrc'),
+    }),
   ],
-  module: {
+ module: {
     rules: [
-      {
-        test: /\.js$/,
-        include: Path.resolve(__dirname, '../src'),
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        options: {
-          emitWarning: true,
-        },
-      },
       {
         test: /\.html$/i,
         loader: 'html-loader',
       },
       {
-        test: /\.js$/,
-        include: Path.resolve(__dirname, '../src'),
-        loader: 'babel-loader',
+        test: /\.m?js$/,
+        // 2. CHANGE: Exclude node_modules here too to catch all JS files
+        exclude: /node_modules/,
+        type: 'javascript/auto',
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.s?css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader?sourceMap=true', 'postcss-loader', 'sass-loader'],
+        use: [
+          MiniCssExtractPlugin.loader, 
+          {
+            loader:'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          }, 
+          'postcss-loader', 
+          'sass-loader'
+        ],
       },
     ],
   },

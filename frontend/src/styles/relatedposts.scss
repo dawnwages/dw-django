@@ -1,9 +1,9 @@
 /* Related Posts */
-.relatedPosts {
+.related-posts {
   margin-top: 3rem;
 }
 
-.relatedPosts .post_title {
+.related-posts .post_title {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -11,7 +11,7 @@
   border-bottom: 2px solid var(--primary-color);
 }
 
-.relatedPosts .feature {
+.related-posts .feature {
   background-color: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
@@ -22,45 +22,45 @@
   height: 100%;
 }
 
-.relatedPosts .feature:hover {
+.related-posts .feature:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 
-.relatedPosts .image-related {
+.related-posts .image-related {
   margin-bottom: 1rem;
   border-radius: var(--border-radius);
   overflow: hidden;
 }
 
-.relatedPosts .image-related img {
+.related-posts .image-related img {
   width: 100%;
   height: auto;
   transition: transform var(--transition-base);
 }
 
-.relatedPosts .feature:hover .image-related img {
+.related-posts .feature:hover .image-related img {
   transform: scale(1.05);
 }
 
-.relatedPosts h3 {
+.related-posts h3 {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
   line-height: 1.3;
 }
 
-.relatedPosts h3 a {
+.related-posts h3 a {
   color: var(--text-primary);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
-.relatedPosts h3 a:hover {
+.related-posts h3 a:hover {
   color: var(--primary-color);
 }
 
-.relatedPosts p {
+.related-posts p {
   font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.6;

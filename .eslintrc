@@ -1,11 +1,13 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "env": {
     "browser": true,
+    "es2021":true,
     "node": true
   },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "requireConfigFile": false,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "rules": {

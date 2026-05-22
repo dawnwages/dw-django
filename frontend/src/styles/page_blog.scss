@@ -126,6 +126,7 @@ span img {
 
 .blog_grid p {
   color: #222;
+  margin-top: 0 !important;
 }
 
 .page-content > section > .block-paragraph > p {
@@ -170,6 +171,7 @@ input[type="search"] {
 .blog_grid {
   border-radius: 0.4rem;
   padding: 1rem 4rem;
+  margin-bottom: 0 !important;
 }
 
 .img-responsive > img {
@@ -214,6 +216,7 @@ li.social-item a {
 
 ul.sidebar li a.badge {
   color: #fff !important;
+  margin-bottom: 4px;
 }
 
 ul.sidebar {
@@ -275,7 +278,7 @@ ul.social-share {
 }
 
 ul.links {
-  margin: 0 0 15px 0 !important;
+  margin: 0 !important;
   padding: 0.575rem 1.15rem;
   background-color: rgba(17, 17, 17, 0.03);
   border: 2px solid #222;

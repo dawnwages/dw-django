@@ -38,7 +38,7 @@ class PortfolioIndexPage(Page):
         all_posts = PortfolioEntry.objects.child_of(self).live().order_by('-start_date', 'end_date')
 
         tag = request.GET.get('tag')
-        print(all_posts)
+        # print(all_posts)
         if tag:
             all_posts = all_posts.filter(tags__name=tag)
         context["posts"] = all_posts

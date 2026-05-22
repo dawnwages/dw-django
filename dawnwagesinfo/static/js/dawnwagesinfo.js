@@ -14,7 +14,7 @@ function closeNav(e) {
     }
 
     if (navState == 'open') {
-        document.getElementById("mySidenav").style.width = "0vw";
+        document.getElementById("my-side-nav").style.width = "0vw";
         document.getElementById("l1").style.transform = null;
         document.getElementById("l2").style.transform = null;
         document.getElementById("l3").style.display = 'inherit';
@@ -22,7 +22,7 @@ function closeNav(e) {
         navState = 'close';
 
     } else {
-        document.getElementById("mySidenav").style.width = sideNavWidth + "rem";
+        document.getElementById("my-side-nav").style.width = sideNavWidth + "rem";
         document.getElementById("l1").style.transform = 'matrix(1, -1, 0, 1.1, 0, 9)';
         document.getElementById("l2").style.transform = 'matrix(1, 1, 0, 1, .5, -17)';
         document.getElementById("l3").style.display = 'none';

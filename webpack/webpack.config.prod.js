@@ -8,9 +8,14 @@ module.exports = merge(common, {
   devtool: 'source-map',
   stats: 'errors-only',
   bail: true,
+  experiments: {
+    topLevelAwait: true,
+  },
   output: {
     filename: 'js/[name].[chunkhash:8].js',
     chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
+    libraryTarget: 'umd',
+    globalObject: 'this',
   },
   plugins: [
     new Webpack.DefinePlugin({
