@@ -26,6 +26,9 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD'),  # Kept secure in your .env file
         'HOST': os.getenv('HOST'),
         'PORT': os.getenv('PORT'),
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     },
 }
 

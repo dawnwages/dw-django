@@ -15,6 +15,7 @@ media/*
 staticfiles/*
 ./dawnwagesinfo/settings/local.py
 *.dump
+set-password.py
 
 # dependencies
 node_modules
