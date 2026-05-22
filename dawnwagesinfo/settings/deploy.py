@@ -20,16 +20,14 @@ django_heroku.settings(locals())
 # S3 Configuration
 USE_S3 = os.getenv('USE_S3') == 'TRUE'
 
-if ENVIRONMENT == 'Prod':
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dawnwagesinfo',
-        'USER': 'super',
-        'PASSWORD': os.getenv('DB_PASSWORD'),  # Kept secure in your .env file
-        'HOST': os.getenv('HOST'),
-        'PORT': os.getenv('PORT'),
-    }
+DATABASES = {
+'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'dawnwagesinfo',
+    'USER': 'super',
+    'PASSWORD': os.getenv('DB_PASSWORD'),  # Kept secure in your .env file
+    'HOST': os.getenv('HOST'),
+    'PORT': os.getenv('PORT'),
 }
 
 # if USE_S3:
