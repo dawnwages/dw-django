@@ -1,9 +1,7 @@
 from socket import gethostname, gethostbyname
 from dotenv import load_dotenv
 from .base import *
-import osgit
 import logging
-from logdna import LogDNAHandler
 
 load_dotenv()
 
