@@ -15,7 +15,7 @@ Requires-Dist: certifi==2020.12.5
 Requires-Dist: chardet==3.0.4
 Requires-Dist: defusedxml==0.7.1
 Requires-Dist: dj-database-url==0.5.0
-Requires-Dist: Django==5.2.0
+Requires-Dist: Django==5.1.0
 Requires-Dist: django-bootstrap==0.2.4
 Requires-Dist: django-cogwheels==0.3
 Requires-Dist: django-colorful==1.3
