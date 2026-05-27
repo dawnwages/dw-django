@@ -23,7 +23,7 @@ class DatabaseWrapper(base.DatabaseWrapper):
             token = rds_client.generate_db_auth_token(
                 DBHostname=self.settings_dict['HOST'],
                 Port=self.settings_dict['PORT'],
-                DBUsername=self.settings_dict['USER'],
+                DBUsername=self.settings_dict['DB_USER'],
                 Region=region
             )
             return token
