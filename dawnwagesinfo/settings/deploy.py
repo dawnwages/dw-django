@@ -18,8 +18,7 @@ USE_S3 = os.getenv('USE_S3') == 'TRUE'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'aurora_dsql_django',
-        'DISABLE_SERVER_SIDE_CURSORS': True,
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('NAME'),
         'USER': os.getenv('USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),  # Kept secure in your .env file
@@ -27,7 +26,6 @@ DATABASES = {
         'PORT': os.getenv('PORT'),
         'OPTIONS': {
             'sslmode': 'require',
-            'auth_plugin': 'aurora_dsql_django.IAMAuthPlugin' 
         },
     },
 }
