@@ -21,11 +21,11 @@ USE_S3 = os.getenv('USE_S3') == 'TRUE'
 
 try:
     # Uses your machine's/server's default AWS credentials
-    rds_client = boto3.client('rds', region_name=AWS_REGION)
+    rds_client = boto3.client('rds', region_name=os.getenv('AWS_DEFAULT_REGION'))
     db_token = rds_client.generate_db_auth_token(
-        DBHostname=DB_HOST,
-        Port=DB_PORT,
-        DBUsername=DB_USER
+        DBHostname=os.getenv('HOST'),
+        Port=os.getenv('PORT'),
+        DBUsername=os.getenv('USER')
     )
 except Exception as e:
     # Fallback to env password if boto3 fails locally
