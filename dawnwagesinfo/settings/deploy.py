@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from .base import *
 import boto3
 from botocore.config import Config
+from dawnwagesinfo import custom_backends
 
 load_dotenv()
 
@@ -10,6 +11,7 @@ DEBUG = os.environ.get('DEBUG')
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
 HOST = os.environ.get('HOST')
 TEMPLATE_DEBUG = DEBUG
+AWS_DEFAULT_REGION = os.environ.get('AWS_DEFAULT_REGION', 'us-east-1')
 
 # CSRF_COOKIE_SECURE = True
 # SESSION_COOKIE_SECURE = True
@@ -19,32 +21,23 @@ USE_S3 = os.getenv('USE_S3') == 'TRUE'
 
 # Dynamically request token
 
-try:
-    # Uses your machine's/server's default AWS credentials
-    rds_client = boto3.client('rds', region_name=os.getenv('AWS_DEFAULT_REGION'))
-    db_token = rds_client.generate_db_auth_token(
-        DBHostname=os.getenv('HOST'),
-        Port=os.getenv('PORT'),
-        DBUsername=os.getenv('USER')
-    )
-except Exception as e:
-    # Fallback to env password if boto3 fails locally
-    print(f"AWS IAM Token generation failed: {e}")
-    db_token = os.getenv('DB_PASSWORD')
+# try:
+#     # Uses your machine's/server's default AWS credentials
+#     rds_client = boto3.client('rds', region_name=os.getenv('AWS_DEFAULT_REGION'))
+#     db_token = rds_client.generate_db_auth_token(
+#         DBHostname=os.getenv('HOST'),
+#         Port=os.getenv('PORT'),
+#         DBUsername=os.getenv('DB_USER')
+#     )
+#     print("Successfully generated AWS IAM token for database connection.")
+# except Exception as e:
+#     # Fallback to env password if boto3 fails locally
+#     print(f"AWS IAM Token generation failed: {e}")
+#     db_token = os.getenv('DB_PASSWORD')
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': db_token,  # Use the dynamically generated token
-        'HOST': os.getenv('HOST'),
-        'PORT': os.getenv('PORT'),
-        'OPTIONS': {
-            'sslmode': 'require',
-        },
-    },
-}
+DB_HOST = os.getenv('HOST')
+DB_NAME = os.getenv('NAME')
+DB_USER = os.getenv('DB_USER')
 
 if USE_S3:
     # aws settings
@@ -66,6 +59,31 @@ if USE_S3:
 else:
     MEDIA_URL = '/mediafiles/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',  # Standard backend
+#         'NAME': 'dummy_db',
+#         'USER': 'dummy_user', 
+#         'PASSWORD': 'dummy_pass',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'dawnwagesinfo.custom_backends',  # Use our custom backend
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': '',  # Use the dynamically generated token
+        'HOST': os.getenv('HOST'),
+        'PORT': os.getenv('PORT'),
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
+    },
+}
+
 
 
 # PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
