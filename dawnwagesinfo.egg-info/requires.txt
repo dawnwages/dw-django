@@ -2,6 +2,7 @@ anyascii==0.1.7
 appdirs==1.4.4
 asgiref==3.8.1
 aurora-dsql-python-connector==0.2.6
+aurora_dsql_django==0.4.1
 beautifulsoup4==4.8.0
 bleach==4.1.0
 boto3==1.35.74
