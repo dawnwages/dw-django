@@ -13,14 +13,12 @@ TEMPLATE_DEBUG = DEBUG
 # CSRF_COOKIE_SECURE = True
 # SESSION_COOKIE_SECURE = True
 
-# Activate Django-Heroku.
-
 # S3 Configuration
 USE_S3 = os.getenv('USE_S3') == 'TRUE'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'aurora_dsql_django',
         'NAME': os.getenv('NAME'),
         'USER': os.getenv('USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),  # Kept secure in your .env file
