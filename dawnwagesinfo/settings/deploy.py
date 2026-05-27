@@ -1,7 +1,8 @@
 from socket import gethostname, gethostbyname
 from dotenv import load_dotenv
 from .base import *
-import logging
+import boto3
+from botocore.config import Config
 
 load_dotenv()
 
@@ -16,12 +17,27 @@ TEMPLATE_DEBUG = DEBUG
 # S3 Configuration
 USE_S3 = os.getenv('USE_S3') == 'TRUE'
 
+# Dynamically request token
+
+try:
+    # Uses your machine's/server's default AWS credentials
+    rds_client = boto3.client('rds', region_name=AWS_REGION)
+    db_token = rds_client.generate_db_auth_token(
+        DBHostname=DB_HOST,
+        Port=DB_PORT,
+        DBUsername=DB_USER
+    )
+except Exception as e:
+    # Fallback to env password if boto3 fails locally
+    print(f"AWS IAM Token generation failed: {e}")
+    db_token = os.getenv('DB_PASSWORD')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('NAME'),
         'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),  # Kept secure in your .env file
+        'PASSWORD': db_token,  # Use the dynamically generated token
         'HOST': os.getenv('HOST'),
         'PORT': os.getenv('PORT'),
         'OPTIONS': {
