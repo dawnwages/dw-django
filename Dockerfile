@@ -1,5 +1,5 @@
 # Use an official Python runtime based on Debian 10 "buster" as a parent image.
-FROM python:3.8.1-slim-buster
+FROM python:3.13-slim
 
 # Add user that will be used in the container.
 RUN useradd wagtail
@@ -29,7 +29,7 @@ RUN pip install "gunicorn==20.0.4"
 
 # Install the project requirements.
 COPY requirements.txt /
-RUN pip install -r /requirements.txt
+RUN pip install .
 
 # Use /app folder as a directory where the source code is stored.
 WORKDIR /app
