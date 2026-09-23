@@ -1,0 +1,38 @@
+# Version control and editor files
+.git
+.gitignore
+.idea
+.vscode
+.DS_Store
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+
+# Python build and cache artifacts
+__pycache__
+*.pyc
+*.egg-info
+build
+venv
+myvenv
+.temp_cache
+
+# Node dependencies (not used by the Python image)
+node_modules
+
+# Local data, secrets, and settings that must never ship in the image
+.env
+.env.*
+db.sqlite3
+*.db
+*.dump
+staticfiles
+mediafiles
+set-password.py
+dawnwagesinfo/settings/local.py
+
+# Deploy/CI config for other platforms and scratch files
+.netlify
+.travis.yml
+conda_list_demo.txt
