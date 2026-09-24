@@ -1,0 +1,1 @@
+{% if talk.date %}<time class="dw-talk__date" datetime="{{ talk.date|date:'Y-m-d' }}">{% if talk.date_precision == "year" %}{{ talk.date|date:"Y" }}{% elif talk.date_precision == "month" %}{{ talk.date|date:"M Y" }}{% else %}{{ talk.date|date:"M j, Y" }}{% endif %}</time>{% endif %}

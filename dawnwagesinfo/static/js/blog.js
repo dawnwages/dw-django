@@ -80,6 +80,24 @@
     });
   });
 
+  // Talks: filter chips by type -----------------------------------------------
+  Array.prototype.forEach.call(document.querySelectorAll("[data-talks]"), function (root) {
+    var chips = root.querySelectorAll("[data-filter]");
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var group = chip.getAttribute("data-filter");
+        chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+        root.querySelectorAll(".dw-talk").forEach(function (talk) {
+          talk.hidden = group !== "all" && talk.getAttribute("data-group") !== group;
+        });
+        // Hide year headings with nothing left to show.
+        root.querySelectorAll(".dw-talk-year").forEach(function (year) {
+          year.hidden = !year.querySelector(".dw-talk:not([hidden])");
+        });
+      });
+    });
+  });
+
   // Mermaid diagrams ---------------------------------------------------------
   if (document.querySelector("pre.mermaid")) {
     import(CDN + "mermaid@12.0.0/dist/mermaid.esm.min.mjs").then(function (module) {

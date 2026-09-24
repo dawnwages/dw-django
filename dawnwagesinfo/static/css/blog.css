@@ -1185,10 +1185,241 @@ main.dw-post-page.dw-blog {
   }
 }
 
+/* ---------------------------------------------------------------------------
+ * General pages (templates/home/general_page.html) and the Talks block
+ * ------------------------------------------------------------------------- */
+
+main.dw-post-page.dw-page {
+  width: min(48rem, 100% - 3rem);
+  margin: 0 auto;
+  padding-top: clamp(3rem, 7vw, 5rem);
+}
+
+.dw-page__header {
+  margin-bottom: 2.5rem;
+}
+
+.dw-page__body {
+  font-size: 1.05rem;
+}
+
+/* Featured talk */
+.dw-talk-feature {
+  margin: 0 0 2.5rem;
+  padding: 1.5rem 1.6rem;
+  border: 1px solid var(--dw-line);
+  border-left: 4px solid var(--dw-accent);
+  border-radius: 0 16px 16px 0;
+  background: var(--dw-surface);
+  box-shadow: 0 10px 30px -22px rgba(28, 26, 35, 0.45);
+}
+
+.dw-talk-feature__kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 0 0 0.75rem !important;
+  font-size: 0.88rem;
+  color: var(--dw-muted);
+}
+
+.dw-talk-feature__title {
+  margin: 0 0 0.4rem !important;
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  font-weight: 700 !important;
+  line-height: 1.2;
+  color: var(--dw-ink);
+}
+
+.dw-talk-feature__event {
+  margin: 0 0 0.75rem !important;
+  font-weight: 700;
+  color: var(--dw-accent) !important;
+}
+
+.dw-talk-feature__desc {
+  margin: 0 0 1rem !important;
+}
+
+/* Filters */
+.dw-talk-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.dw-talk-filters .dw-chip {
+  cursor: pointer;
+}
+
+.dw-talk-filters .dw-chip[aria-pressed="true"] {
+  border-color: var(--dw-ink);
+  background: var(--dw-ink);
+  color: var(--dw-paper) !important;
+}
+
+/* Year groups and rows */
+.dw-talk-year + .dw-talk-year {
+  margin-top: 1.5rem;
+}
+
+.dw-talk-year__label {
+  margin: 0 0 0.25rem !important;
+  font-size: 0.8rem;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dw-muted);
+}
+
+.dw-post__body .dw-talk-list,
+.dw-post__body .dw-talk__links {
+  margin: 0;
+  padding: 0 !important;
+  list-style: none;
+}
+
+.dw-post__body .dw-talk-list > li,
+.dw-post__body .dw-talk__links > li {
+  margin-top: 0;
+}
+
+.dw-talk {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: 0.35rem 1.5rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--dw-line);
+}
+
+.dw-talk[hidden] {
+  display: none;
+}
+
+.dw-talk__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.dw-talk__kind {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--dw-tint);
+  font-family: var(--dw-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--dw-accent);
+}
+
+.dw-talk__kind--keynote { background: #fff4d6; color: #7a5200; }
+.dw-talk__kind--podcast,
+.dw-talk__kind--interview { background: #e6f5ef; color: #1f6b4a; }
+
+.dw-talk__date {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--dw-muted);
+}
+
+.dw-talk__title {
+  margin: 0 0 0.25rem !important;
+  font-size: 1.2rem;
+  font-weight: 700 !important;
+  line-height: 1.3;
+  color: var(--dw-ink);
+}
+
+.dw-talk__event {
+  margin: 0 0 0.5rem !important;
+  font-size: 0.93rem;
+  color: var(--dw-muted);
+}
+
+.dw-post__body .dw-talk__desc {
+  margin: 0 0 0.75rem;
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+
+.dw-talk__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0 !important;
+  list-style: none;
+}
+
+.dw-talk__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--dw-line);
+  border-radius: 999px;
+  background: var(--dw-surface);
+  background-image: none;
+  font-size: 0.85rem;
+  text-decoration: none !important;
+  text-transform: none;
+  color: var(--dw-ink) !important;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.dw-talk__links a:hover {
+  border-color: var(--dw-accent);
+  color: var(--dw-accent) !important;
+}
+
+.dw-talk__links i {
+  font-size: 0.75rem;
+  color: var(--dw-accent);
+}
+
+.dw-talk-cta {
+  margin-top: 3rem;
+  padding: 1.75rem;
+  border-radius: 16px;
+  background: var(--dw-tint);
+  text-align: center;
+}
+
+.dw-talk-cta h2 {
+  margin: 0 0 0.5rem !important;
+  font-size: 1.5rem;
+  font-weight: 700 !important;
+}
+
+.dw-post__body .dw-talk-cta p {
+  max-width: 32rem;
+  margin: 0 auto 1.25rem;
+  color: var(--dw-muted);
+}
+
+@media (max-width: 599.98px) {
+  .dw-talk {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dw-talk__meta {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .dw-anchor,
   .dw-entry__title a,
   .dw-entry__media img,
+  .dw-talk__links a,
   .dw-chip {
     transition: none;
   }

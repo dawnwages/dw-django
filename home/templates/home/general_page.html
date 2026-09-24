@@ -1,45 +1,34 @@
-{% extends "base.html" %}]
+{% extends "base.html" %}
 {% load static wagtailcore_tags wagtailimages_tags snippet_tags %}
 
 {% block body_class %}template-generalpage{% endblock %}
 
-{%  block extra_js %}
-    <script src="{%  static 'js/gallery.js' %}"></script>
-{%  endblock extra_js %}
+{% block extra_js %}
+    <script src="{% static 'js/gallery.js' %}"></script>
+{% endblock extra_js %}
 
 {% block content %}
-<main class="main">
-  <!--<div class="figure">
-      <img id="me" class="shadow-2xl" src="{% static 'img/Djangogirls_cph19_small_BartPawlik-35.jpg' %}"/>
-  </div> -->
-  <div class="main-text">
-    <header class="site-head">
-        <div id="fairy-name-box">
-            <h1><span class="h1-large">{{ page.title }}</span></h1>
-        </div>
-        <div id="fairy-title-box">
-            <span id="fairy-title" class="text-2xl font-extrabold tracking-tight text-gray-00 ">{{ page.date }}</span>
-        </div>
-        <div id="fairy-blurb-box" class="mt-2">
-            {% for tag in page.tags.all %}
-                <a type="button" href="{{ page.get_parent.url}}search/?query={{ tag }}" class="badge badge-primary">{{ tag }}</a>
-            {% endfor %}
-        </div>
-          <div class="container pt-10">
-              {{ page.intro|richtext }}
-          </div>
-    </header>
-        <div class="container">
-            {{ page.content }}
-        </div>
-        <div class="container">
-          {{ page.body|richtext }}
-           {% gallerycarousel %}
-            <div class="row">
-                <p><a href="{{  page.get_parent.url }}">Return home</a></p>
-            </div>
-      </div>
+<main class="dw-post-page dw-page" id="main">
+
+  <header class="dw-page__header">
+    <h1 class="dw-post__title">{{ page.title }}</h1>
+    {% if page.intro %}<div class="dw-post__dek">{{ page.intro|richtext }}</div>{% endif %}
+    {% if page.tags.all %}
+      <ul class="dw-post__tags" aria-label="Tags">
+        {% for tag in page.tags.all %}
+          <li><a href="{% url 'search' %}?query={{ tag|urlencode }}">{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </header>
+
+  <div class="dw-post__body dw-page__body">
+    {% for block in page.content %}
+      <div class="dw-block dw-block--{{ block.block_type }}">{% include_block block %}</div>
+    {% endfor %}
+    {% if page.body %}<div class="dw-prose">{{ page.body|richtext }}</div>{% endif %}
+    {% gallerycarousel %}
+  </div>
 
 </main>
 {% endblock %}
-

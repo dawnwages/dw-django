@@ -1,0 +1,56 @@
+{# Talks and podcasts: a featured talk, filter chips, then talks grouped by year. #}
+{% with featured=value.featured filters=value.filters %}
+<div class="dw-talks" data-talks>
+
+  {% if featured %}
+    <article class="dw-talk-feature">
+      <p class="dw-talk-feature__kicker">
+        <span class="dw-talk__kind dw-talk__kind--{{ featured.kind }}">{% include "home/blocks/talk_kind.html" with kind=featured.kind %}</span>
+        {% include "home/blocks/talk_date.html" with talk=featured %}
+      </p>
+      <h2 class="dw-talk-feature__title">{{ featured.title }}</h2>
+      <p class="dw-talk-feature__event">{{ featured.event }}{% if featured.location %} · {{ featured.location }}{% endif %}</p>
+      {% if featured.description %}<p class="dw-talk-feature__desc">{{ featured.description }}</p>{% endif %}
+      {% include "home/blocks/talk_links.html" with talk=featured %}
+    </article>
+  {% endif %}
+
+  {% if filters|length > 1 %}
+    <div class="dw-talk-filters" role="group" aria-label="Filter by type">
+      <button type="button" class="dw-chip" data-filter="all" aria-pressed="true">All</button>
+      {% for key, label in filters %}
+        <button type="button" class="dw-chip" data-filter="{{ key }}" aria-pressed="false">{{ label }}</button>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% for year, talks in value.by_year %}
+    <section class="dw-talk-year" aria-label="{{ year }}">
+      <h2 class="dw-talk-year__label">{{ year }}</h2>
+      <ol class="dw-talk-list">
+        {% for talk in talks %}
+          <li class="dw-talk" data-group="{{ talk.filter_group }}">
+            <div class="dw-talk__meta">
+              <span class="dw-talk__kind dw-talk__kind--{{ talk.kind }}">{% include "home/blocks/talk_kind.html" with kind=talk.kind %}</span>
+              {% include "home/blocks/talk_date.html" %}
+            </div>
+            <div class="dw-talk__body">
+              <h3 class="dw-talk__title">{{ talk.title }}</h3>
+              <p class="dw-talk__event">{{ talk.event }}{% if talk.location %} · {{ talk.location }}{% endif %}{% if talk.with_people %} · {{ talk.with_people }}{% endif %}</p>
+              {% if talk.description %}<p class="dw-talk__desc">{{ talk.description }}</p>{% endif %}
+              {% include "home/blocks/talk_links.html" %}
+            </div>
+          </li>
+        {% endfor %}
+      </ol>
+    </section>
+  {% endfor %}
+
+  <aside class="dw-talk-cta">
+    <h2>Invite me to speak</h2>
+    <p>Keynotes, talks, panels and podcasts on Python, AI, open-source governance and building inclusive communities.</p>
+    <a class="dw-btn" href="mailto:dawn.wages@gmail.com?subject=Speaking%20invitation">Get in touch</a>
+  </aside>
+
+</div>
+{% endwith %}

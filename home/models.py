@@ -141,7 +141,8 @@ class GeneralPage(Page):
             ("table", TableBlock(class_name="full")),
             ("code_block", dblocks.CodeBlock(class_name="full")),
             ("quote_block", dblocks.QuoteBlock(class_name="full")),
-            ("gallery_chooser", GalleryChooserBlock(class_name="full"))
+            ("gallery_chooser", GalleryChooserBlock(class_name="full")),
+            ("talks", dblocks.TalksBlock()),
         ],
         blank=True,
         null=True,
