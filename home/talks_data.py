@@ -21,8 +21,8 @@ TALKS = [
         "date": D(2026, 8, 24),
         "date_precision": "day",
         "description": (
-            "The opening keynote. Drawing on Star Trek and Octavia Butler, a look at how people "
-            "from the margins build inclusive communities and make room for others in tech leadership."
+            "My opening keynote, by way of Star Trek and Octavia Butler: how people from the margins "
+            "build communities, and make room for each other in tech leadership."
         ),
         "links": [("details", "https://2026.djangocon.us/talks/keynote-monday/", "Session")],
         "featured": True,
@@ -35,8 +35,8 @@ TALKS = [
         "date": D(2026, 7, 16),
         "date_precision": "day",
         "description": (
-            "Spoon theory for Python environments: why they are so draining to keep working, "
-            "and why it's the ecosystem, not you."
+            "Why keeping a Python environment working costs so many spoons. Spoiler: it's the "
+            "ecosystem, not you."
         ),
         "links": [
             ("details", "https://ep2026.europython.eu/session/how-many-spoons-does-your-environment-cost-broken-demos-human-element", "Session"),
@@ -49,7 +49,7 @@ TALKS = [
         "event": "Anaconda",
         "date": D(2026, 7, 11),
         "date_precision": "month",
-        "description": "Anaconda's livestream on the Python data ecosystem, with guests from conda, HoloViz and beyond.",
+        "description": "I host Anaconda's livestream about the Python data ecosystem.",
         "links": [
             ("watch", "https://www.youtube.com/watch?v=LS5qdjtH8Tg", "Locked, Loaded, Reproducible"),
             ("watch", "https://www.youtube.com/watch?v=8fpoRJreR5Q", "AI & package discovery"),
@@ -63,7 +63,7 @@ TALKS = [
         "event": "Python Software Community Togo",
         "date": D(2026, 6, 27),
         "date_precision": "day",
-        "description": "A livestream conversation about the Python ecosystem, local-first AI and building diverse communities.",
+        "description": "Talking with the Togo Python community about the Python ecosystem, local-first AI and building diverse communities.",
         "links": [("watch", "https://www.youtube.com/watch?v=IEnL6fCmmXY", "")],
     },
     {
@@ -101,7 +101,7 @@ TALKS = [
         "date": D(2026, 5, 15),
         "date_precision": "month",
         "with_people": "with Paul Everitt",
-        "description": "A conversation about Python, AI, developer communities and where the ecosystem is heading next.",
+        "description": "Paul and I talk about Python, AI and developer communities.",
         "links": [("watch", "https://www.youtube.com/watch?v=gQGMU1QdCAA", "")],
     },
     {
@@ -112,7 +112,7 @@ TALKS = [
         "date": D(2026, 4, 15),
         "date_precision": "day",
         "with_people": "with Tereza Iofciu and Jessica Greene",
-        "description": "What it means to build with Python while AI reshapes the craft of software development.",
+        "description": "Building with Python while AI changes how we write software.",
         "links": [
             ("watch", "https://www.youtube.com/watch?v=aMebGZmkgnI", ""),
             ("details", "https://pretalx.com/pyconde-pydata-2026/talk/QBJRBJ/", "Session"),
@@ -171,7 +171,7 @@ TALKS = [
         "date": D(2025, 9, 10),
         "date_precision": "day",
         "with_people": "with Velda Kiara, Tim Schilling, Natalia Bidart, Rachell Calhoun, Peter Grandstaff and Jeff Triplett",
-        "description": "Django at 20: its history, governance and what comes next.",
+        "description": "Django turned 20. We looked back at its history and governance, and talked about what's next.",
         "links": [("watch", "https://www.youtube.com/watch?v=uYN7cpxhuhE", "")],
     },
     {
@@ -250,7 +250,7 @@ TALKS = [
         "date": D(2024, 7, 1),
         "date_precision": "year",
         "with_people": "with Mira Gibson",
-        "description": "A case study of working with 3D and XR files in a Wagtail project.",
+        "description": "How we handled 3D and XR files in a Wagtail project.",
         "links": [("watch", "https://www.youtube.com/watch?v=ccBrb50xRCM", "")],
     },
     {

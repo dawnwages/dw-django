@@ -3,7 +3,10 @@
 {% block body_class %}template-404{% endblock %}
 
 {% block content %}
-    <h1>Page not found</h1>
-
-    <h2>Sorry, this page could not be found.</h2>
+<main class="dw-post-page dw-page" id="main">
+  <header class="dw-page__header">
+    <h1 class="dw-post__title">Page not found</h1>
+    <p class="dw-post__dek">I can&rsquo;t find that page. It may have moved when I rebuilt the site. Try <a href="/">the homepage</a> or <a href="/search/">search</a>.</p>
+  </header>
+</main>
 {% endblock %}

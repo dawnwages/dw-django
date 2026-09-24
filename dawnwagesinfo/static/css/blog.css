@@ -258,10 +258,10 @@ main.dw-post-page {
 .dw-post__body :not(pre) > code {
   padding: 0.12em 0.38em;
   border-radius: 5px;
-  background: #efebf6;
+  background: #eceef7;
   font-family: var(--dw-mono);
   font-size: 0.88em;
-  color: #3d2a73;
+  color: #2f3470;
 }
 
 .dw-post__body hr {
@@ -505,7 +505,7 @@ main.dw-post-page {
 
 .dw-terminal__prompt {
   user-select: none;
-  color: #b8a4f5;
+  color: #b9bdf3;
 }
 
 .dw-terminal__out {
@@ -535,7 +535,7 @@ main.dw-post-page {
 }
 
 .dw-tabs__tab[aria-selected="true"] {
-  border-bottom-color: #b8a4f5;
+  border-bottom-color: #b9bdf3;
   color: #fff;
 }
 
@@ -558,7 +558,7 @@ main.dw-post-page {
 
 .dw-callout {
   --callout: var(--dw-accent);
-  --callout-bg: #f3effb;
+  --callout-bg: #eceef8;
   margin: 1.75rem 0;
   padding: 1rem 1.25rem;
   border-left: 4px solid var(--callout);
@@ -567,8 +567,8 @@ main.dw-post-page {
 }
 
 .dw-callout--tip { --callout: #1f7a4d; --callout-bg: #eaf6ef; }
-.dw-callout--important { --callout: #6a3ec9; --callout-bg: #f1ebfc; }
-.dw-callout--warning { --callout: #9a6700; --callout-bg: #fff5dc; }
+.dw-callout--important { --callout: var(--dw-accent); --callout-bg: #e6e8f5; }
+.dw-callout--warning { --callout: #8a5c00; --callout-bg: #fff5dc; }
 .dw-callout--caution { --callout: #b42318; --callout-bg: #fdecec; }
 
 .dw-callout__title {
@@ -853,7 +853,7 @@ main.dw-post-page.dw-blog {
   padding: 0.55rem 1rem;
   border: 1px solid var(--dw-line);
   border-right: 0;
-  border-radius: 999px 0 0 999px;
+  border-radius: var(--dw-radius) 0 0 var(--dw-radius);
   background: var(--dw-surface);
   font-size: 0.95rem;
   color: var(--dw-ink);
@@ -868,7 +868,7 @@ main.dw-post-page.dw-blog {
   padding: 0 1rem;
   border: 1px solid var(--dw-line);
   border-left: 0;
-  border-radius: 0 999px 999px 0;
+  border-radius: 0 var(--dw-radius) var(--dw-radius) 0;
   background: var(--dw-surface);
   color: var(--dw-muted);
 }
@@ -1220,7 +1220,7 @@ main.dw-post-page.dw-blog {
   place-items: center;
   min-width: 2.1rem;
   height: 2.1rem;
-  border-radius: 999px;
+  border-radius: var(--dw-radius);
 }
 
 .dw-pager__pages a:hover {
@@ -1303,7 +1303,11 @@ main.dw-post-page.dw-page {
   margin: 0 0 1rem !important;
 }
 
-/* Filters */
+/* Filters: the blog's chips, but not pill-shaped outside the blog. */
+.dw-talk-filters .dw-chip {
+  border-radius: var(--dw-radius);
+}
+
 .dw-talk-filters {
   display: flex;
   flex-wrap: wrap;
@@ -1371,7 +1375,7 @@ main.dw-post-page.dw-page {
   align-items: center;
   gap: 0.35rem;
   padding: 0.15rem 0.6rem;
-  border-radius: 999px;
+  border-radius: 5px;
   background: var(--dw-tint);
   font-family: var(--dw-heading);
   font-size: 0.75rem;
@@ -1436,7 +1440,7 @@ main.dw-post-page.dw-page {
   gap: 0.4rem;
   padding: 0.25rem 0.75rem;
   border: 1px solid var(--dw-line);
-  border-radius: 999px;
+  border-radius: var(--dw-radius);
   background: var(--dw-surface);
   background-image: none;
   font-size: 0.85rem;
@@ -1713,14 +1717,14 @@ html.dw-lightbox-open {
   margin-top: 1.25rem;
   padding: 0.3rem 0.3rem 0.3rem 1.1rem;
   border: 1px solid var(--dw-line);
-  border-radius: 999px;
+  border-radius: 10px;
   background: var(--dw-surface);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .dw-search__form:focus-within {
   border-color: var(--dw-accent);
-  box-shadow: 0 0 0 3px rgba(106, 62, 201, 0.15);
+  box-shadow: 0 0 0 3px rgba(66, 72, 149, 0.15);
 }
 
 .dw-search__form input {
@@ -1739,7 +1743,7 @@ html.dw-lightbox-open {
   width: 2.6rem;
   height: 2.6rem;
   border: 0;
-  border-radius: 50%;
+  border-radius: 7px;
   background: var(--dw-ink);
   color: var(--dw-paper);
   cursor: pointer;
@@ -1852,7 +1856,7 @@ html.dw-lightbox-open {
   display: inline-block;
   padding: 0.4rem 0.9rem;
   border: 1px solid var(--dw-line);
-  border-radius: 999px;
+  border-radius: var(--dw-radius);
   background: var(--dw-surface);
   font-size: 0.95rem;
   text-decoration: none !important;
@@ -1862,4 +1866,16 @@ html.dw-lightbox-open {
 .dw-search__suggest a:hover {
   border-color: var(--dw-accent);
   color: var(--dw-accent) !important;
+}
+
+/* Diff markers: Prism's default greens and reds are too dark on the code
+   background (under WCAG AA). These are 10.6:1 and 8.4:1. */
+.dw-post__body .token.inserted,
+.dw-post__body .token.prefix.inserted {
+  color: #7ee2a8;
+}
+
+.dw-post__body .token.deleted,
+.dw-post__body .token.prefix.deleted {
+  color: #ff9d9d;
 }

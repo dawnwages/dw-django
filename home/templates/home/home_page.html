@@ -46,24 +46,19 @@
       <p class="dw-hero__meta"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ page.loc }} <span aria-hidden="true">·</span> she/her</p>
     {% endif %}
     <div class="dw-actions">
-      <a class="dw-btn" href="#dw-contact-title">Work with me</a>
+      <a class="dw-btn" href="#dw-contact-title">Get in touch</a>
       {% if home_blog %}
         <a class="dw-link-arrow" href="{% pageurl home_blog %}">Read my writing</a>
       {% endif %}
     </div>
   </div>
-  <div class="dw-portrait">
-    <img class="dw-hero__portrait" src="{% static 'img/Djangogirls_cph19_small_BartPawlik-35.jpg' %}"
-         alt="Portrait of {{ page.name|default:page.title }}" width="360" height="360">
-    <div class="dw-orbit" aria-hidden="true">
-      <span class="dw-orbit__item" style="--i: 0; --a: -38deg; --d: 0.56" title="Python"><span class="dw-orbit__bubble">🐍</span></span>
-      <span class="dw-orbit__item" style="--i: 1; --a: 22deg; --d: 0.54" title="Satyrn"><span class="dw-orbit__bubble">🪐</span></span>
-      <span class="dw-orbit__item" style="--i: 2; --a: 88deg; --d: 0.58" title="Star Trek"><span class="dw-orbit__bubble">🖖</span></span>
-      <span class="dw-orbit__item" style="--i: 3; --a: 150deg; --d: 0.55" title="Wagtail"><span class="dw-orbit__bubble">🧶</span></span>
-      <span class="dw-orbit__item" style="--i: 4; --a: 208deg; --d: 0.57" title="Djangonaut Space"><span class="dw-orbit__bubble">🚀</span></span>
-      <span class="dw-orbit__item" style="--i: 5; --a: 268deg; --d: 0.55" title="Dog mom"><span class="dw-orbit__bubble">🐶</span></span>
+  <figure class="dw-portrait">
+    <div class="dw-portrait__frame">
+      <img class="dw-hero__portrait" src="{% static 'img/Djangogirls_cph19_small_BartPawlik-35.jpg' %}"
+           alt="Portrait of {{ page.name|default:page.title }}" width="360" height="360">
     </div>
-  </div>
+    <figcaption class="dw-portrait__caption">Django Girls Copenhagen, 2019 · Photo by Bart Pawlik</figcaption>
+  </figure>
 </section>
 
 <section class="dw-section" aria-labelledby="dw-leadership-title">
@@ -75,7 +70,7 @@
         <span class="dw-role__years">2022–2025</span>
       </div>
       <p class="dw-role__title">Chair &amp; President · Treasurer · Director</p>
-      <p class="dw-role__desc">Governed the nonprofit behind Python: a $5M budget, Form 990 and audit oversight, and consensus across 12 directors on packaging, security, grants and ecosystem policy. Partnered with the Executive Director on staff performance and long-range planning.</p>
+      <p class="dw-role__desc">Three years on the board of the nonprofit behind Python. I looked after a $5M budget, the audit and the Form 990, worked with the Executive Director on staffing and long-range plans, and got 12 directors to agree on packaging, security and grants policy.</p>
     </li>
     <li class="dw-role">
       <div class="dw-role__head">
@@ -83,7 +78,7 @@
         <span class="dw-role__years">2025–2026</span>
       </div>
       <p class="dw-role__title">Director, Community &amp; Developer Relations</p>
-      <p class="dw-role__desc">Owned 501(c)(3), 501(c)(6) and open-source foundation strategy for a 50M+ user platform. Unified five engineering teams and 12+ open-source projects under one four-pillar open-source strategy.</p>
+      <p class="dw-role__desc">I ran community and developer relations for a platform with more than 50 million users, including how we worked with 501(c)(3)s, 501(c)(6)s and open-source foundations. I brought five engineering teams and more than a dozen open-source projects under one open-source plan.</p>
     </li>
     <li class="dw-role">
       <div class="dw-role__head">
@@ -91,7 +86,7 @@
         <span class="dw-role__years">2023–</span>
       </div>
       <p class="dw-role__title">Co-creator</p>
-      <p class="dw-role__desc">A structured contributor mentorship program for Django, now funded by the Django Software Foundation: 46 participants and 80 merged pull requests in 2024.</p>
+      <p class="dw-role__desc">A mentorship program that gets new people contributing to Django. The Django Software Foundation funds it now. In 2024 we had 46 participants and 80 merged pull requests.</p>
     </li>
     <li class="dw-role">
       <div class="dw-role__head">
@@ -99,7 +94,7 @@
         <span class="dw-role__years">2019–2023</span>
       </div>
       <p class="dw-role__title">Sponsors Chair</p>
-      <p class="dw-role__desc">Five consecutive years leading sponsorship for Django's flagship conference, plus DjangoCon Africa 2023, raising hundreds of thousands of dollars across three continents.</p>
+      <p class="dw-role__desc">I ran sponsorship for DjangoCon US five years in a row, and for DjangoCon Africa in 2023. Together that raised hundreds of thousands of dollars for the Django community.</p>
     </li>
     <li class="dw-role">
       <div class="dw-role__head">
@@ -107,7 +102,7 @@
         <span class="dw-role__years">2020–</span>
       </div>
       <p class="dw-role__title">Founder</p>
-      <p class="dw-role__desc">Created the Antiracist Ethical Source License, the first anti-racist ethical source license, released on Juneteenth 2022.</p>
+      <p class="dw-role__desc">I wrote the Antiracist Ethical Source License, the first anti-racist ethical source license, and released it on Juneteenth 2022.</p>
     </li>
   </ul>
 </section>
@@ -115,23 +110,23 @@
 <section class="dw-section" aria-labelledby="dw-building-title">
   <h2 id="dw-building-title" class="dw-section__title">Building</h2>
   <div>
-    <p class="dw-section__intro">I lead best when I&rsquo;m still in the code. Python is home base, from research data pipelines to Django backends, and these days I&rsquo;m helping it get sticky in new places like on-device and local-first AI.</p>
+    <p class="dw-section__intro">Python is home base. I&rsquo;ve built research data pipelines and plenty of Django backends, and lately I&rsquo;m rooting for Python to get sticky in new places, like on-device and local-first AI.</p>
     <div class="dw-projects">
       <a class="dw-project" href="https://www.satyrn.ai" target="_blank" rel="noopener noreferrer">
-        <span class="dw-project__name"><span aria-hidden="true">🪐</span> Satyrn</span>
-        <span class="dw-project__desc">Jupyter for agents: local-first AI tooling for Python developers.</span>
+        <span class="dw-project__name">Satyrn</span>
+        <span class="dw-project__desc">Jupyter for agents, built local-first for Python developers.</span>
       </a>
       <a class="dw-project" href="https://domaindrivendjango.com" target="_blank" rel="noopener noreferrer">
-        <span class="dw-project__name"><span aria-hidden="true">📘</span> Domain-Driven Django</span>
+        <span class="dw-project__name">Domain-Driven Django</span>
         <span class="dw-project__desc">A book in progress on domain-driven design and event-driven architecture for Django.</span>
       </a>
       <div class="dw-project">
-        <span class="dw-project__name"><span aria-hidden="true">🌼</span> Wildflower Software</span>
-        <span class="dw-project__desc">My Python and Django consultancy: backend systems, data pipelines and architecture for startups, SMBs and nonprofits.</span>
+        <span class="dw-project__name">Wildflower Software</span>
+        <span class="dw-project__desc">My Python and Django consultancy. I mostly help small teams and nonprofits with their backends and data.</span>
       </div>
       <a class="dw-project" href="/star-trek-themed-demos/">
-        <span class="dw-project__name"><span aria-hidden="true">🖖</span> Star Trek Demos</span>
-        <span class="dw-project__desc">Python demos with themes.</span>
+        <span class="dw-project__name">Star Trek Demos</span>
+        <span class="dw-project__desc">Python demos, with a Star Trek twist.</span>
       </a>
     </div>
   </div>
@@ -143,14 +138,7 @@
     <a class="dw-link-arrow" href="/talks-and-podcasts/">All talks</a>
   </div>
   <div>
-    <p class="dw-section__intro">Keynotes, panels, podcasts and plenty of hallway track. I talk about where Python is headed, building AI we can actually trust, and the people who keep open source running.</p>
-    <ul class="dw-topics" aria-label="Recent talk topics">
-      <li>Small language models for production edge deployments</li>
-      <li>Local LLM hardware tradeoffs: latency, power and privacy</li>
-      <li>Secure &amp; sovereign AI: SLSA, SBOM and model signing</li>
-      <li>Python supply chain security</li>
-      <li>Open-source governance and sustainability</li>
-    </ul>
+    <p class="dw-section__intro">Keynotes, panels, podcasts and a lot of hallway track. Lately I talk about Python environments, AI that&rsquo;s correct and not just convincing, and the people who keep open source running.</p>
   </div>
 </section>
 
@@ -187,21 +175,10 @@
 {% endif %}
 
 <section class="dw-section dw-contact" aria-labelledby="dw-contact-title">
-  <h2 id="dw-contact-title" class="dw-contact__title">Let's work together.</h2>
-  <p class="dw-contact__text">Leadership roles and board service, consulting through Wildflower Software, or a keynote for your event.</p>
-  <div class="dw-paths">
-    <a class="dw-path" href="mailto:dawn.wages@gmail.com?subject=Leadership%20opportunity">
-      <span class="dw-path__label">Leadership &amp; boards</span>
-      <span class="dw-path__desc">Executive, open-source foundation and board roles.</span>
-    </a>
-    <a class="dw-path" href="mailto:dawn.wages@gmail.com?subject=Wildflower%20Software%20consulting">
-      <span class="dw-path__label">Consulting</span>
-      <span class="dw-path__desc">Python, Django and open-source strategy through Wildflower Software.</span>
-    </a>
-    <a class="dw-path" href="mailto:dawn.wages@gmail.com?subject=Speaking%20invitation">
-      <span class="dw-path__label">Speaking</span>
-      <span class="dw-path__desc">Keynotes and talks on AI, security and open-source leadership.</span>
-    </a>
+  <h2 id="dw-contact-title" class="dw-contact__title">Get in touch</h2>
+  <p class="dw-contact__text">Email is the best way to reach me. I&rsquo;m open to leadership and board roles, consulting through Wildflower Software, and speaking at your event.</p>
+  <div class="dw-actions">
+    <a class="dw-btn" href="mailto:dawn.wages@gmail.com">dawn.wages@gmail.com</a>
   </div>
 </section>
 
