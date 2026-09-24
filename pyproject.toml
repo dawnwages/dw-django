@@ -12,6 +12,7 @@ dependencies = [
     "aurora-dsql-python-connector==0.2.7",
     "aurora_dsql_django==0.6.0",
     "boto3==1.43.101",
+    "dj-database-url==3.1.2",
     "Django==6.1.1",
     "django-colorful==1.4.0",
     "django-el-pagination==4.1.2",
