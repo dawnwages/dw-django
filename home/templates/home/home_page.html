@@ -21,8 +21,18 @@
       {% endif %}
     </div>
   </div>
-  <img class="dw-hero__portrait" src="{% static 'img/Djangogirls_cph19_small_BartPawlik-35.jpg' %}"
-       alt="Portrait of {{ page.name|default:page.title }}" width="360" height="360">
+  <div class="dw-portrait">
+    <img class="dw-hero__portrait" src="{% static 'img/Djangogirls_cph19_small_BartPawlik-35.jpg' %}"
+         alt="Portrait of {{ page.name|default:page.title }}" width="360" height="360">
+    <div class="dw-orbit" aria-hidden="true">
+      <span class="dw-orbit__item" style="--i: 0; --a: -38deg; --d: 0.56" title="Python"><span class="dw-orbit__bubble">🐍</span></span>
+      <span class="dw-orbit__item" style="--i: 1; --a: 22deg; --d: 0.54" title="Satyrn"><span class="dw-orbit__bubble">🪐</span></span>
+      <span class="dw-orbit__item" style="--i: 2; --a: 88deg; --d: 0.58" title="Star Trek"><span class="dw-orbit__bubble">🖖</span></span>
+      <span class="dw-orbit__item" style="--i: 3; --a: 150deg; --d: 0.55" title="Wagtail"><span class="dw-orbit__bubble">🧶</span></span>
+      <span class="dw-orbit__item" style="--i: 4; --a: 208deg; --d: 0.57" title="Djangonaut Space"><span class="dw-orbit__bubble">🚀</span></span>
+      <span class="dw-orbit__item" style="--i: 5; --a: 268deg; --d: 0.55" title="Dog mom"><span class="dw-orbit__bubble">🐶</span></span>
+    </div>
+  </div>
 </section>
 
 <section class="dw-section" aria-labelledby="dw-leadership-title">
