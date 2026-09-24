@@ -197,6 +197,10 @@ WHITENOISE_INDEX_FILE = True
 
 WAGTAIL_SITE_NAME = "dawn wages"
 
+# Large StreamFields (e.g. the Talks and Podcasts page) post more than Django's
+# default 1,000 form fields from the Wagtail editor. Wagtail recommends raising it.
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
+
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = 'http://www.dawnwages.info'
