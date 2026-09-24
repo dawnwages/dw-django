@@ -1,0 +1,8 @@
+{% comment %}
+Compatibility shim for wagtailmenus 4.1 on Wagtail 8.
+
+wagtailmenus' menu edit and snippet copy templates include this file, which
+Wagtail removed. Wagtail 8's base form template (wagtailadmin/generic/form.html)
+already outputs the editor JavaScript via the insert_editor_js hook, so this
+intentionally renders nothing. Delete it once wagtailmenus drops the include.
+{% endcomment %}
