@@ -7,6 +7,8 @@ INTRO = (
     "<p>Keynotes, talks, panels and podcasts on Python, AI, open-source governance "
     "and building inclusive communities.</p>"
 )
+# The tags the live page already had; added when the page has none.
+TAGS = ["Talks", "Pycon", "Podcast"]
 
 
 def talk_value(talk):
@@ -53,6 +55,8 @@ class Command(BaseCommand):
         page.content = [("talks", {"talks": [talk_value(talk) for talk in TALKS]})]
         if not page.intro:
             page.intro = INTRO
+        if not page.tags.exists():
+            page.tags.add(*TAGS)
         revision = page.save_revision(log_action=True)
         if publish:
             revision.publish()

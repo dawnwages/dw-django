@@ -1,28 +1,35 @@
-{% load snippet_tags wagtailimages_tags %}
-{%  if gallerycarousel %}
-<section id="gallery">
-    <div class="container-fluid gallery-container">
-        <hr class="mt-2 mb-5">
-        <div class="row">
-        {%  for item in gallerycarousel %}
-          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="gallery-card">
-                    {% image item.gallery fill-320x240 class="gallery-thumbnail" %}
-                    {% image item.gallery width-500 as lg_img %}
-                    <span><i onclick="onClick(event)" class="card-icon-open fa fa-expand" data-val="{{ lg_img.url }}" alt="{{ item.title }}"></i></span>
-                </div>
-          </div>
-        {% endfor %}
-        </div>
-        <div id="imgModal" class="modal-overlay">
-            <div class="modal-body">
-                <a class="modal-close" onclick="onClose()">
-                    <span><i class="fa fa-times"></span></a>
-                    <img id="modalSrc" src="https://source.unsplash.com/4rDCa5hBlCs/800x600">
-                    <p id="caption" class="text-white">caption</p>
-            </div>
-        </div>
-        
-    </div>
+{% load wagtailimages_tags %}
+{# Page gallery: a thumbnail grid that opens a lightbox (static/js/gallery.js). #}
+{% if gallerycarousel %}
+<section class="dw-gallery" aria-label="Gallery" data-gallery>
+  <ul class="dw-gallery__grid">
+    {% for item in gallerycarousel %}{% if item.gallery %}
+      {% image item.gallery width-1600 as large %}
+      <li>
+        <button type="button" class="dw-gallery__item" data-src="{{ large.url }}" data-caption="{{ item.title }}" aria-label="Open {{ item.title }}">
+          {% image item.gallery fill-480x360 class="dw-gallery__thumb" alt=item.title loading="lazy" %}
+          <span class="dw-gallery__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </span>
+        </button>
+      </li>
+    {% endif %}{% endfor %}
+  </ul>
+
+  <dialog class="dw-lightbox" aria-label="Image viewer">
+    <button type="button" class="dw-lightbox__btn dw-lightbox__close" data-close aria-label="Close">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button type="button" class="dw-lightbox__btn dw-lightbox__nav dw-lightbox__prev" data-step="-1" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <figure class="dw-lightbox__figure">
+      <img class="dw-lightbox__img" src="" alt="">
+      <figcaption class="dw-lightbox__caption"></figcaption>
+    </figure>
+    <button type="button" class="dw-lightbox__btn dw-lightbox__nav dw-lightbox__next" data-step="1" aria-label="Next image">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </dialog>
 </section>
-{%  endif %}
+{% endif %}

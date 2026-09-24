@@ -271,8 +271,18 @@ main.dw-home {
   transition: background-color 0.15s ease;
 }
 
-.dw-btn:hover {
+/* site.css slides a pale grey background-image across links on hover;
+   buttons keep their solid fill instead. */
+.dw-btn,
+.dw-btn:hover,
+.dw-btn:focus-visible {
+  background-image: none !important;
+}
+
+.dw-btn:hover,
+.dw-btn:focus-visible {
   background-color: var(--dw-accent);
+  color: #fff !important;
 }
 
 .dw-link-arrow {

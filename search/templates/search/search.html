@@ -3,43 +3,77 @@
 
 {% block body_class %}template-searchresults{% endblock %}
 
-{% block title %}Search{% endblock %}
+{% block title %}{% if search_query %}{{ search_query }} · {% endif %}Search{% endblock %}
 
 {% block content %}
-<main>
-       <div class="mt-5 container-fluid main-text">
-    <h1>Search</h1>
+<main class="dw-post-page dw-page dw-search" id="main">
 
-    <form class="d-flex" action="{% url 'search' %}" method="get">
-        <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-        <span class="input-group-btn">
-            <button class="btn btn-default" type="submit" value="Search"><i class="fa fa-search"></i></button>
-        </span>
+  <header class="dw-page__header">
+    <h1 class="dw-post__title">Search</h1>
+    <form class="dw-search__form" action="{% url 'search' %}" method="get" role="search">
+      <label class="visually-hidden" for="dw-search-query">Search the site</label>
+      <input id="dw-search-query" type="search" name="query" value="{{ search_query }}" placeholder="Search posts, talks and pages" autocomplete="off">
+      <button type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      </button>
     </form>
+  </header>
 
-    {% if search_results %}
+  <div class="dw-post__body">
+    {% if search_query %}
 
-            <ul class="mt-5">
-                {% for result in search_results %}
-                    <li>
-                        <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
-                        {% if result.search_description %}
-                            {{ result.search_description }}
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
+      {% if showing_corrected %}
+        <p class="dw-search__notice">
+          No results for <strong>“{{ search_query }}”</strong>. Showing results for
+          <a href="{% url 'search' %}?query={{ corrected_query|urlencode }}"><strong>{{ corrected_query }}</strong></a> instead.
+        </p>
+      {% elif corrected_query %}
+        <p class="dw-search__notice">
+          Did you mean <a href="{% url 'search' %}?query={{ corrected_query|urlencode }}"><strong>{{ corrected_query }}</strong></a>?
+        </p>
+      {% endif %}
 
+      {% if search_results %}
+        <p class="dw-search__count">
+          {{ result_count }} result{{ result_count|pluralize }} for “{% if showing_corrected %}{{ corrected_query }}{% else %}{{ search_query }}{% endif %}”
+        </p>
+        <ol class="dw-search__results">
+          {% for result in search_results %}
+            <li class="dw-search__result">
+              <a class="dw-search__title" href="{% pageurl result %}">{{ result.title }}</a>
+              {% if result.search_description %}<p>{{ result.search_description|truncatewords:40 }}</p>{% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+
+        {% if search_results.has_other_pages %}
+          <nav class="dw-search__pages" aria-label="Search result pages">
             {% if search_results.has_previous %}
-                <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">Previous</a>
+              <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">← Previous</a>
             {% endif %}
-
+            <span>Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}</span>
             {% if search_results.has_next %}
-                <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
+              <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next →</a>
             {% endif %}
-        {% elif search_query %}
-            No results found
+          </nav>
         {% endif %}
-    </div>
+      {% else %}
+        <p class="dw-search__count">No results for “{{ search_query }}”.</p>
+      {% endif %}
+
+      {% if suggested_pages %}
+        <section class="dw-search__suggest" aria-labelledby="dw-search-suggest">
+          <h2 id="dw-search-suggest">{% if search_results %}You might also be looking for{% else %}Pages with similar names{% endif %}</h2>
+          <ul>
+            {% for page in suggested_pages %}
+              <li><a href="{% pageurl page %}">{{ page.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+
+    {% endif %}
+  </div>
+
 </main>
 {% endblock %}

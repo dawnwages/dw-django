@@ -37,7 +37,7 @@
             <div class="dw-talk__body">
               <h3 class="dw-talk__title">{{ talk.title }}</h3>
               <p class="dw-talk__event">{{ talk.event }}{% if talk.location %} · {{ talk.location }}{% endif %}{% if talk.with_people %} · {{ talk.with_people }}{% endif %}</p>
-              {% if talk.description %}<p class="dw-talk__desc">{{ talk.description }}</p>{% endif %}
+              {% if talk.description %}<div class="dw-talk__desc">{{ talk.description|linebreaks }}</div>{% endif %}
               {% include "home/blocks/talk_links.html" %}
             </div>
           </li>
