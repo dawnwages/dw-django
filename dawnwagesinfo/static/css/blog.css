@@ -270,6 +270,23 @@ main.dw-post-page {
   border-top: 1px solid var(--dw-line);
 }
 
+/* Headings in rich text on general pages (e.g. the Speaker Rider). */
+.dw-prose h2 {
+  margin: 2.5rem 0 0.85rem !important;
+  font-size: clamp(1.4rem, 3vw, 1.7rem);
+  font-weight: 700 !important;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--dw-ink);
+}
+
+.dw-prose h3 {
+  margin: 2rem 0 0.6rem !important;
+  font-size: 1.2rem;
+  font-weight: 700 !important;
+  color: var(--dw-ink);
+}
+
 .dw-prose blockquote {
   margin: 1.5rem 0;
   padding-left: 1.1rem;
@@ -757,6 +774,32 @@ main.dw-post-page {
 /* ---------------------------------------------------------------------------
  * Post footer
  * ------------------------------------------------------------------------- */
+
+/* Ko-fi note at the end of a post. */
+.dw-post__body .dw-post__support {
+  margin: 3rem 0 0;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: var(--dw-tint);
+  font-size: 0.97rem;
+  color: var(--dw-ink);
+}
+
+.dw-post__support i {
+  margin-right: 0.35rem;
+  color: var(--dw-accent);
+}
+
+.dw-post__support a {
+  background-image: none;
+  text-decoration: underline !important;
+  text-underline-offset: 0.18em;
+  color: var(--dw-accent) !important;
+}
+
+.dw-post__support + .dw-post__footer {
+  margin-top: 1.5rem;
+}
 
 .dw-post__footer {
   display: flex;
@@ -1878,4 +1921,9 @@ html.dw-lightbox-open {
 .dw-post__body .token.deleted,
 .dw-post__body .token.prefix.deleted {
   color: #ff9d9d;
+}
+
+.dw-talk-cta .dw-link-arrow {
+  display: inline-block;
+  margin: 0.75rem 0 0 1.25rem;
 }

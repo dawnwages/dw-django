@@ -864,6 +864,33 @@ div.dw-project:hover {
   color: var(--dw-accent);
 }
 
+/* Ko-fi link: a quiet outlined button, not the widget's script. */
+.dw-footer__support {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--dw-line);
+  border-radius: var(--dw-radius);
+  background: var(--dw-surface);
+  background-image: none;
+  font-size: 0.88rem;
+  text-decoration: none !important;
+  text-transform: none;
+  color: var(--dw-ink) !important;
+  transition: border-color 0.15s ease;
+}
+
+.dw-footer__support i {
+  color: var(--dw-accent);
+}
+
+.dw-footer__support:hover,
+.dw-footer__support:focus-visible {
+  border-color: var(--dw-accent);
+  color: var(--dw-accent) !important;
+}
+
 .dw-footer__copy {
   margin: 0;
   font-size: 0.85rem;
