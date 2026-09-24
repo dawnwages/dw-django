@@ -11,7 +11,8 @@ DEBUG = os.environ.get('DEBUG')
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
 HOST = os.environ.get('HOST')
 TEMPLATE_DEBUG = DEBUG
-AWS_DEFAULT_REGION = os.environ.get('AWS_DEFAULT_REGION', 'us-east-1')
+# No default: the database backend falls back to the region in the RDS hostname.
+AWS_DEFAULT_REGION = os.environ.get('AWS_DEFAULT_REGION')
 
 # CSRF_COOKIE_SECURE = True
 # SESSION_COOKIE_SECURE = True
@@ -44,7 +45,6 @@ if USE_S3:
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-    AWS_DEFAULT_REGION = os.getenv('AWS_DEFAULT_REGION')
     AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
     AWS_DEFAULT_ACL = 'public-read'
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
