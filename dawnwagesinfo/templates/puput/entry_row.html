@@ -1,0 +1,40 @@
+{% load wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags puput_tags %}
+{% entry_url entry blog_page as post_url %}
+<li class="dw-entry{% if featured %} dw-entry--featured{% endif %}{% if entry.header_image %} dw-entry--image{% endif %}">
+  <article>
+    <div class="dw-entry__text">
+      <p class="dw-entry__meta">
+        {% if featured %}<span class="dw-entry__badge">Latest</span>{% endif %}
+        {% if entry.this_week %}<span class="dw-entry__badge dw-entry__badge--week">This week {{ entry.date|date:"W" }}</span>{% endif %}
+        <time datetime="{{ entry.date|date:'c' }}">{{ entry.date|date:"M j, Y" }}</time>
+        <span aria-hidden="true">·</span>
+        <span>{{ entry.reading_time }} min read</span>
+      </p>
+      {% if entry.categories.all %}
+        <p class="dw-entry__cats">
+          {% for category in entry.categories.all %}<a href="{% routablepageurl blog_page 'entries_by_category' category.slug %}">{{ category.name }}</a>{% if not forloop.last %}<span aria-hidden="true"> · </span>{% endif %}{% endfor %}
+        </p>
+      {% endif %}
+      <h2 class="dw-entry__title"><a href="{{ post_url }}">{{ entry.title }}</a></h2>
+      {% with words=featured|yesno:"45,30" %}
+        {% if entry.excerpt %}
+          <p class="dw-entry__excerpt">{{ entry.excerpt|striptags|truncatewords:words }}</p>
+        {% elif entry.body %}
+          <p class="dw-entry__excerpt">{{ entry.body|striptags|truncatewords:words }}</p>
+        {% endif %}
+      {% endwith %}
+      {% if entry.tags.all %}
+        <ul class="dw-entry__tags" aria-label="Tags">
+          {% for tag in entry.tags.all %}
+            <li><a href="{% routablepageurl blog_page 'entries_by_tag' tag.slug %}">#{{ tag.name }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    {% if entry.header_image %}
+      <a class="dw-entry__media" href="{{ post_url }}" tabindex="-1" aria-hidden="true">
+        {% if featured %}{% image entry.header_image fill-960x540 loading="lazy" %}{% else %}{% image entry.header_image fill-480x270 loading="lazy" %}{% endif %}
+      </a>
+    {% endif %}
+  </article>
+</li>

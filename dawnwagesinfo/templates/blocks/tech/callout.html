@@ -1,0 +1,12 @@
+{% load wagtailcore_tags %}
+<aside class="dw-callout dw-callout--{{ value.kind }}" role="note">
+  <p class="dw-callout__title">
+    {% if value.kind == "tip" %}<i class="fas fa-lightbulb" aria-hidden="true"></i>
+    {% elif value.kind == "important" %}<i class="fas fa-bookmark" aria-hidden="true"></i>
+    {% elif value.kind == "warning" %}<i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+    {% elif value.kind == "caution" %}<i class="fas fa-ban" aria-hidden="true"></i>
+    {% else %}<i class="fas fa-info-circle" aria-hidden="true"></i>{% endif %}
+    {{ value.title|default:value.kind|capfirst }}
+  </p>
+  <div class="dw-callout__body">{{ value.body|richtext }}</div>
+</aside>

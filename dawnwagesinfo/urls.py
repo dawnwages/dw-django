@@ -35,7 +35,7 @@ if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL + 'images/', document_root=os.path.join(settings.MEDIA_ROOT, 'images'))
     urlpatterns += [
-        path(r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'dawnwagesinfo/images/favicon.ico')),
+        path('favicon.ico', RedirectView.as_view(url=settings.STATIC_URL + 'dawnwagesinfo/images/favicon.ico')),
     ]
 urlpatterns = urlpatterns + [
     # For anything not caught by a more specific rule above, hand over to

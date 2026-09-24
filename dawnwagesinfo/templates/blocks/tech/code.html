@@ -1,0 +1,8 @@
+<figure class="dw-code">
+  <div class="dw-code__bar">
+    <span class="dw-code__file">{% if value.filename %}{{ value.filename }}{% else %}{{ value.language }}{% endif %}</span>
+    <button type="button" class="dw-copy" data-copy>Copy</button>
+  </div>
+  <pre class="{% if value.line_numbers %}line-numbers{% endif %}{% if value.show_diff %} diff-highlight{% endif %}"{% if value.highlight_lines %} data-line="{{ value.highlight_lines }}"{% endif %}><code class="language-{% if value.show_diff %}diff-{% endif %}{{ value.language }}">{{ value.code }}</code></pre>
+  {% if value.caption %}<figcaption class="dw-caption">{{ value.caption }}</figcaption>{% endif %}
+</figure>

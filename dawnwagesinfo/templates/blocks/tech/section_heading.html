@@ -1,0 +1,7 @@
+{% with anchor=value.anchor %}
+{% if value.level == "h3" %}
+<h3 id="{{ anchor }}" class="dw-post__h3"><a class="dw-anchor" href="#{{ anchor }}" aria-label="Link to this section">#</a>{{ value.text }}</h3>
+{% else %}
+<h2 id="{{ anchor }}" class="dw-post__h2"><a class="dw-anchor" href="#{{ anchor }}" aria-label="Link to this section">#</a>{{ value.text }}</h2>
+{% endif %}
+{% endwith %}

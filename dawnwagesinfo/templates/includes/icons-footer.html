@@ -1,7 +1,11 @@
 {% load wagtailimages_tags %}
-
+{% if projecticons %}
+<section class="dw-partners" aria-labelledby="dw-partners-title">
+    <h2 id="dw-partners-title" class="dw-partners__title">Community &amp; partners</h2>
+    <ul class="dw-partners__logos">
     {% for icon in projecticons %}
-        <div id="footer-{{ icon }}" class="col project-icon">
-            {% image icon.image height-50 alt=icon.caption %}
-        </div>
+        <li id="footer-{{ icon }}" class="project-icon">{% image icon.image height-50 alt=icon.caption %}</li>
     {% endfor %}
+    </ul>
+</section>
+{% endif %}

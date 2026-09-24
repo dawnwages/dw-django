@@ -1,0 +1,6 @@
+<figure class="dw-quote">
+  <blockquote{% if value.source_url %} cite="{{ value.source_url }}"{% endif %}><p>{{ value.quote }}</p></blockquote>
+  {% if value.attribution %}
+    <figcaption>{% if value.source_url %}<a href="{{ value.source_url }}">{{ value.attribution }}</a>{% else %}{{ value.attribution }}{% endif %}</figcaption>
+  {% endif %}
+</figure>

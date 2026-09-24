@@ -1,0 +1,5 @@
+{% load wagtailembeds_tags %}
+<figure class="dw-embed">
+  <div class="dw-embed__frame">{% embed value.embed.url max_width=960 %}</div>
+  {% if value.caption %}<figcaption class="dw-caption">{{ value.caption }}</figcaption>{% endif %}
+</figure>

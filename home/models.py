@@ -34,6 +34,16 @@ class HomePage(Page):
         FieldPanel('desc_long', classname="full")
     ]
 
+    def get_context(self, request, *args, **kwargs):
+        from puput.models import BlogPage, EntryPage
+
+        context = super().get_context(request, *args, **kwargs)
+        context["recent_entries"] = (
+            EntryPage.objects.live().public().order_by("-date").select_related("header_image")[:3]
+        )
+        context["home_blog"] = BlogPage.objects.live().child_of(self).first()
+        return context
+
 
 class GeneralTag(TaggedItemBase):
     content_object = ParentalKey(

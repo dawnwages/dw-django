@@ -1,0 +1,7 @@
+{% load wagtailcore_tags %}
+<section class="dw-summary dw-summary--{{ value.style }}" aria-label="{% if value.style == 'prerequisites' %}Before you start{% elif value.style == 'takeaways' %}Key takeaways{% else %}Summary{% endif %}">
+  <p class="dw-summary__title">{% if value.style == "prerequisites" %}Before you start{% elif value.style == "takeaways" %}Key takeaways{% else %}TL;DR{% endif %}</p>
+  <ul class="dw-summary__list">
+    {% for item in value.items %}<li>{{ item|richtext }}</li>{% endfor %}
+  </ul>
+</section>

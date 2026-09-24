@@ -1,0 +1,805 @@
+/*
+ * dawnwages.info design layer.
+ *
+ * Plain CSS, no build step. Loaded after site.css and Bootstrap (see
+ * templates/base.html), so it can refine both. Components use a `dw-` prefix.
+ * Some declarations need !important only because site.css forces styles on
+ * every `main a`, heading, and list with !important.
+ *
+ * Direction: one continuous warm-paper background, typography-led, a single
+ * violet accent, hairline dividers instead of heavy boxes.
+ */
+
+:root {
+  --dw-paper: #fbfaf7;
+  --dw-surface: #fff;
+  --dw-tint: #f4f0fb;
+  --dw-ink: #1c1a23;
+  --dw-muted: #5f5b6b;
+  --dw-line: #e8e5ec;
+  --dw-accent: #6a3ec9;
+  --dw-accent-dark: #52309e;
+  --dw-max: 1040px;
+  --dw-heading: "Josefin Sans", sans-serif;
+
+  /* Used by site.css and the base template for the page background. */
+  --bg-secondary: var(--dw-paper);
+  /* Darker than the old #718096 so small gray text meets WCAG AA contrast. */
+  --text-muted: #5b6474;
+}
+
+/* ---------------------------------------------------------------------------
+ * Global polish
+ * ------------------------------------------------------------------------- */
+
+h1,
+.h1-large,
+.h2-large {
+  text-shadow: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--dw-accent);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Navigation
+ * ------------------------------------------------------------------------- */
+
+.dw-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background: rgba(251, 250, 247, 0.85) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--dw-line);
+}
+
+.dw-nav .navbar-brand {
+  color: var(--dw-ink) !important;
+  font-weight: 700;
+}
+
+.dw-nav .nav-link {
+  background-image: none;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.dw-nav .nav-link {
+  white-space: nowrap;
+}
+
+.dw-nav .search_form .input-group {
+  flex-wrap: nowrap;
+}
+
+/* Between the 960px expand point and wide screens, tighten spacing so every
+   link and the search box fit on one line. */
+@media (min-width: 960px) and (max-width: 1299.98px) {
+  .dw-nav .navbar-nav .nav-link {
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+
+  .dw-nav .icon-nav .nav-link {
+    padding-left: 0.45rem;
+    padding-right: 0.45rem;
+  }
+}
+
+/* Just above the expand point there isn't room for everything; the social
+   icons are repeated in the footer, so drop them from the bar here. */
+@media (min-width: 960px) and (max-width: 1099.98px) {
+  .dw-nav .icon-nav {
+    display: none !important;
+  }
+}
+
+/* Let the search box give up width instead of pushing the bar off-screen. */
+.dw-nav .navbar-collapse {
+  min-width: 0;
+}
+
+.dw-nav .search_form {
+  flex: 0 1 12rem;
+  min-width: 0;
+}
+
+.dw-nav .search_form .input-group,
+.dw-nav .search_form input {
+  min-width: 0;
+}
+
+.dw-nav .search_form input {
+  flex: 1 1 auto;
+  width: 100%;
+  padding: 0.4rem 0.9rem !important;
+  border: 1px solid var(--dw-line) !important;
+  border-right: 0 !important;
+  border-radius: 999px 0 0 999px !important;
+  background: var(--dw-surface);
+  font-size: 0.9rem;
+}
+
+.dw-nav .search_form button {
+  padding: 0.4rem 0.8rem !important;
+  border: 1px solid var(--dw-line) !important;
+  border-left: 0 !important;
+  border-radius: 0 999px 999px 0 !important;
+  background: var(--dw-surface) !important;
+  color: var(--dw-muted);
+}
+
+.dw-nav .search_form input:focus {
+  outline: none;
+  border-color: var(--dw-accent) !important;
+}
+
+.dw-nav .nav-link:hover,
+.dw-nav .nav-link:focus-visible {
+  color: var(--dw-accent) !important;
+}
+
+/* Projects dropdown: a soft panel with a name and one-line description per item.
+   Overrides the old theme's heavy border and the site-wide lowercase links. */
+.dw-nav .dropdown-toggle.show,
+.dw-nav .dropdown-toggle:focus {
+  background: none !important;
+  box-shadow: none !important;
+  color: var(--dw-accent) !important;
+}
+
+.dw-nav .dw-menu {
+  min-width: 21rem;
+  margin-top: 0.6rem !important;
+  padding: 0.45rem !important;
+  border: 1px solid var(--dw-line) !important;
+  border-radius: 14px !important;
+  background: var(--dw-surface);
+  box-shadow: 0 1px 2px rgba(28, 26, 35, 0.06), 0 18px 40px -16px rgba(28, 26, 35, 0.28);
+}
+
+.dw-nav .dw-menu__item {
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr);
+  column-gap: 0.6rem;
+  row-gap: 0.1rem;
+  padding: 0.6rem 0.75rem !important;
+  border-radius: 10px;
+  background-image: none;
+  white-space: normal;
+  text-decoration: none !important;
+  text-transform: none !important;
+  color: var(--dw-ink) !important;
+}
+
+.dw-nav .dw-menu__item:hover,
+.dw-nav .dw-menu__item:focus-visible {
+  background-color: var(--dw-tint);
+}
+
+.dw-nav .dw-menu__item:focus-visible {
+  outline: 2px solid var(--dw-accent);
+  outline-offset: -2px;
+}
+
+.dw-menu__icon {
+  grid-row: span 2;
+  font-size: 1.15rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+.dw-menu__name {
+  font-family: var(--dw-heading) !important;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  text-transform: none !important;
+}
+
+.dw-menu__ext {
+  font-size: 0.8em;
+  color: var(--dw-muted);
+}
+
+.dw-nav .dw-menu__item:hover .dw-menu__name {
+  color: var(--dw-accent);
+}
+
+.dw-menu__desc {
+  font-family: "Arimo", sans-serif !important;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-transform: none !important;
+  color: var(--dw-muted);
+}
+
+/* In the collapsed mobile menu the panel sits in the flow, full width. */
+@media (max-width: 959.98px) {
+  .dw-nav .dw-menu {
+    min-width: 0;
+    margin: 0.25rem 0 0.75rem !important;
+    box-shadow: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Home page
+ * ------------------------------------------------------------------------- */
+
+main.dw-home {
+  max-width: none;
+  width: auto;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.dw-home a {
+  background-image: none;
+}
+
+.dw-hero,
+.dw-section {
+  width: min(var(--dw-max), 100% - 3rem);
+  margin-inline: auto;
+}
+
+/* Buttons and links */
+.dw-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+}
+
+.dw-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  background-color: var(--dw-ink);
+  font-family: var(--dw-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none !important;
+  color: var(--dw-paper) !important;
+  transition: background-color 0.15s ease;
+}
+
+.dw-btn:hover {
+  background-color: var(--dw-accent);
+}
+
+.dw-link-arrow {
+  font-family: var(--dw-heading);
+  font-weight: 700;
+  text-decoration: none !important;
+  color: var(--dw-accent) !important;
+}
+
+.dw-link-arrow::after {
+  content: "\2192";
+  display: inline-block;
+  margin-left: 0.3em;
+  transition: transform 0.15s ease;
+}
+
+.dw-link-arrow:hover::after {
+  transform: translateX(3px);
+}
+
+/* Hero */
+.dw-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  padding: clamp(4rem, 10vw, 7.5rem) 0 clamp(3rem, 6vw, 4.5rem);
+}
+
+.dw-hero__name {
+  margin: 0 0 1rem !important;
+  font-size: clamp(2.75rem, 7vw, 5.25rem);
+  font-weight: 700 !important;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--dw-ink);
+}
+
+.dw-hero__role {
+  margin: 0 0 0.75rem !important;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.4;
+  color: var(--dw-muted);
+}
+
+.dw-hero__lead {
+  max-width: 36rem;
+  margin: 0 0 0.75rem !important;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--dw-muted);
+}
+
+.dw-hero__meta {
+  margin: 0 0 2rem !important;
+  font-size: 0.95rem;
+  color: var(--dw-muted);
+}
+
+.dw-hero__meta i {
+  margin-right: 0.3rem;
+  color: var(--dw-accent);
+}
+
+.dw-hero__portrait {
+  width: clamp(240px, 30vw, 360px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(28, 26, 35, 0.06), 0 24px 48px -24px rgba(28, 26, 35, 0.45);
+}
+
+/* Sections: a small label on the left, content on the right. */
+.dw-section {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 1rem 2.5rem;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--dw-line);
+}
+
+.dw-section__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.dw-section__title {
+  margin: 0 !important;
+  font-size: 1.05rem;
+  font-weight: 700 !important;
+  line-height: 1.6;
+  color: var(--dw-ink);
+}
+
+.dw-section__head .dw-link-arrow {
+  font-size: 0.95rem;
+}
+
+/* Currently: the page's long description as a two-column list. */
+.dw-now {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2.5rem;
+}
+
+.dw-now > .rich-text {
+  display: contents;
+}
+
+.dw-now p {
+  margin: 0;
+  padding: 0.7rem 0 !important;
+  border-bottom: 1px solid var(--dw-line);
+  line-height: 1.45;
+  color: var(--dw-ink);
+}
+
+.dw-now p:empty {
+  display: none;
+}
+
+.dw-now a {
+  margin-left: 0.15rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  color: var(--dw-accent) !important;
+}
+
+.dw-now a:hover {
+  text-decoration: underline !important;
+}
+
+/* Writing: title and date rows with a short excerpt. */
+.dw-list {
+  margin: 0;
+  list-style: none;
+}
+
+.dw-list__item + .dw-list__item {
+  border-top: 1px solid var(--dw-line);
+}
+
+.dw-list__link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.35rem 1.5rem;
+  padding: 0.9rem 0 1.1rem;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.dw-list__item:first-child .dw-list__link {
+  padding-top: 0.15rem;
+}
+
+.dw-list__title {
+  font-family: var(--dw-heading) !important;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--dw-ink);
+  transition: color 0.15s ease;
+}
+
+.dw-list__link:hover .dw-list__title {
+  color: var(--dw-accent);
+}
+
+.dw-list__date {
+  padding-top: 0.2rem;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--dw-muted);
+}
+
+.dw-list__excerpt {
+  grid-column: 1 / -1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--dw-muted);
+}
+
+/* Projects */
+.dw-projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.dw-project {
+  display: grid;
+  align-content: start;
+  gap: 0.3rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--dw-line);
+  border-radius: 14px;
+  background: var(--dw-surface);
+  text-decoration: none !important;
+  color: var(--dw-ink) !important;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.dw-project:hover {
+  border-color: var(--dw-accent);
+  background-color: var(--dw-tint);
+}
+
+.dw-project__name {
+  font-family: var(--dw-heading) !important;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.dw-project__desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--dw-muted);
+}
+
+/* Contact */
+.dw-contact {
+  display: block;
+  padding-bottom: 1rem;
+}
+
+.dw-contact__title {
+  margin: 0 0 0.5rem !important;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--dw-ink);
+}
+
+.dw-contact__text {
+  margin: 0 0 1.5rem;
+  font-size: 1.05rem;
+  color: var(--dw-muted);
+}
+
+/* Short paragraph that opens a section's content column. */
+.dw-section__intro {
+  max-width: 40rem;
+  margin: 0 0 1.25rem !important;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--dw-muted);
+}
+
+/* Leadership roles */
+.dw-roles {
+  margin: 0;
+  list-style: none;
+}
+
+.dw-role {
+  padding: 0 0 1.25rem;
+}
+
+.dw-role + .dw-role {
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--dw-line);
+}
+
+.dw-role__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dw-role__name {
+  margin: 0 !important;
+  font-size: 1.2rem;
+  font-weight: 700 !important;
+  line-height: 1.3;
+  color: var(--dw-ink);
+}
+
+.dw-role__name a {
+  text-decoration: none !important;
+  color: var(--dw-ink) !important;
+}
+
+.dw-role__name a:hover {
+  color: var(--dw-accent) !important;
+}
+
+.dw-role__years {
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--dw-muted);
+}
+
+.dw-role__title {
+  margin: 0.15rem 0 0.4rem !important;
+  font-family: var(--dw-heading);
+  font-weight: 700 !important;
+  color: var(--dw-accent);
+}
+
+.dw-role__desc {
+  max-width: 44rem;
+  margin: 0 !important;
+  font-size: 0.97rem;
+  line-height: 1.6;
+  color: var(--dw-muted);
+}
+
+/* Non-link project card (no hover state). */
+div.dw-project:hover {
+  border-color: var(--dw-line);
+  background-color: var(--dw-surface);
+}
+
+/* Speaking topics */
+.dw-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  list-style: none;
+}
+
+.dw-topics li {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--dw-line);
+  border-radius: 999px;
+  background: var(--dw-surface);
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: var(--dw-ink);
+}
+
+/* Contact paths */
+.dw-paths {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.dw-path {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--dw-line);
+  border-radius: 14px;
+  background: var(--dw-surface);
+  text-decoration: none !important;
+  color: var(--dw-ink) !important;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.dw-path:hover {
+  border-color: var(--dw-accent);
+  background-color: var(--dw-tint);
+}
+
+.dw-path__label {
+  font-family: var(--dw-heading) !important;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.dw-path__label::after {
+  content: "\2192";
+  margin-left: 0.35em;
+  color: var(--dw-accent);
+}
+
+.dw-path__desc {
+  font-size: 0.93rem;
+  line-height: 1.5;
+  color: var(--dw-muted);
+}
+
+/* ---------------------------------------------------------------------------
+ * Footer
+ * ------------------------------------------------------------------------- */
+
+.dw-footer {
+  margin-top: clamp(3.5rem, 7vw, 6rem);
+  border-top: 1px solid var(--dw-line);
+}
+
+.dw-partners {
+  width: min(var(--dw-max), 100% - 3rem);
+  margin: 0 auto;
+  padding: 2.5rem 0 1.5rem;
+  text-align: center;
+}
+
+.dw-partners__title {
+  margin: 0 0 1.5rem !important;
+  font-size: 0.8rem;
+  font-weight: 700 !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dw-muted);
+}
+
+.dw-partners__logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem 2.25rem;
+  margin: 0;
+  list-style: none;
+}
+
+.dw-partners__logos img {
+  height: 38px;
+  width: auto;
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+
+.dw-partners__logos img:hover {
+  filter: none;
+  opacity: 1;
+}
+
+.dw-footer__bar {
+  width: min(var(--dw-max), 100% - 3rem);
+  margin: 0 auto;
+  padding: 1.25rem 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--dw-line);
+}
+
+.dw-footer__brand {
+  margin: 0;
+  font-family: var(--dw-heading);
+  font-weight: 700;
+  color: var(--dw-accent);
+}
+
+.dw-footer__links {
+  display: flex;
+  gap: 1.1rem;
+  margin: 0;
+  list-style: none;
+}
+
+.dw-footer__links a {
+  background-image: none;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--dw-muted);
+  transition: color 0.15s ease;
+}
+
+.dw-footer__links a:hover {
+  color: var(--dw-accent);
+}
+
+.dw-footer__copy {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--dw-muted);
+}
+
+
+/* ---------------------------------------------------------------------------
+ * Small screens and motion preferences
+ * ------------------------------------------------------------------------- */
+
+@media (max-width: 759.98px) {
+  .dw-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .dw-hero__portrait {
+    order: -1;
+    width: min(240px, 70vw);
+  }
+
+  .dw-section {
+    grid-template-columns: 1fr;
+  }
+
+  .dw-section__head {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .dw-now,
+  .dw-projects,
+  .dw-paths {
+    grid-template-columns: 1fr;
+  }
+
+  .dw-footer__bar {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 959.98px) and (min-width: 760px) {
+  .dw-paths {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dw-path,
+  .dw-btn,
+  .dw-link-arrow::after,
+  .dw-list__title,
+  .dw-project {
+    transition: none;
+  }
+}

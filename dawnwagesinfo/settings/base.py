@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.routable_page',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
+    'wagtail.contrib.search_promotions',
     'wagtail.contrib.table_block',
     'wagtail.embeds',
     'wagtail.sites',
@@ -69,6 +70,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Required by Wagtail's search index models on PostgreSQL.
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -165,13 +168,22 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
-    os.path.join(BASE_DIR, 'frontend/build'),
 ]
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
 # JavaScript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
 # See https://docs.djangoproject.com/en/3.1/ref/contrib/staticfiles/#manifeststaticfilesstorage
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STORAGES = {
+    'default': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    },
+    'staticfiles': {
+        # Hashed filenames + compression. Every file a template references must
+        # exist, or rendering raises an error, so there is no build output to
+        # forget: all static assets are committed as-is.
+        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    },
+}
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
@@ -187,7 +199,7 @@ WAGTAIL_SITE_NAME = "dawn wages"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://www.dawnwages.info'
+WAGTAILADMIN_BASE_URL = 'http://www.dawnwages.info'
 
 NETLIFY_AUTO_DEPLOY = True
 
@@ -218,3 +230,8 @@ LOGGING = {
 MIGRATION_MODULES = {'puput': 'portfolio.puput_migrations'}
 PUPUT_AS_PLUGIN = True
 PUPUT_ENTRY_MODEL = 'portfolio.models.DWEntryAbstract'
+
+# Keep 32-bit primary keys on this project's own models. Django 6.0 changed the
+# default to BigAutoField, which would otherwise generate migrations altering
+# every existing id column.
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

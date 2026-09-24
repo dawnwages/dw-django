@@ -1,0 +1,12 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<figure class="dw-figure dw-figure--{{ value.width }}">
+  {% if value.width == "wide" %}{% image value.image width-1400 as img %}{% else %}{% image value.image width-960 as img %}{% endif %}
+  <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy"
+       alt="{{ value.alt_text|default:value.image.title }}">
+  {% if value.caption or value.credit %}
+    <figcaption class="dw-caption">
+      {% if value.caption %}{{ value.caption|richtext }}{% endif %}
+      {% if value.credit %}<span class="dw-caption__credit">{{ value.credit }}</span>{% endif %}
+    </figcaption>
+  {% endif %}
+</figure>

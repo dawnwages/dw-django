@@ -4,7 +4,7 @@
 # Build stage: compile and install Python dependencies into a virtualenv.
 # Compilers and headers stay in this stage and never reach the final image.
 # ---------------------------------------------------------------------------
-FROM python:3.13-slim AS builder
+FROM python:3.14-slim AS builder
 
 ENV PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
@@ -17,17 +17,17 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Install only the dependencies listed in pyproject.toml. Copying this file on
-# its own means the layer is reused until the dependencies change, rather than
-# on every source code change.
-COPY pyproject.toml /tmp/pyproject.toml
-RUN python -c "import tomllib; print('\n'.join(tomllib.load(open('/tmp/pyproject.toml', 'rb'))['project']['dependencies']))" > /tmp/requirements.txt \
- && pip install --requirement /tmp/requirements.txt
+# Install the locked dependencies. requirements.txt is generated from
+# pyproject.toml by uv (see the command at the top of that file) and pins every
+# package with hashes, so --no-deps installs exactly what was resolved there.
+# Copying it on its own means this layer is reused until dependencies change.
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-deps --require-hashes --requirement /tmp/requirements.txt
 
 # ---------------------------------------------------------------------------
 # Runtime stage: slim image with the virtualenv and the project source.
 # ---------------------------------------------------------------------------
-FROM python:3.13-slim
+FROM python:3.14-slim
 
 # Add user that will be used in the container.
 RUN useradd wagtail
@@ -40,9 +40,13 @@ EXPOSE 8000
 # 2. Set PORT variable that is used by Gunicorn. This should match "EXPOSE"
 #    command.
 # 3. Use the virtualenv built in the previous stage.
+# 4. Use production settings for everything run in the image, including the
+#    Procfile's release (migrate) and web processes. manage.py defaults to the
+#    local dev settings otherwise.
 ENV PYTHONUNBUFFERED=1 \
     PORT=8000 \
-    PATH="/opt/venv/bin:$PATH"
+    PATH="/opt/venv/bin:$PATH" \
+    DJANGO_SETTINGS_MODULE=dawnwagesinfo.settings.deploy
 
 # Runtime library needed by psycopg2.
 RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-recommends \

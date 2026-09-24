@@ -1,4 +1,7 @@
+import math
+
 from django.db import models
+from django.utils.html import strip_tags
 from django.utils.translation import gettext as _
 
 from modelcluster.fields import ParentalKey
@@ -17,6 +20,7 @@ from wagtail.fields import RichTextField, StreamField
 from wagtail.images.blocks import ImageChooserBlock
 
 from portfolio import blocks as dwblocks
+from portfolio.tech_blocks import TECH_BLOCKS
 from home import blocks as dblocks
 
 class PortfolioTag(TaggedItemBase):
@@ -133,11 +137,35 @@ class DWEntryAbstract(EntryAbstract):
             ("video_embed", dwblocks.LiteYoutubeEmbed(class_name="full")),
             ("table", TableBlock(class_name="full")),
             ("code_block", dblocks.CodeBlock(class_name="full")),
+            *TECH_BLOCKS,
         ],
         blank=True,
         null=True,
         use_json_field=True,
     )
+
+    # Average adult reading speed for technical prose; code slows readers down,
+    # so this is deliberately on the low side.
+    WORDS_PER_MINUTE = 200
+
+    @property
+    def table_of_contents(self):
+        """Section headings in the content StreamField, in page order."""
+        return [
+            {"text": block.value["text"], "level": block.value["level"], "anchor": block.value.anchor()}
+            for block in self.content or []
+            if block.block_type == "section_heading"
+        ]
+
+    @property
+    def reading_time(self):
+        """Estimated minutes to read the body and content."""
+        words = len(strip_tags(self.body or "").split())
+        for block in self.content or []:
+            for text in block.block.get_searchable_content(block.value):
+                words += len(strip_tags(str(text)).split())
+        return max(1, math.ceil(words / self.WORDS_PER_MINUTE))
+
     content_panels = [
         MultiFieldPanel(
             [   

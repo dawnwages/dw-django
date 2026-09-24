@@ -1,0 +1,5 @@
+{% load wagtailcore_tags %}
+<details class="dw-details"{% if value.open %} open{% endif %}>
+  <summary>{{ value.summary }}</summary>
+  <div class="dw-details__body">{{ value.body|richtext }}</div>
+</details>

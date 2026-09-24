@@ -1,0 +1,20 @@
+{# IDs and aria-controls are wired up by static/js/blog.js. #}
+<figure class="dw-code dw-tabs" data-tabs>
+  <div class="dw-code__bar">
+    <div class="dw-tabs__list" role="tablist">
+      {% for tab in value.tabs %}
+        <button type="button" role="tab" class="dw-tabs__tab"
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                {% if not forloop.first %}tabindex="-1"{% endif %}>{{ tab.label }}</button>
+      {% endfor %}
+    </div>
+    <button type="button" class="dw-copy" data-copy>Copy</button>
+  </div>
+  {% for tab in value.tabs %}
+    <div class="dw-tabs__panel" role="tabpanel" {% if not forloop.first %}hidden{% endif %}>
+      {% if tab.filename %}<div class="dw-tabs__file">{{ tab.filename }}</div>{% endif %}
+      <pre><code class="language-{{ tab.language }}">{{ tab.code }}</code></pre>
+    </div>
+  {% endfor %}
+  {% if value.caption %}<figcaption class="dw-caption">{{ value.caption }}</figcaption>{% endif %}
+</figure>

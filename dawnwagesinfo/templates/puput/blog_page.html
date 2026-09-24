@@ -1,12 +1,12 @@
 {% extends "puput/base.html" %}
 
-{% load static i18n wagtailcore_tags wagtailimages_tags puput_tags social_share %}
+{% load static i18n wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags puput_tags blog_extras %}
 
 {% block title %}
     {% if search_term %}
         {{ search_term }} | {{ blog_page.title }}
     {% else %}
-        {{ block.super }}
+        {% if blog_page.seo_title %}{{ blog_page.seo_title }}{% else %}{{ blog_page.title }}{% endif %}
     {% endif %}
 {% endblock title %}
 
@@ -42,29 +42,119 @@
     <meta name="twitter:description" content="{{ blog_page.description }}" />
 {% endblock social_share %}
 
-{% block extra_content %}
-    {% with per_page=blog_page.num_entries_page %}
-        {# 'paginate' tag cannot render dotted variables, so we need to create a context var #}
-        {% paginate per_page entries %}
-        {% if search_term %}
-        <div class="row">
-            <div class="searchTerm">{% trans 'Entries for' %} {{ search_type }} "{{ search_term }}"</div>
-        </div>
-        {% endif %}
-        <div class="row">
-            {% for entry in entries %}
-                {% if entry.this_week is True %}
-                    {% include 'puput/this_week_entry.html' %}
-                {% else %}
-                    {% include 'puput/blog_entry.html' %}
-                {% endif %}
-            {% empty %}
-                <span>{% trans 'No results found.' %}</span>
-            {% endfor %}
-        </div>
+{# Replaces puput/base.html's header and sidebar with the site's own layout. #}
+{% block content %}
+{% with per_page=blog_page.num_entries_page %}
+{# 'paginate' cannot take dotted variables, so per_page is a context var. #}
+{# el_pagination page URLs are query strings (empty for page 1), so prefix request.path. #}
+{% paginate per_page entries %}
+{% get_pages %}
+<main class="dw-post-page dw-blog" id="main">
 
-        <div class="pagination">
-            {% show_paginator %}
-        </div>
-    {% endwith %}
-{% endblock extra_content %}
+  <header class="dw-blog__header">
+    <p class="dw-post__eyebrow">Writing</p>
+    <h1 class="dw-blog__title"><a href="{% pageurl blog_page %}">{{ blog_page.title }}</a></h1>
+    {% if blog_page.description %}
+      <div class="dw-blog__desc">{{ blog_page.description|richtext }}</div>
+    {% else %}
+      <p class="dw-blog__desc">Notes on Python, Django, open source and building software people can trust.</p>
+    {% endif %}
+
+    <div class="dw-blog__tools">
+      <form class="dw-blog__search" role="search" method="get" action="{% routablepageurl blog_page 'entries_search' %}">
+        <label class="visually-hidden" for="dw-blog-q">Search posts</label>
+        <input id="dw-blog-q" type="search" name="q" placeholder="Search posts"{% if search_type == "search" %} value="{{ search_term }}"{% endif %}>
+        <button type="submit" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></button>
+      </form>
+      <a class="dw-blog__rss" href="{% feeds_url blog_page %}"><i class="fas fa-rss" aria-hidden="true"></i> RSS</a>
+    </div>
+
+    {% blog_categories blog_page as categories %}
+    {% blog_topics blog_page as topics %}
+    {% if categories or topics %}
+      <div class="dw-blog__filters">
+        <a class="dw-chip dw-chip--all" href="{% pageurl blog_page %}"{% if not search_term %} aria-current="page"{% endif %}>All posts</a>
+
+        {% if categories %}
+          <nav class="dw-filter" aria-label="Categories">
+            <span class="dw-filter__label">Categories</span>
+            <ul class="dw-filter__list">
+              {% for category in categories %}
+                <li><a class="dw-chip" href="{% routablepageurl blog_page 'entries_by_category' category.slug %}"{% if search_type == "category" and search_term == category.name %} aria-current="page"{% endif %}>{{ category.name }} <span class="dw-chip__count">{{ category.num_posts }}</span></a></li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+
+        {% if topics %}
+          <nav class="dw-filter" aria-label="Tags">
+            <span class="dw-filter__label">Tags</span>
+            <ul class="dw-filter__list">
+              {% for tag in topics|slice:":12" %}
+                <li><a class="dw-chip dw-chip--tag" href="{% routablepageurl blog_page 'entries_by_tag' tag.slug %}"{% if search_type == "tag" and search_term == tag.name %} aria-current="page"{% endif %}>#{{ tag.name }} <span class="dw-chip__count">{{ tag.num_posts }}</span></a></li>
+              {% endfor %}
+            </ul>
+            {% if topics|length > 12 %}
+              <details class="dw-filter__more">
+                <summary>{{ topics|length|add:"-12" }} more tags</summary>
+                <ul class="dw-filter__list">
+                  {% for tag in topics|slice:"12:" %}
+                    <li><a class="dw-chip dw-chip--tag" href="{% routablepageurl blog_page 'entries_by_tag' tag.slug %}"{% if search_type == "tag" and search_term == tag.name %} aria-current="page"{% endif %}>#{{ tag.name }} <span class="dw-chip__count">{{ tag.num_posts }}</span></a></li>
+                  {% endfor %}
+                </ul>
+              </details>
+            {% endif %}
+          </nav>
+        {% endif %}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="dw-blog__body">
+    {% if search_term %}
+      <p class="dw-blog__filter">
+        {% if search_type == "search" %}Results for &ldquo;{{ search_term }}&rdquo;{% else %}Posts {% if search_type == "tag" %}tagged{% elif search_type == "category" %}in{% elif search_type == "author" %}by{% else %}from{% endif %} <strong>{{ search_term }}</strong>{% endif %}
+        <a class="dw-blog__clear" href="{% pageurl blog_page %}">Clear</a>
+      </p>
+      {% if search_type == "category" %}
+        {% for category in categories %}{% if category.name == search_term and category.description %}<p class="dw-blog__filter-desc">{{ category.description }}</p>{% endif %}{% endfor %}
+      {% endif %}
+    {% endif %}
+
+    {% if entries %}
+      <ol class="dw-blog__list">
+        {% for entry in entries %}
+          {% if forloop.first and not search_term and pages.current.is_first %}
+            {% include 'puput/entry_row.html' with featured=True %}
+          {% else %}
+            {% include 'puput/entry_row.html' %}
+          {% endif %}
+        {% endfor %}
+      </ol>
+    {% else %}
+      <div class="dw-blog__empty">
+        <p>No posts found.</p>
+        <a class="dw-link-arrow" href="{% pageurl blog_page %}">See all posts</a>
+      </div>
+    {% endif %}
+
+    {% if pages.paginated %}
+      <nav class="dw-pager" aria-label="Pagination">
+        {% if pages.previous %}<a class="dw-pager__step" href="{{ request.path }}{{ pages.previous.url }}" rel="prev">&larr; Newer</a>{% else %}<span class="dw-pager__step is-disabled">&larr; Newer</span>{% endif %}
+        <ol class="dw-pager__pages">
+          {% for page in pages %}
+            {% if page %}
+              <li>{% if page.is_current %}<span aria-current="page">{{ page.number }}</span>{% else %}<a href="{{ request.path }}{{ page.url }}">{{ page.number }}</a>{% endif %}</li>
+            {% else %}
+              <li><span class="dw-pager__gap">&hellip;</span></li>
+            {% endif %}
+          {% endfor %}
+        </ol>
+        {% if pages.next %}<a class="dw-pager__step" href="{{ request.path }}{{ pages.next.url }}" rel="next">Older &rarr;</a>{% else %}<span class="dw-pager__step is-disabled">Older &rarr;</span>{% endif %}
+      </nav>
+    {% endif %}
+  </div>
+
+</main>
+{% endwith %}
+{% endblock content %}

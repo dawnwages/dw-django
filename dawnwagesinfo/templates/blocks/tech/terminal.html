@@ -1,0 +1,9 @@
+<figure class="dw-terminal">
+  <div class="dw-code__bar">
+    <span class="dw-terminal__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="dw-code__file">{{ value.title|default:"Terminal" }}</span>
+    <button type="button" class="dw-copy" data-copy data-copy-target=".dw-terminal__cmd">Copy</button>
+  </div>
+  <pre class="dw-terminal__body"><code>{% for line in value.commands.splitlines %}{% if line.strip %}<span class="dw-terminal__line"><span class="dw-terminal__prompt" aria-hidden="true">{{ value.prompt }}</span> <span class="dw-terminal__cmd">{{ line }}</span></span>
+{% endif %}{% endfor %}{% if value.output %}<span class="dw-terminal__out">{{ value.output }}</span>{% endif %}</code></pre>
+</figure>

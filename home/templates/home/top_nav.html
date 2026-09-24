@@ -1,6 +1,6 @@
 {% load wagtailcore_tags %}
 {% load snippet_tags %}
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-md navbar-light dw-nav" aria-label="Main">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">dawnwages.info</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,25 +12,42 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Projects
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/star-trek-themed-demos/">Star Trek Demos 🖖
-              <p><small>Python demos with themes.</small></p>
-              </a>
-              </li>
-
+          <ul class="dropdown-menu dw-menu" aria-labelledby="navbarDropdown">
             <li>
-              <a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="https://domaindrivendjango.com">Domain-Driven Django ⭐
-                <p><small>Architecture patterns for Django apps with Domain-Driven Design.</small></p>
+              <a class="dropdown-item dw-menu__item" href="https://www.satyrn.ai" target="_blank" rel="noopener noreferrer">
+                <span class="dw-menu__icon" aria-hidden="true">🪐</span>
+                <span class="dw-menu__name">Satyrn <span class="dw-menu__ext" aria-hidden="true">&#8599;</span></span>
+                <span class="dw-menu__desc">Jupyter for agents: local-first AI tooling for Python developers.</span>
               </a>
             </li>
-            <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="https://attheroot.dev">At The Root 🌱
-              <p><small>Anti-Racist Ethical Source License.</small></p>
+            <li>
+              <a class="dropdown-item dw-menu__item" href="https://djangonaut.space" target="_blank" rel="noopener noreferrer">
+                <span class="dw-menu__icon" aria-hidden="true">🚀</span>
+                <span class="dw-menu__name">Djangonaut Space <span class="dw-menu__ext" aria-hidden="true">&#8599;</span></span>
+                <span class="dw-menu__desc">Contributor mentorship for Django, which I co-created.</span>
               </a>
             </li>
-                          <!--
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="#">Rugby Street Consulting</a></li>
-            -->
+            <li>
+              <a class="dropdown-item dw-menu__item" href="https://domaindrivendjango.com" target="_blank" rel="noopener noreferrer">
+                <span class="dw-menu__icon" aria-hidden="true">📘</span>
+                <span class="dw-menu__name">Domain-Driven Django <span class="dw-menu__ext" aria-hidden="true">&#8599;</span></span>
+                <span class="dw-menu__desc">Architecture patterns for Django apps with Domain-Driven Design.</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item dw-menu__item" href="https://attheroot.dev" target="_blank" rel="noopener noreferrer">
+                <span class="dw-menu__icon" aria-hidden="true">🌱</span>
+                <span class="dw-menu__name">At The Root <span class="dw-menu__ext" aria-hidden="true">&#8599;</span></span>
+                <span class="dw-menu__desc">Anti-Racist Ethical Source License.</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item dw-menu__item" href="/star-trek-themed-demos/">
+                <span class="dw-menu__icon" aria-hidden="true">🖖</span>
+                <span class="dw-menu__name">Star Trek Demos</span>
+                <span class="dw-menu__desc">Python demos with themes.</span>
+              </a>
+            </li>
           </ul>
         </li>
         <li class="title nav-item">
