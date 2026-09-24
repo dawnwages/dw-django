@@ -56,6 +56,12 @@ class SectionHeadingValue(blocks.StructValue):
     def anchor(self):
         return slugify(self.get("anchor") or self.get("text"))
 
+    @property
+    def anchor_id(self):
+        # Templates can't call anchor(): StructValue is a dict, so {{ value.anchor }}
+        # resolves to the raw (often empty) "anchor" field before the method.
+        return self.anchor()
+
 
 class SectionHeadingBlock(blocks.StructBlock):
     text = blocks.CharBlock(max_length=255)
