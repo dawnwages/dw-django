@@ -80,7 +80,8 @@ DATABASES = {
         'USER': os.getenv('DB_USER'),
         'PASSWORD': '',  # Use the dynamically generated token
         'HOST': os.getenv('HOST'),
-        'PORT': os.getenv('PORT'),
+        # Not PORT: Heroku and the Docker image use PORT for the web server.
+        'PORT': os.getenv('DB_PORT', '5432'),
         'OPTIONS': {
             'sslmode': 'require',
         },
