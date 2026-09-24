@@ -8,6 +8,37 @@
 
 <section class="dw-hero" aria-labelledby="dw-hero-name">
   <div class="dw-hero__text">
+    {% if new_posts_count == 1 %}
+      {% with post=new_posts.0 %}
+        {% entry_url post post.blog_page as post_url %}
+        <a class="dw-announce" href="{{ post_url }}">
+          <span class="dw-announce__badge">New post</span>
+          <span class="dw-announce__title">{{ post.title }}</span>
+          <span class="dw-announce__arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      {% endwith %}
+    {% elif new_posts_count > 1 %}
+      <section class="dw-announce-card" aria-labelledby="dw-announce-title">
+        <p class="dw-announce-card__head" id="dw-announce-title">
+          <span class="dw-announce__badge">{{ new_posts_count }} new posts</span>
+          <span>this week</span>
+        </p>
+        <ul class="dw-announce-card__list">
+          {% for post in new_posts %}
+            {% entry_url post post.blog_page as post_url %}
+            <li>
+              <a href="{{ post_url }}">
+                <span class="dw-announce__title">{{ post.title }}</span>
+                <time datetime="{{ post.date|date:'c' }}">{{ post.date|date:"D j M" }}</time>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+        {% if new_posts_more and home_blog %}
+          <a class="dw-link-arrow dw-announce-card__more" href="{% pageurl home_blog %}">{{ new_posts_more }} more</a>
+        {% endif %}
+      </section>
+    {% endif %}
     <h1 id="dw-hero-name" class="dw-hero__name">{{ page.name|default:page.title }}</h1>
     {% if page.job_title %}<p class="dw-hero__role">{{ page.job_title }}</p>{% endif %}
     {% if page.desc %}<p class="dw-hero__lead">{{ page.desc }}</p>{% endif %}

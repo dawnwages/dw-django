@@ -1,4 +1,7 @@
+from datetime import timedelta
+
 from django.db import models
+from django.utils import timezone
 
 from modelcluster.fields import ParentalKey
 
@@ -34,14 +37,24 @@ class HomePage(Page):
         FieldPanel('desc_long', classname="full")
     ]
 
+    # Blog posts published within this window are announced in the hero,
+    # listing at most NEW_POSTS_SHOWN of them.
+    NEW_POST_WINDOW = timedelta(days=7)
+    NEW_POSTS_SHOWN = 3
+
     def get_context(self, request, *args, **kwargs):
         from puput.models import BlogPage, EntryPage
 
         context = super().get_context(request, *args, **kwargs)
-        context["recent_entries"] = (
-            EntryPage.objects.live().public().order_by("-date").select_related("header_image")[:3]
-        )
+        published = EntryPage.objects.live().public().order_by("-date")
+        context["recent_entries"] = published.select_related("header_image")[:3]
         context["home_blog"] = BlogPage.objects.live().child_of(self).first()
+
+        # Posts from the last week, newest first, announced in the hero.
+        this_week = published.filter(date__gte=timezone.now() - self.NEW_POST_WINDOW)
+        context["new_posts"] = list(this_week[: self.NEW_POSTS_SHOWN])
+        context["new_posts_count"] = this_week.count()
+        context["new_posts_more"] = max(0, context["new_posts_count"] - self.NEW_POSTS_SHOWN)
         return context
 
 
