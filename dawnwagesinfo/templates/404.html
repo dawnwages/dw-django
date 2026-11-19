@@ -1,12 +1,55 @@
 {% extends "base.html" %}
 
+{% block title %}Page not found{% endblock %}
+
 {% block body_class %}template-404{% endblock %}
 
 {% block content %}
 <main class="dw-post-page dw-page" id="main">
   <header class="dw-page__header">
-    <h1 class="dw-post__title">Page not found</h1>
-    <p class="dw-post__dek">I can&rsquo;t find that page. It may have moved when I rebuilt the site. Try <a href="/">the homepage</a> or <a href="/search/">search</a>.</p>
+    <h1 class="dw-post__title">Oops, no page here</h1>
+    <p class="dw-post__dek">I can&rsquo;t find <code>{{ request.path }}</code>. It may have moved when I rebuilt the site, or the link has a typo. One of these might be what you&rsquo;re after.</p>
   </header>
+
+  <div class="dw-page__body">
+    <form class="dw-notfound__search" action="/search/" method="get" role="search">
+      <label for="dw-notfound-query">Search the site</label>
+      <input id="dw-notfound-query" type="search" name="query" placeholder="A talk, a post or a project">
+      <button type="submit" class="dw-btn">Search</button>
+    </form>
+
+    <ul class="dw-list">
+      <li class="dw-list__item">
+        <a class="dw-list__link" href="/">
+          <span class="dw-list__title">Home</span>
+          <span class="dw-list__excerpt">Who I am, what I'm working on now and my latest writing.</span>
+        </a>
+      </li>
+      <li class="dw-list__item">
+        <a class="dw-list__link" href="/talks-and-podcasts/">
+          <span class="dw-list__title">Talks and Podcasts</span>
+          <span class="dw-list__excerpt">Keynotes, talks, panels and podcasts, with slides where I have them.</span>
+        </a>
+      </li>
+      <li class="dw-list__item">
+        <a class="dw-list__link" href="/bajoran-engineer/">
+          <span class="dw-list__title">The Bajoran Engineer blog</span>
+          <span class="dw-list__excerpt">Writing on Python, AI agents and open source.</span>
+        </a>
+      </li>
+      <li class="dw-list__item">
+        <a class="dw-list__link" href="/star-trek-themed-demos/">
+          <span class="dw-list__title">Star Trek themed demos</span>
+          <span class="dw-list__excerpt">Python demos from the bridge, including the LCARS Online lab.</span>
+        </a>
+      </li>
+      <li class="dw-list__item">
+        <a class="dw-list__link" href="/speaker-rider/">
+          <span class="dw-list__title">Speaker rider</span>
+          <span class="dw-list__excerpt">Inviting me to speak? Start here.</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </main>
 {% endblock %}
