@@ -8,7 +8,9 @@ from dawnwagesinfo import custom_backends
 
 load_dotenv()
 
-DEBUG = os.environ.get('DEBUG')
+# Parse the flag: os.environ.get() returns text, and any non-empty text (even "False")
+# is truthy, which left debug pages on in production.
+DEBUG = os.environ.get('DEBUG', '').strip().lower() in ('1', 'true', 'yes', 'on')
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
 HOST = os.environ.get('HOST')
 TEMPLATE_DEBUG = DEBUG

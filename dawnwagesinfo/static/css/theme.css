@@ -1037,3 +1037,29 @@ div.dw-project:hover {
     transition: none;
   }
 }
+
+/* 404 page: a site search above the suggested pages. */
+.dw-notfound__search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 2rem;
+}
+
+.dw-notfound__search label {
+  flex-basis: 100%;
+  font-weight: 700;
+  color: var(--dw-ink);
+}
+
+.dw-notfound__search input {
+  flex: 1 1 16rem;
+  min-width: 0;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--dw-line);
+  border-radius: var(--dw-radius);
+  background: var(--dw-surface);
+  color: var(--dw-ink);
+  font: inherit;
+}
